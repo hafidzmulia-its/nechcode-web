@@ -24,7 +24,7 @@ const principles = [
   },
   {
     title: "Long-Term Thinking",
-    description: "Solusi disiapkan untuk maintainability, integrasi lanjutan, dan pertumbuhan bertahap.",
+    description: "Solusi dirancang agar mudah dirawat, mudah dikembangkan, dan tetap relevan saat bisnis Anda tumbuh.",
   },
 ];
 
@@ -41,7 +41,7 @@ export function AboutPage({ content }: AboutPageProps) {
             <Reveal once y={18}>
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-secondary">About</p>
               <h1 className="mb-5 font-headline text-5xl leading-tight text-primary md:text-7xl">
-                Founder-led Partner untuk Solusi Digital yang <span className="serif-italic">Jelas Dampaknya</span>
+                Partner Teknologi Founder-Led untuk Solusi Digital yang <span className="serif-italic">Jelas Dampaknya</span>
               </h1>
               <p className="text-lg leading-relaxed text-on-surface-variant">{about.descriptionA}</p>
             </Reveal>
@@ -89,8 +89,8 @@ export function AboutPage({ content }: AboutPageProps) {
                 <p className="text-sm">Bisnis, UMKM, organisasi, atau institusi yang butuh partner eksekusi dan pendampingan.</p>
               </div>
               <div>
-                <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.16em] opacity-75">Cara Kolaborasi</p>
-                <p className="text-sm">Discovery singkat, scope prioritas, sprint mingguan, dan evaluasi pasca-rilis.</p>
+                <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.16em] opacity-75">Format Komunikasi</p>
+                <p className="text-sm">Update mingguan, prioritas sprint, dan keputusan penting selalu disampaikan ringkas dengan konteks yang jelas.</p>
               </div>
             </Reveal>
           </div>

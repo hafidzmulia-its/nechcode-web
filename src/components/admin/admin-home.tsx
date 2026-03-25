@@ -84,7 +84,7 @@ export function AdminHome() {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         <Link
           href="/admin/portfolio"
           className="rounded-3xl border border-outline-variant/35 bg-surface-container-lowest p-8 shadow-[var(--shadow-soft)] transition hover:-translate-y-0.5"
@@ -101,6 +101,15 @@ export function AdminHome() {
           <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-secondary">CMS Module</p>
           <h2 className="font-headline text-3xl text-primary">FAQ Manager</h2>
           <p className="mt-3 text-sm text-on-surface-variant">Kelola tanya jawab homepage secara dinamis.</p>
+        </Link>
+
+        <Link
+          href="/admin/campaigns"
+          className="rounded-3xl border border-outline-variant/35 bg-surface-container-lowest p-8 shadow-[var(--shadow-soft)] transition hover:-translate-y-0.5"
+        >
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-secondary">CMS Module</p>
+          <h2 className="font-headline text-3xl text-primary">Campaign Manager</h2>
+          <p className="mt-3 text-sm text-on-surface-variant">Kelola campaign musiman, countdown, dan placement urgency.</p>
         </Link>
       </div>
     </main>

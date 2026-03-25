@@ -22,7 +22,7 @@ export function ProblemsSection({ problems }: ProblemsSectionProps) {
               <ul className="space-y-5">
                 {problems.items.map((item) => (
                   <li key={item.title} className="flex items-start gap-3">
-                    <span className="material-symbols-outlined mt-0.5 text-error">error</span>
+                    <span className="material-symbols-outlined mt-0.5 text-secondary">priority_high</span>
                     <div>
                       <p className="mb-1 font-body text-base font-bold text-primary">{item.title}</p>
                       <p className="text-sm text-[#4b5660]">{item.description}</p>
@@ -34,18 +34,13 @@ export function ProblemsSection({ problems }: ProblemsSectionProps) {
 
             <Reveal className="lg:col-span-7" y={20} x={14} delay={0.1} duration={0.42}>
               <div className="rounded-[1.5rem] border border-[rgba(29,90,141,0.1)] bg-[#FBF7EE] p-6 shadow-[0_14px_32px_rgba(37,50,62,0.08)] md:p-8">
-                <div className="mb-6 flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-error" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-tertiary" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-secondary" />
-                </div>
-                <div className="space-y-3 font-mono text-sm">
-                  <p className="text-primary">{"// "}{problems.codeTitle}</p>
-                  {problems.codeLines.map((line) => (
-                    <p key={line} className="text-[#41505b]">
-                      {line}
-                    </p>
-                  ))}
+                <div className="mb-6 rounded-xl border border-[rgba(29,90,141,0.1)] bg-[#f2ece0] p-5">
+                  <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Indikator Umum</p>
+                  <ul className="space-y-2 text-sm text-[#41505b]">
+                    <li>Tim mengulang input data yang sama di beberapa tools.</li>
+                    <li>Laporan penting baru tersedia di akhir minggu atau akhir bulan.</li>
+                    <li>Follow-up pelanggan masih bergantung pada proses manual.</li>
+                  </ul>
                 </div>
                 <div className="mt-6 rounded-xl border border-[rgba(126,75,0,0.12)] bg-[#F2ECE0] p-6">
                   <div className="flex items-center justify-center gap-5">

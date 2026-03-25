@@ -105,8 +105,13 @@ export function ContactPage({ content }: ContactPageProps) {
                   >
                     Konsultasi via WhatsApp ({siteConfig.whatsappDisplayName})
                   </a>
-                  <p>Email alternatif: <a className="font-semibold text-primary underline underline-offset-4" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
-                  <p>Domain: {siteConfig.domain}</p>
+                  <a
+                    href={buildMailto("Konsultasi Proyek NechCode")}
+                    className="inline-flex w-full items-center justify-center rounded-xl border border-outline-variant/30 bg-surface px-5 py-3 text-sm font-bold text-primary transition hover:bg-surface-container"
+                  >
+                    Kirim Brief via Email
+                  </a>
+                  <p>Email resmi: <a className="font-semibold text-primary underline underline-offset-4" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
                   <p className="pt-1 text-xs">Respon awal umumnya dalam 1x24 jam kerja. Jika kebutuhan Anda mendesak, tulis kata "URGENT" di awal pesan WhatsApp.</p>
                 </div>
                 <div className="mt-5 border-t border-outline-variant/20 pt-5">
@@ -138,6 +143,9 @@ export function ContactPage({ content }: ContactPageProps) {
                 <h2 className="mb-4 font-headline text-3xl text-primary">Brief Form</h2>
                 <p className="mb-4 text-sm text-on-surface-variant">
                   Cocok untuk kebutuhan yang sudah lebih jelas. Isi poin inti agar kami bisa menyiapkan rekomendasi scope awal dengan cepat.
+                </p>
+                <p className="mb-4 text-xs text-on-surface-variant">
+                  Jelaskan kebutuhan Anda secara singkat. Contoh: Saya ingin mengintegrasikan sistem stok gudang ke website e-commerce.
                 </p>
                 <div className="space-y-3">
                   <input
@@ -178,7 +186,7 @@ export function ContactPage({ content }: ContactPageProps) {
                   Kirim Brief via WhatsApp
                 </a>
                 <a href={buildMailto("Project Brief NechCode")} className="mt-4 block text-sm font-bold text-primary underline underline-offset-4">
-                  atau kirim via Email
+                  Kirim Brief via Email
                 </a>
               </form>
             </Reveal>

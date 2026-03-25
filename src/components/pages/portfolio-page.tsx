@@ -15,7 +15,7 @@ type PortfolioPageProps = {
 };
 
 const filters = [
-  "All",
+  "Semua",
   "Institutional & Research",
   "Business & Organization Websites",
   "Systems & Internal Tools",
@@ -117,7 +117,7 @@ function getOutcomeLabel(item: PortfolioItem) {
 }
 
 export function PortfolioPage({ content, items }: PortfolioPageProps) {
-  const [activeFilter, setActiveFilter] = useState<(typeof filters)[number]>("All");
+  const [activeFilter, setActiveFilter] = useState<(typeof filters)[number]>("Semua");
 
   const normalized = useMemo(() => {
     return [...items]
@@ -130,12 +130,12 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
         projectType: getProjectType(item),
         scopeLabel: getScopeLabel(item),
         outcomeLabel: getOutcomeLabel(item),
-        status: item.published ? "Published" : "In Development",
+        status: item.published ? "Dipublikasikan" : "Dalam Pengembangan",
       }));
   }, [items]);
 
   const featured = normalized[0];
-  const filtered = normalized.filter((item) => activeFilter === "All" || item.mvpCategory === activeFilter);
+  const filtered = normalized.filter((item) => activeFilter === "Semua" || item.mvpCategory === activeFilter);
 
   return (
     <div className="selection:bg-secondary-container selection:text-on-secondary-container">
@@ -150,7 +150,7 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
                 Karya Terpilih dengan Outcome yang <span className="serif-italic">Terukur</span>
               </h1>
               <p className="mt-6 max-w-2xl text-lg text-on-surface-variant">
-                Rangkaian proyek website, sistem internal, workflow AI, dan integrasi custom yang dikerjakan dengan scope jelas dan metrik hasil yang relevan.
+                Rangkaian proyek website, sistem internal, workflow AI, dan integrasi custom yang dirancang untuk menyelesaikan masalah operasional nyata dengan scope jelas.
               </p>
             </Reveal>
           </div>
@@ -172,10 +172,10 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
                   </div>
                   <div className="flex flex-col justify-between">
                     <div>
-                      <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary">Featured Work</p>
+                      <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary">Karya Unggulan</p>
                       <h2 className="mb-3 font-headline text-4xl text-primary">{featured.title}</h2>
                       <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-on-surface-variant/75">
-                        Context: {featured.clientContext} • Project: {featured.projectType}
+                        Konteks: {featured.clientContext} • Tipe Proyek: {featured.projectType}
                       </p>
                       <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-on-surface-variant/75">{featured.scopeLabel}</p>
                       <p className="mb-5 text-sm leading-relaxed text-on-surface-variant">{featured.description}</p>

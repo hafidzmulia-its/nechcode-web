@@ -678,6 +678,12 @@ export function PortfolioManager() {
           >
             FAQ
           </Link>
+          <Link
+            href="/admin/campaigns"
+            className="rounded-xl border border-outline-variant/45 px-4 py-2 text-sm font-semibold hover:bg-surface-container-low"
+          >
+            Campaigns
+          </Link>
           <button
             onClick={() => void seedDefaults()}
             className="rounded-xl border border-outline-variant/45 px-4 py-2 text-sm font-semibold hover:bg-surface-container-low"

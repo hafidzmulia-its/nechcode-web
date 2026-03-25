@@ -15,7 +15,7 @@ type SelectedWorksSectionProps = {
 };
 
 function statusLabel(item: PortfolioItem) {
-  return item.published ? "Published" : "In Development";
+  return item.published ? "Dipublikasikan" : "Dalam Pengembangan";
 }
 
 function getItemCategories(item: PortfolioItem) {
@@ -94,7 +94,7 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
     >
       <div className="mb-7 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Selected Works</p>
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Karya Pilihan</p>
           <h3 className="font-headline text-4xl text-primary md:text-5xl">Karya Terpilih</h3>
           <p className="mt-2 max-w-xl text-sm text-on-surface-variant md:text-base">{works.description}</p>
         </div>
@@ -112,7 +112,7 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
             className="inline-flex items-center gap-2 rounded-xl border border-primary/20 bg-[linear-gradient(120deg,rgba(29,90,141,0.08),rgba(88,230,255,0.2))] px-3 py-2.5 text-[11px] font-bold uppercase tracking-wider text-primary transition hover:border-primary/35 hover:bg-[linear-gradient(120deg,rgba(29,90,141,0.12),rgba(88,230,255,0.28))]"
           >
             {isImmersive ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
-            {isImmersive ? "Minimize" : "Fullscreen"}
+            {isImmersive ? "Kecilkan" : "Layar Penuh"}
           </button>
         </div>
       </div>
@@ -138,10 +138,10 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
             </motion.div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-[1.2fr_0.8fr] md:items-end">
               <div>
-                <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.14em] text-secondary">Immersive Project View</p>
+                <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.14em] text-secondary">Tampilan Proyek Detail</p>
                 <h4 className="mb-2 font-headline text-3xl leading-tight text-primary md:text-4xl">{active.title}</h4>
                 <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-on-surface-variant/75">
-                  Context: {getClientContext(active)} • Project: {getProjectType(active)}
+                  Konteks: {getClientContext(active)} • Tipe Proyek: {getProjectType(active)}
                 </p>
                 <p className="text-sm leading-relaxed text-on-surface-variant md:text-base">{active.description}</p>
               </div>
@@ -177,10 +177,10 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
             </motion.div>
             <div className="flex flex-col justify-between">
               <div>
-                <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.14em] text-secondary">Featured Project</p>
+                <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.14em] text-secondary">Proyek Unggulan</p>
                 <h4 className="mb-2 font-headline text-3xl leading-tight text-primary">{active.title}</h4>
                 <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-on-surface-variant/75">
-                  Context: {getClientContext(active)} • Project: {getProjectType(active)}
+                  Konteks: {getClientContext(active)} • Tipe Proyek: {getProjectType(active)}
                 </p>
                 <p className="text-sm leading-relaxed text-on-surface-variant">{active.description}</p>
               </div>
@@ -248,8 +248,8 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
               <h2 className="font-headline text-4xl leading-tight text-primary md:text-6xl">
                 Jelajahi Karya di Dalam{" "}
                 <span className="serif-italic">
-                  Interactive <span className="md:hidden">Mobile</span>
-                  <span className="hidden md:inline">Laptop</span> View
+                  Mode Interaktif <span className="md:hidden">Mobile</span>
+                  <span className="hidden md:inline">Laptop</span>
                 </span>
               </h2>
             </div>

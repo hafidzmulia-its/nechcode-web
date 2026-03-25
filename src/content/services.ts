@@ -126,7 +126,7 @@ const pillars: ServicePillar[] = [
     navbarPriceCue: "Scope via konsultasi",
     navbarCtaLabel: "Lihat Opsi Mobile App",
     selectorLabel: "Mobile Apps",
-    sectionTitle: "Mobile Apps - dirancang berdasarkan scope, bukan dipaksakan ke paket yang sempit",
+    sectionTitle: "Mobile Apps dengan estimasi berbasis scope",
     sectionBody:
       "Layanan mobile app cocok untuk tim yang membutuhkan pengalaman mobile-first, aplikasi operasional, atau produk digital yang dipakai langsung oleh pengguna. Karena kebutuhan mobile cenderung lebih spesifik, estimasi terbaik dimulai dari konsultasi scope.",
     microcopy:
@@ -305,22 +305,22 @@ export const servicesContent = {
     },
   },
   waysToWork: {
-    heading: "Engagement Model",
+    heading: "Model Kolaborasi",
     description:
       "Mode kerja ini membantu tim memilih cara kolaborasi yang paling pas tanpa mengubah fokus utama layanan.",
     items: [
       {
-        title: "Consultation First",
+        title: "Mulai dari Konsultasi",
         description:
           "Sesi konsultasi untuk memetakan prioritas, risiko, dan urutan implementasi paling efisien.",
       },
       {
-        title: "Entry Package",
+        title: "Mulai dari Paket Awal",
         description:
           "Paket awal website atau chatbot sebagai langkah cepat sebelum scale-up.",
       },
       {
-        title: "Strategic Custom Build",
+        title: "Bangun Scope Custom",
         description:
           "Scope end-to-end untuk sistem, integrasi, dan automation yang disesuaikan konteks bisnis.",
       },

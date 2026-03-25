@@ -77,7 +77,10 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
                 Layanan digital yang bisa dimulai dari paket, lalu tumbuh sesuai kebutuhan
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-on-surface-variant md:text-2xl">
-                {servicesContent.hero.body}
+                NechCode membantu bisnis, UMKM, organisasi, dan institusi membangun website, mobile app, dan automasi AI yang relevan dengan tahap pertumbuhan mereka.
+              </p>
+              <p className="mt-3 max-w-2xl text-base leading-relaxed text-on-surface-variant md:text-lg">
+                Mulai dari kebutuhan dasar yang harus cepat jalan sampai implementasi custom yang lebih kompleks.
               </p>
             </Reveal>
           </div>
@@ -180,7 +183,7 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
                         ) : null}
 
                         <p className={`mb-2 text-xs font-bold uppercase tracking-[0.16em] ${isFeatured ? "text-secondary-container" : "text-secondary"}`}>
-                          Package {index + 1}
+                          Opsi {index + 1}
                         </p>
                         <h4 className={`font-headline text-2xl ${isFeatured ? "text-white" : "text-primary"}`}>{pkg.name}</h4>
                         <p className={`mt-3 text-sm leading-relaxed ${isFeatured ? "text-white/85" : "text-on-surface-variant"}`}>{pkg.description}</p>
@@ -217,21 +220,37 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
               </div>
             </Reveal>
 
-            <Reveal y={12} delay={0.1} className="mt-6 flex flex-wrap items-center gap-3">
-              <a
-                href="#pricing"
-                className="inline-flex rounded-xl border border-outline-variant/25 bg-surface-container px-5 py-2.5 text-sm font-bold text-primary transition hover:bg-surface-container-high"
-              >
-                Bandingkan Semua Opsi
-              </a>
-              <a
-                href={servicesContent.megaMenu.consultCta.href}
-                target={servicesContent.megaMenu.consultCta.external ? "_blank" : undefined}
-                rel={servicesContent.megaMenu.consultCta.external ? "noreferrer" : undefined}
-                className="inline-flex rounded-xl bg-primary px-5 py-2.5 text-sm font-bold !text-white transition hover:opacity-90"
-              >
-                Konsultasi via WhatsApp
-              </a>
+            <Reveal y={12} delay={0.1} className="mt-6 rounded-2xl border border-outline-variant/20 bg-surface-container-low p-5 md:p-6">
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Kenapa Mulai Sekarang?</p>
+              <h3 className="font-headline text-3xl text-primary md:text-4xl">Menunda transformasi digital sering lebih mahal</h3>
+              <p className="mt-3 max-w-4xl text-sm leading-relaxed text-on-surface-variant md:text-base">
+                Proses manual, sistem yang terpisah, dan alur kerja yang tidak rapi biasanya tidak terasa mahal di awal, tetapi pelan-pelan menggerus waktu tim, kualitas eksekusi, dan peluang pertumbuhan. Kami membantu Anda mulai dari langkah yang paling relevan tanpa langsung membangun scope yang berlebihan.
+              </p>
+            </Reveal>
+
+            <Reveal y={12} delay={0.12} className="mt-6 rounded-2xl border border-primary/20 bg-[linear-gradient(120deg,rgba(29,90,141,0.08),rgba(88,230,255,0.18))] p-5 md:p-6">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Belum Yakin Pilih Opsi?</p>
+              <p className="mt-2 max-w-3xl text-sm text-on-surface-variant md:text-base">
+                Kirim konteks bisnis dan target Anda. Kami bantu rekomendasikan jalur paling masuk akal untuk mulai minggu ini.
+              </p>
+              <div className="mt-4 flex flex-wrap items-center gap-3">
+                <a
+                  href={servicesContent.megaMenu.consultCta.href}
+                  target={servicesContent.megaMenu.consultCta.external ? "_blank" : undefined}
+                  rel={servicesContent.megaMenu.consultCta.external ? "noreferrer" : undefined}
+                  className="inline-flex rounded-xl bg-primary px-5 py-2.5 text-sm font-bold !text-white transition hover:opacity-90"
+                >
+                  Konsultasi via WhatsApp
+                </a>
+                <a
+                  href={content.headerCta.href}
+                  target={content.headerCta.external ? "_blank" : undefined}
+                  rel={content.headerCta.external ? "noreferrer" : undefined}
+                  className="inline-flex rounded-xl border border-outline-variant/25 bg-surface px-5 py-2.5 text-sm font-bold text-primary transition hover:bg-surface-container-high"
+                >
+                  Diskusikan Scope Sekarang
+                </a>
+              </div>
             </Reveal>
           </div>
         </section>
@@ -247,7 +266,7 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
                   {servicesContent.waysToWork.items.map((item, index) => (
                     <Reveal key={item.title} y={14} delay={index * 0.04} duration={0.3}>
                       <article className="h-full rounded-[1.25rem] border border-outline-variant/20 bg-surface-container-lowest p-6">
-                        <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Ways to Work</p>
+                        <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Model Kolaborasi</p>
                         <h4 className="mb-2 font-headline text-2xl text-primary">{item.title}</h4>
                         <p className="text-sm text-on-surface-variant">{item.description}</p>
                       </article>

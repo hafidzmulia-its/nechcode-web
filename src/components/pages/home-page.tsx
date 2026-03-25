@@ -2,6 +2,7 @@ import type { HomeContent } from "@/content/home";
 import type { PortfolioItem } from "@/types/portfolio";
 
 import { AboutSection } from "@/components/sections/home/about-section";
+import { CampaignHomepageInlineSlot } from "@/components/campaign/campaign-homepage-inline-slot";
 import { FaqSection } from "../sections/home/faq-section";
 import { FinalCtaSection } from "@/components/sections/home/final-cta-section";
 import { HeroSection } from "@/components/sections/home/hero-section";
@@ -26,6 +27,7 @@ export function HomePage({ content, portfolioItems }: HomePageProps) {
 
       <main className="relative pt-0">
         <HeroSection hero={content.hero} />
+        <CampaignHomepageInlineSlot />
         <TrustStripSection trustStrip={content.trustStrip} />
         <ServicesSection services={content.services} />
         <WhyPartnerSection whyPartner={content.whyPartner} />

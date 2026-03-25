@@ -71,11 +71,11 @@ export function ServicesSection({ services }: ServicesSectionProps) {
           </div>
 
           <div className="mt-10 rounded-[1.5rem] border border-[rgba(29,90,141,0.12)] bg-[#f8f2e6] p-5 md:p-7">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Engagement Model</p>
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Model Kolaborasi</p>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
               {servicesContent.waysToWork.items.map((item) => (
               <div key={item.title} className="rounded-2xl border border-[rgba(29,90,141,0.1)] bg-[#FBF7EE] p-5">
-                <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Ways to Work</p>
+                <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Model Kolaborasi</p>
                 <h4 className="mb-1 font-headline text-2xl text-primary">{item.title}</h4>
                 <p className="text-sm text-[#42505a]">{item.description}</p>
               </div>

@@ -117,9 +117,9 @@ export function SiteFooter({ brand, footer }: SiteFooterProps) {
       <div className="mx-auto w-full max-w-[1360px] px-6 pb-12 md:px-8 lg:px-10 xl:px-12">
         <div className="flex flex-col items-center justify-between gap-4 border-t border-outline-variant/20 pt-8 md:flex-row">
           <p className="text-sm text-on-surface-variant">
-            © {new Date().getFullYear()} {brand.name}. Crafting Digital Excellence in Indonesia.
+            © {new Date().getFullYear()} {brand.name}. Solusi digital praktis untuk bisnis, UMKM, organisasi, dan institusi di Indonesia.
           </p>
-          <p className="text-xs text-on-surface-variant/80">Based in Surabaya</p>
+          <p className="text-xs text-on-surface-variant/80">Berbasis di Surabaya</p>
         </div>
       </div>
     </footer>

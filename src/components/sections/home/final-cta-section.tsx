@@ -56,6 +56,11 @@ export function FinalCtaSection({ cta }: FinalCtaSectionProps) {
                   <span className="text-secondary">{cta.headingEmphasis.toLowerCase()}</span> {cta.headingB}
                 </h2>
                 <p className="mb-12 text-xl text-[#43515b]">{cta.description}</p>
+                <div className="mb-10 flex flex-wrap items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-[0.12em] text-primary/80">
+                  <span className="rounded-full border border-primary/15 bg-white/65 px-3 py-1">Discovery singkat & fokus prioritas</span>
+                  <span className="rounded-full border border-primary/15 bg-white/65 px-3 py-1">Timeline transparan per sprint</span>
+                  <span className="rounded-full border border-primary/15 bg-white/65 px-3 py-1">Pendampingan pasca rilis</span>
+                </div>
               </Reveal>
 
               <Reveal y={12} delay={0.18} duration={0.32}>
@@ -91,6 +96,7 @@ export function FinalCtaSection({ cta }: FinalCtaSectionProps) {
                       </a>
                     ))}
                   </div>
+                  <p className="mt-3 text-xs text-[#43515b]">Ingin lihat proses kerja kami dulu? Jelajahi selected works lalu kembali saat siap diskusi.</p>
                 </div>
               </Reveal>
             </div>

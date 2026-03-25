@@ -10,6 +10,10 @@ type WhatsAppInquiryContext = {
   mainNeed?: string;
   timeline?: string;
   budget?: string;
+  campaignTitle?: string;
+  campaignSlug?: string;
+  urgencyState?: string;
+  ctaOrigin?: string;
 };
 
 function field(value?: string) {
@@ -31,6 +35,10 @@ export function buildWhatsAppInquiryUrl(context: WhatsAppInquiryContext = {}) {
     `Paket awal (jika ada): ${field(context.packageInterest)}`,
     `Estimasi timeline: ${field(context.timeline)}`,
     `Estimasi budget: ${field(context.budget)}`,
+    `Campaign: ${field(context.campaignTitle)}`,
+    `Campaign slug: ${field(context.campaignSlug)}`,
+    `Urgency state: ${field(context.urgencyState)}`,
+    `CTA origin: ${field(context.ctaOrigin)}`,
     `Sumber halaman: ${source}`,
     `Catatan tambahan: ${field(context.additionalNote)}`,
   ].join("\n");

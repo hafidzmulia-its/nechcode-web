@@ -12,22 +12,24 @@ export function HeroSection({ hero }: HeroSectionProps) {
 
   return (
     <section className="relative w-full overflow-hidden bg-surface">
-      <div className={`${layoutContainer} mb-16 grid grid-cols-1 items-start gap-10 py-12 md:mb-24 md:gap-12 md:py-16 lg:mb-32 lg:grid-cols-12 lg:py-20`}>
-        <div className="mt-4 lg:col-span-7 lg:mt-12">
-          <Reveal y={20} x={-18} duration={0.45} amount={0.35} once>
-            <div className="mb-6 inline-block rounded-full border border-secondary/30 bg-[linear-gradient(120deg,rgba(88,230,255,0.3),rgba(88,230,255,0.3))] px-3 py-1 text-xs font-semibold uppercase tracking-[0.05rem] text-primary">
+      <div className={`${layoutContainer} mb-16 flex flex-col items-start gap-8 py-10 sm:gap-10 sm:py-12 md:mb-24 md:gap-12 md:py-16 lg:mb-32 lg:grid lg:grid-cols-12 lg:py-20`}>
+        <div className="mt-2 w-full max-w-full sm:mt-4 lg:col-span-7 lg:mt-12">
+          <Reveal className="w-full" y={20} x={-18} duration={0.45} amount={0.35} once>
+            <div className="mb-5 inline-flex max-w-full rounded-full border border-secondary/30 bg-[linear-gradient(120deg,rgba(88,230,255,0.3),rgba(88,230,255,0.3))] px-3.5 py-1.5 text-[0.68rem] font-semibold uppercase leading-tight tracking-[0.08rem] text-primary sm:mb-6 sm:px-3 sm:py-1 sm:text-xs sm:tracking-[0.05rem]">
               {hero.badge}
             </div>
 
-            <h1 className="mb-6 font-headline text-3xl font-bold leading-tight tracking-tight text-on-surface sm:text-4xl md:mb-8 md:text-5xl lg:text-6xl">
+            <h1 className="mb-5 max-w-none font-headline text-[clamp(1.9rem,9vw,3.25rem)] font-bold leading-[1.1] tracking-tight text-on-surface sm:mb-6 md:mb-8 md:text-5xl lg:text-6xl">
               {hero.headingA} <span className="serif-italic font-normal text-primary-container">{hero.headingEmphasis} </span>
               {hero.headingB}
             </h1>
 
-            <p className="mb-8 max-w-lg text-base leading-relaxed text-on-surface-variant sm:text-lg md:mb-10 md:text-xl">{hero.description}</p>
+            <p className="mb-8 max-w-none text-[1rem] leading-relaxed text-on-surface-variant sm:max-w-xl sm:text-lg md:mb-10 md:text-xl">
+              {hero.description}
+            </p>
           </Reveal>
 
-          <Reveal y={16} x={-14} delay={0.28} duration={0.38} amount={0.35} once>
+          <Reveal className="w-full" y={16} x={-14} delay={0.28} duration={0.38} amount={0.35} once>
             <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <a
                 href={hero.primaryCta.href}
@@ -49,8 +51,22 @@ export function HeroSection({ hero }: HeroSectionProps) {
           </Reveal>
         </div>
 
-        <Reveal className="relative col-span-12 mt-4 w-full max-w-3xl lg:col-span-5 lg:mt-0" y={22} x={18} delay={0.16} duration={0.46} amount={0.35} once>
-          <div className="relative z-10 rounded-[2rem] md:rotate-2  bg-surface-container-low p-4 shadow-2xl shadow-on-surface/5 lg:p-8">
+        <Reveal className="relative mt-4 w-full max-w-full lg:col-span-5 lg:mt-0 lg:max-w-3xl" y={22} x={18} delay={0.16} duration={0.46} amount={0.35} once>
+          <div className="relative z-10 overflow-hidden rounded-[1.4rem] border border-outline-variant/15 bg-surface-container-low p-3 shadow-[0_12px_30px_rgba(35,46,58,0.12)] md:hidden">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-surface-container-lowest">
+              <Image src={hero.showcaseImage.src} alt={hero.showcaseImage.alt} fill className="object-cover" sizes="100vw" />
+            </div>
+            <div className="mt-3 grid grid-cols-3 gap-2">
+              {hero.illustrations3d.slice(0, 3).map((item) => (
+                <div key={item.title} className="flex items-center gap-2 rounded-xl border border-outline-variant/15 bg-surface-container-lowest px-2.5 py-2">
+                  <Image src={item.imageUrl} alt={item.title} width={22} height={22} className="h-[22px] w-[22px] object-contain" />
+                  <span className="truncate text-[10px] font-semibold uppercase tracking-[0.04em] text-on-surface-variant">{item.title}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative z-10 hidden rounded-[2rem] bg-surface-container-low p-4 shadow-2xl shadow-on-surface/5 md:block md:rotate-2 lg:p-8">
             <div className="overflow-hidden rounded-xl border border-outline-variant/10 bg-surface-container-lowest">
               <div className="flex h-10 items-center gap-2 bg-surface-container-high px-4">
                 <div className="h-2.5 w-2.5 rounded-full bg-red-400/30" />
@@ -79,7 +95,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
               </div>
             </div>
 
-            <div className="relative mt-5 max-w-full rotate-0 rounded-2xl border border-outline-variant/10 bg-white p-5 shadow-xl md:absolute md:-bottom-6 md:-left-12 md:mt-0 md:max-w-xs md:-rotate-3 md:p-6">
+            <div className="relative mt-5 max-w-full rotate-0 rounded-2xl border border-outline-variant/10 bg-white p-5 shadow-xl md:mt-0 md:max-w-xs md:p-6 lg:absolute lg:-bottom-6 lg:left-0 lg:-rotate-3 xl:-left-12">
               <div className="mb-2 text-tertiary">
                 <span className="material-symbols-outlined [font-variation-settings:'FILL'_1]">format_quote</span>
               </div>

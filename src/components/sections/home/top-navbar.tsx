@@ -6,8 +6,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+import { CampaignAnnouncementBar } from "@/components/campaign/campaign-announcement-bar";
+import { CampaignStickyUrgencyBar } from "@/components/campaign/campaign-sticky-urgency-bar";
 import type { HomeContent } from "@/content/home";
 import { servicesContent } from "@/content/services";
+import type { Campaign } from "@/types/campaign";
 
 type TopNavbarProps = {
   brand: HomeContent["brand"];
@@ -20,6 +23,8 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [desktopServicesOpen, setDesktopServicesOpen] = useState(false);
+  const [topBarCampaign, setTopBarCampaign] = useState<Campaign | null>(null);
+  const [stickyCampaign, setStickyCampaign] = useState<Campaign | null>(null);
   const servicesMenuRef = useRef<HTMLDivElement>(null);
   const closeMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const layoutContainer = "mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12";
@@ -48,6 +53,44 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, []);
 
+  useEffect(() => {
+    let mounted = true;
+
+    async function loadCampaignPlacements() {
+      try {
+        const response = await fetch("/api/campaign/active", { cache: "no-store" });
+        const data = (await response.json()) as {
+          topBar: Campaign | null;
+          stickyFinalHours: Campaign | null;
+        };
+
+        if (!mounted) {
+          return;
+        }
+
+        setTopBarCampaign(data.topBar ?? null);
+        setStickyCampaign(data.stickyFinalHours ?? null);
+      } catch {
+        if (!mounted) {
+          return;
+        }
+
+        setTopBarCampaign(null);
+        setStickyCampaign(null);
+      }
+    }
+
+    void loadCampaignPlacements();
+    const interval = window.setInterval(() => {
+      void loadCampaignPlacements();
+    }, 60000);
+
+    return () => {
+      mounted = false;
+      window.clearInterval(interval);
+    };
+  }, []);
+
   function serviceIconById(pillarId: string) {
     if (pillarId === "web") return <Globe size={18} />;
     if (pillarId === "mobile") return <Smartphone size={18} />;
@@ -74,7 +117,9 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
   }
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-outline-variant/20 bg-surface-container-lowest/85 backdrop-blur-lg">
+    <>
+      <CampaignAnnouncementBar campaign={topBarCampaign} />
+      <nav className="sticky top-0 z-50 w-full border-b border-outline-variant/20 bg-surface-container-lowest/85 backdrop-blur-lg">
       <div className={`${layoutContainer} flex items-center justify-between py-4 md:py-5`}>
         <Link href="/" aria-label={brand.name} className="justify-self-start">
           <Image
@@ -288,6 +333,8 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
           </div>
         </div>
       ) : null}
-    </nav>
+      </nav>
+      <CampaignStickyUrgencyBar campaign={stickyCampaign} />
+    </>
   );
 }
