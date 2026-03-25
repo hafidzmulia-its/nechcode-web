@@ -1,0 +1,153 @@
+:root {
+  color-scheme: light;
+  --on-tertiary-fixed-variant: #683d00;
+  --tertiary-fixed-dim: #ffb86a;
+  --inverse-primary: #9ccaff;
+  --inverse-on-surface: #f7f0de;
+  --secondary-fixed: #a1efff;
+  --secondary-fixed-dim: #44d8f1;
+  --secondary: #00bcd4;
+  --primary: #1d5a8d;
+  --on-surface-variant: #41474f;
+  --tertiary-fixed: #ffdcbc;
+  --surface: #f5eedc;
+  --primary-fixed-dim: #9ccaff;
+  --surface-container: #eee7d5;
+  --primary-fixed: #d0e4ff;
+  --on-tertiary: #ffffff;
+  --secondary-container: #58e6ff;
+  --on-error: #ffffff;
+  --background: #f5eedc;
+  --on-error-container: #93000a;
+  --tertiary: #7e4b00;
+  --on-primary-container: #a9d0ff;
+  --surface-tint: #276295;
+  --on-primary: #ffffff;
+  --outline: #727780;
+  --surface-container-lowest: #ffffff;
+  --surface-dim: #ddd6c4;
+  --tertiary-container: #5e3600;
+  --surface-container-highest: #e7e0ce;
+  --on-tertiary-container: #ffc17e;
+  --surface-container-high: #e9e2d0;
+  --primary-container: #00426f;
+  --on-surface: #1e1c11;
+  --on-background: #1e1c11;
+  --on-primary-fixed-variant: #00497a;
+  --on-secondary: #ffffff;
+  --outline-variant: #c1c7d0;
+  --on-tertiary-fixed: #2c1700;
+  --surface-container-low: #f1ead8;
+  --error: #ba1a1a;
+  --on-secondary-fixed: #001f25;
+  --on-secondary-fixed-variant: #004e59;
+  --surface-bright: #fbf4e2;
+  --inverse-surface: #333024;
+  --error-container: #ffdad6;
+  --on-secondary-container: #006573;
+  --surface-variant: #e9e2d0;
+  --on-primary-fixed: #001d35;
+  --color-brand: #1d5a8d;
+  --color-accent: #00bcd4;
+  --color-ink: #1e1c11;
+  --color-ink-soft: #41474f;
+  --color-border: #c1c7d0;
+  --shadow-soft: 0 20px 50px rgba(30, 28, 17, 0.08);
+  --shadow-panel: 0 30px 80px rgba(30, 28, 17, 0.14);
+}
+
+@theme {
+  --color-background: #f5eedc;
+  --color-surface: #f5eedc;
+  --color-surface-dim: #ddd6c4;
+  --color-surface-bright: #fbf4e2;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f1ead8;
+  --color-surface-container: #eee7d5;
+  --color-surface-container-high: #e9e2d0;
+  --color-surface-container-highest: #e7e0ce;
+  --color-surface-variant: #e9e2d0;
+  --color-primary: #1d5a8d;
+  --color-primary-container: #00426f;
+  --color-primary-fixed-dim: #9ccaff;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #a9d0ff;
+  --color-secondary: #00bcd4;
+  --color-secondary-container: #58e6ff;
+  --color-on-secondary-container: #006573;
+  --color-tertiary: #7e4b00;
+  --color-tertiary-container: #5e3600;
+  --color-tertiary-fixed: #ffdcbc;
+  --color-tertiary-fixed-variant: #683d00;
+  --color-outline: #727780;
+  --color-outline-variant: #c1c7d0;
+  --color-on-surface: #1e1c11;
+  --color-on-surface-variant: #41474f;
+  --color-on-background: #1e1c11;
+  --color-on-secondary: #ffffff;
+  --color-on-tertiary: #ffffff;
+  --color-on-error: #ffffff;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-secondary-fixed: #a1efff;
+  --color-secondary-fixed-dim: #44d8f1;
+  --color-on-secondary-fixed: #001f25;
+  --color-on-secondary-fixed-variant: #004e59;
+  --color-tertiary-fixed-dim: #ffb86a;
+  --color-on-tertiary-fixed: #2c1700;
+  --color-on-tertiary-fixed-variant: #683d00;
+  --color-on-tertiary-container: #ffc17e;
+  --color-primary-fixed: #d0e4ff;
+  --color-on-primary-fixed: #001d35;
+  --color-on-primary-fixed-variant: #00497a;
+  --color-inverse-primary: #9ccaff;
+  --color-inverse-surface: #333024;
+  --color-inverse-on-surface: #f7f0de;
+  --color-surface-tint: #276295;
+  --color-brand: #1d5a8d;
+  --color-accent: #00bcd4;
+  --color-ink: #1e1c11;
+  --color-ink-soft: #41474f;
+  --color-border: #c1c7d0;
+  --font-sans: var(--font-manrope);
+  --font-body: var(--font-manrope);
+  --font-headline: var(--font-newsreader);
+  --font-label: var(--font-manrope);
+  --font-display: var(--font-newsreader);
+  --shadow-soft: var(--shadow-soft);
+  --shadow-panel: var(--shadow-panel);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+
+@keyframes orbit-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float 7s ease-in-out infinite;
+}
+
+.animate-orbit-slow {
+  animation: orbit-slow 18s linear infinite;
+}
+
+.text-balance {
+  text-wrap: balance;
+}

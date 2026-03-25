@@ -1,0 +1,25 @@
+{
+  "$schema": "vscode://schemas/mcp",
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "twentyFirstApiKey",
+      "description": "21st.dev Magic API Key",
+      "password": true
+    }
+  ],
+  "servers": {
+    "@21st-dev/magic": {
+      "type": "stdio",
+      "command": "npx.cmd",
+      "args": ["-y", "@21st-dev/magic@latest"],
+      "env": {
+        "API_KEY": "${input:twentyFirstApiKey}"
+      }
+    },
+    "icons8": {
+      "type": "http",
+      "url": "https://mcp.icons8.com/mcp/"
+    }
+  }
+}
