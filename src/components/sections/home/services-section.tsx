@@ -7,6 +7,21 @@ type ServicesSectionProps = {
   services: HomeContent["services"];
 };
 
+const waysToWork = [
+  {
+    title: "Consultation First",
+    description: "Mulai dari konsultasi kebutuhan dan prioritas implementasi.",
+  },
+  {
+    title: "Entry Package",
+    description: "Paket awal website atau chatbot untuk validasi cepat.",
+  },
+  {
+    title: "Custom Build",
+    description: "Scope strategis untuk sistem, integrasi, dan automasi lanjutan.",
+  },
+];
+
 export function ServicesSection({ services }: ServicesSectionProps) {
   return (
     <section id="layanan" className="relative w-full overflow-hidden bg-[#F5EEDC] pb-24 md:pb-32">
@@ -32,14 +47,14 @@ export function ServicesSection({ services }: ServicesSectionProps) {
               <div className="group flex h-full flex-col justify-between rounded-3xl border border-[rgba(29,90,141,0.08)] bg-[#FBF7EE] p-10 transition-all duration-500 hover:border-secondary/35 hover:shadow-[0_14px_32px_rgba(31,48,62,0.09)]">
                 <div>
                   <span className="material-symbols-outlined mb-6 text-4xl text-primary">web</span>
-                  <h3 className="mb-4 font-headline text-3xl text-primary">Web & Experience Design</h3>
+                  <h3 className="mb-4 font-headline text-3xl text-primary">Website & Landing Pages</h3>
                   <p className="max-w-md text-[#42505a]">
-                    Bukan sekadar desain, tapi perjalanan pengguna yang dikonversi menjadi hasil bisnis
-                    nyata dengan performa secepat kilat.
+                    Website bisnis dan landing page yang membantu tim menjelaskan value, membangun kredibilitas,
+                    dan meningkatkan konversi.
                   </p>
                 </div>
                 <div className="mt-12 flex items-center gap-4">
-                  {"Next.js,Tailwind,Cloudflare".split(",").map((tag) => (
+                  {"Company Profile,Landing Page,Website Revamp".split(",").map((tag) => (
                     <span key={tag} className="rounded-full border border-[rgba(29,90,141,0.1)] bg-[#F2ECE0] px-4 py-1 text-xs font-bold text-primary">
                       {tag}
                     </span>
@@ -54,8 +69,8 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                   <span className="material-symbols-outlined mb-6 text-4xl text-secondary-container">smart_toy</span>
                   <h3 className="mb-4 font-headline text-3xl">AI-Assisted Workflows</h3>
                   <p className="text-white/82">
-                    Integrasi kecerdasan buatan untuk mengotomatiskan tugas repetitif dan pengambilan
-                    keputusan berbasis data.
+                    Chatbot, automation, dan workflow AI yang disesuaikan dengan SOP tim agar respon lebih
+                    cepat dan proses lebih konsisten.
                   </p>
                 </div>
                 <div className="absolute -bottom-10 -right-10 opacity-10 transition-opacity group-hover:opacity-20">
@@ -68,10 +83,10 @@ export function ServicesSection({ services }: ServicesSectionProps) {
               <div className="flex h-full flex-col justify-between rounded-3xl border border-[rgba(126,75,0,0.14)] bg-[#F8F1E3] p-10 shadow-[0_8px_18px_rgba(70,54,31,0.06)]">
                 <div>
                   <span className="material-symbols-outlined mb-6 text-4xl text-[#7E4B00]">dynamic_form</span>
-                  <h3 className="mb-4 font-headline text-3xl text-[#7E4B00]">Operational Automation</h3>
+                  <h3 className="mb-4 font-headline text-3xl text-[#7E4B00]">Integrations & Custom Solutions</h3>
                   <p className="text-[#4a535c]">
-                    Hubungkan semua alat bisnis Anda dalam satu ekosistem tanpa gesekan. Kurangi error,
-                    tingkatkan margin.
+                    Hubungkan tools yang sudah Anda pakai sekarang, lalu bangun solusi custom untuk bottleneck
+                    operasional yang paling penting.
                   </p>
                 </div>
                 <a
@@ -98,7 +113,8 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                 <div className="flex-1">
                   <h3 className="mb-4 font-headline text-3xl text-primary">Konsultasi Strategis</h3>
                   <p className="text-[#42505a]">
-                    Bagi Anda yang membutuhkan lebih dari sekadar kode, partner diskusi untuk memetakan arah teknologi perusahaan Anda.
+                    Mulai dari sesi konsultasi untuk memetakan opsi solusi, timeline implementasi, dan prioritas
+                    scope yang paling relevan dengan target bisnis Anda.
                   </p>
                   <div className="mt-6 flex gap-4">
                     <span className="text-sm font-bold text-secondary">CTO as a Service</span>
@@ -108,6 +124,16 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                 </div>
               </div>
             </Reveal>
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-3">
+            {waysToWork.map((item) => (
+              <div key={item.title} className="rounded-2xl border border-[rgba(29,90,141,0.1)] bg-[#FBF7EE] p-5">
+                <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Ways to Work</p>
+                <h4 className="mb-1 font-headline text-2xl text-primary">{item.title}</h4>
+                <p className="text-sm text-[#42505a]">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

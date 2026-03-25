@@ -11,8 +11,7 @@ export function WhyPartnerSection({ whyPartner }: WhyPartnerSectionProps) {
       <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
         <Reveal className="mb-14 text-center" y={20} duration={0.4}>
           <div className="mb-4 inline-flex items-center gap-3 rounded-full border border-outline-variant/20 bg-surface-container-lowest px-4 py-2 shadow-[0_6px_14px_rgba(30,28,17,0.05)]">
-         
-            <span className="text-xs font-bold uppercase tracking-widest text-primary">Fun but serious team</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-primary">Founder-Led Collaboration</span>
           </div>
           <h2 className="mb-4 font-headline text-4xl text-primary md:text-5xl">{whyPartner.heading}</h2>
           <p className="mx-auto max-w-3xl text-on-surface-variant md:text-lg">{whyPartner.description}</p>

@@ -30,7 +30,7 @@ export function HomePage({ content, portfolioItems }: HomePageProps) {
         <ServicesSection services={content.services} />
         <WhyPartnerSection whyPartner={content.whyPartner} />
         <SelectedWorksSection works={content.works} items={portfolioItems} />
-        <AboutSection about={content.about} />
+        {/* <AboutSection about={content.about} /> */}
         <ProblemsSection problems={content.problems} />
         <ProcessSection process={content.process} />
         <FaqSection faq={content.faq} />

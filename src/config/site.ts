@@ -3,10 +3,36 @@ export const siteConfig = {
   domain: "nechcode.id",
   url: "https://nechcode.id",
   email: "halo@nechcode.id",
-  whatsapp: "https://wa.me/?text=Halo%20NechCode%2C%20saya%20ingin%20diskusi%20proyek.",
-  founder: "Faisal N.",
+  whatsappNumber: "6289531848511",
+  whatsappDisplayName: "NechMin",
+  founder: "Nech Team.",
+  socials: {
+    instagram: {
+      platform: "Instagram",
+      label: "Instagram",
+      handle: "nechcode.id",
+      href: "https://www.instagram.com/nechcode.id",
+    },
+    tiktok: {
+      platform: "TikTok",
+      label: "TikTok",
+      handle: "nechcode.id",
+      href: "https://www.tiktok.com/@nechcode.id",
+    },
+ 
+    linkedin: {
+      platform: "LinkedIn",
+      label: "LinkedIn",
+      handle: "NechCode",
+      href: "https://www.linkedin.com/company/NechCode",
+    },
+  },
 } as const;
 
 export function buildMailto(subject: string) {
   return `mailto:${siteConfig.email}?subject=${encodeURIComponent(subject)}`;
+}
+
+export function getSocialLinks() {
+  return Object.values(siteConfig.socials);
 }

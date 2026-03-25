@@ -56,6 +56,8 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
 
         <a
           href={cta.href}
+          target={cta.external ? "_blank" : undefined}
+          rel={cta.external ? "noreferrer" : undefined}
           className="justify-self-end rounded-xl bg-primary-container px-5 py-2.5 text-sm font-semibold !text-white transition-all hover:-translate-y-0.5 hover:bg-primary active:scale-95 md:px-8 md:text-base"
         >
           {cta.label}

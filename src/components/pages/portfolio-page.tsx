@@ -84,6 +84,38 @@ function mapTags(item: PortfolioItem) {
   return Array.from(new Set(base)).slice(0, 4);
 }
 
+function getClientContext(item: PortfolioItem) {
+  return getItemCategories(item)[0] ?? "Business Client";
+}
+
+function getProjectType(item: PortfolioItem) {
+  return getItemTypes(item)[0] ?? "Custom Digital Build";
+}
+
+function getScopeLabel(item: PortfolioItem) {
+  const source = `${getItemCategories(item).join(" ")} ${getItemTypes(item).join(" ")}`.toLowerCase();
+
+  if (/chatbot|ai|automation/.test(source)) {
+    return "Scope: Discovery, Workflow Design, Build, Iteration";
+  }
+
+  if (/dashboard|admin|system|tool|erp/.test(source)) {
+    return "Scope: Discovery, UI/UX, System Build, Handover";
+  }
+
+  return "Scope: Strategy, UI/UX, Development, Launch";
+}
+
+function getOutcomeLabel(item: PortfolioItem) {
+  const match = item.description.match(/(\d+%)/);
+
+  if (match?.[1]) {
+    return `Outcome: efisiensi operasional +${match[1]}`;
+  }
+
+  return "Outcome: target KPI disepakati bersama klien";
+}
+
 export function PortfolioPage({ content, items }: PortfolioPageProps) {
   const [activeFilter, setActiveFilter] = useState<(typeof filters)[number]>("All");
 
@@ -94,6 +126,10 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
         ...item,
         mvpCategory: mapToMvpCategory(item),
         tags: mapTags(item),
+        clientContext: getClientContext(item),
+        projectType: getProjectType(item),
+        scopeLabel: getScopeLabel(item),
+        outcomeLabel: getOutcomeLabel(item),
         status: item.published ? "Published" : "In Development",
       }));
   }, [items]);
@@ -106,7 +142,7 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
       <TopNavbar brand={content.brand} nav={content.nav} cta={content.headerCta} />
 
       <main className="pb-24">
-        <section className="w-full bg-surface">
+        <section className="relative w-full overflow-hidden bg-surface">
           <div className="mx-auto w-full max-w-[1360px] px-6 py-20 md:px-8 lg:px-10 xl:px-12">
             <Reveal once y={18} className="max-w-4xl">
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-secondary">Portfolio</p>
@@ -114,7 +150,7 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
                 Karya Terpilih dengan Outcome yang <span className="serif-italic">Terukur</span>
               </h1>
               <p className="mt-6 max-w-2xl text-lg text-on-surface-variant">
-                Template ini mengikuti pattern 21st: featured project kuat di atas, filter kategori jelas, lalu grid karya yang rapi dan mudah dipindai.
+                Rangkaian proyek website, sistem internal, workflow AI, dan integrasi custom yang dikerjakan dengan scope jelas dan metrik hasil yang relevan.
               </p>
             </Reveal>
           </div>
@@ -138,10 +174,14 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
                     <div>
                       <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary">Featured Work</p>
                       <h2 className="mb-3 font-headline text-4xl text-primary">{featured.title}</h2>
+                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-on-surface-variant/75">
+                        Context: {featured.clientContext} • Project: {featured.projectType}
+                      </p>
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-on-surface-variant/75">{featured.scopeLabel}</p>
                       <p className="mb-5 text-sm leading-relaxed text-on-surface-variant">{featured.description}</p>
                       <div className="mb-5 flex flex-wrap gap-2">
                         {featured.tags.map((tag) => (
-                          <span key={tag} className="rounded-full bg-surface-container px-3 py-1 text-xs font-semibold text-primary">
+                          <span key={tag} className="rounded-full border border-primary/15 bg-[linear-gradient(120deg,rgba(29,90,141,0.08),rgba(88,230,255,0.16))] px-3 py-1 text-xs font-semibold text-primary">
                             {tag}
                           </span>
                         ))}
@@ -151,10 +191,11 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
                       <span className="rounded-full border border-outline-variant/25 bg-surface px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
                         {featured.mvpCategory}
                       </span>
-                      <span className="rounded-full bg-secondary-container/40 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-on-secondary-container">
-                        {featured.status}
+                      <span className="rounded-full bg-[linear-gradient(120deg,rgba(29,90,141,0.14),rgba(88,230,255,0.34))] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
+                        Status: {featured.status}
                       </span>
                     </div>
+                    <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-secondary">{featured.outcomeLabel}</p>
                   </div>
                 </article>
               </Reveal>
@@ -171,8 +212,8 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
                   onClick={() => setActiveFilter(filter)}
                   className={`rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider transition ${
                     activeFilter === filter
-                      ? "bg-primary text-white"
-                      : "border border-outline-variant/30 bg-surface-container-lowest text-primary hover:bg-surface-container-low"
+                      ? "bg-[linear-gradient(135deg,var(--primary-container),var(--primary),var(--secondary))] text-white shadow-[0_8px_18px_rgba(29,90,141,0.24)]"
+                      : "border border-primary/20 bg-surface-container-lowest text-primary hover:border-primary/35 hover:bg-[linear-gradient(120deg,rgba(29,90,141,0.07),rgba(88,230,255,0.16))]"
                   }`}
                 >
                   {filter}
@@ -195,18 +236,23 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
                     </div>
                     <div className="p-5">
                       <h3 className="mb-2 font-headline text-3xl leading-tight text-primary">{item.title}</h3>
+                      <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-on-surface-variant/75">
+                        {item.clientContext} • {item.projectType}
+                      </p>
+                      <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-on-surface-variant/75">{item.scopeLabel}</p>
                       <p className="mb-4 text-sm leading-relaxed text-on-surface-variant">{item.description}</p>
                       <div className="mb-4 flex flex-wrap gap-2">
                         {item.tags.map((tag) => (
-                          <span key={tag} className="rounded-full bg-surface-container px-3 py-1 text-[11px] font-semibold text-primary">
+                          <span key={tag} className="rounded-full border border-primary/15 bg-[linear-gradient(120deg,rgba(29,90,141,0.08),rgba(88,230,255,0.16))] px-3 py-1 text-[11px] font-semibold text-primary">
                             {tag}
                           </span>
                         ))}
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-bold uppercase tracking-wider text-secondary">{item.mvpCategory}</span>
-                        <span className="text-xs font-semibold text-on-surface-variant">{item.status}</span>
+                        <span className="text-xs font-semibold text-on-surface-variant">Status: {item.status}</span>
                       </div>
+                      <p className="mt-3 text-[11px] font-semibold uppercase tracking-wide text-secondary">{item.outcomeLabel}</p>
                     </div>
                   </article>
                 </Reveal>

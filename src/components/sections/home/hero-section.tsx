@@ -11,16 +11,16 @@ export function HeroSection({ hero }: HeroSectionProps) {
   const layoutContainer = "mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12";
 
   return (
-    <section className="w-full bg-surface">
+    <section className="relative w-full overflow-hidden bg-surface">
       <div className={`${layoutContainer} mb-32 grid grid-cols-1 items-start gap-12 py-20 lg:grid-cols-12`}>
         <div className="mt-12 lg:col-span-7">
           <Reveal y={20} x={-18} duration={0.45} amount={0.35} once>
-            <div className="mb-6 inline-block rounded-full bg-tertiary-fixed px-3 py-1 text-xs font-semibold uppercase tracking-[0.05rem] text-on-tertiary-fixed">
+            <div className="mb-6 inline-block rounded-full border border-secondary/30 bg-[linear-gradient(120deg,rgba(88,230,255,0.3),rgba(88,230,255,0.3))] px-3 py-1 text-xs font-semibold uppercase tracking-[0.05rem] text-primary">
               {hero.badge}
             </div>
 
-            <h1 className="mb-8 font-headline text-5xl font-bold leading-tight tracking-tight text-on-surface md:text-7xl">
-              {hero.headingA} <span className="serif-italic font-normal text-tertiary">{hero.headingEmphasis} </span>
+            <h1 className="mb-8 font-headline text-3xl font-bold leading-tight tracking-tight text-on-surface md:text-5xl">
+              {hero.headingA} <span className="serif-italic font-normal text-primary-container">{hero.headingEmphasis} </span>
               {hero.headingB}
             </h1>
 
@@ -31,13 +31,17 @@ export function HeroSection({ hero }: HeroSectionProps) {
             <div className="flex flex-wrap gap-4">
               <a
                 href={hero.primaryCta.href}
-                className="rounded-xl bg-primary-container px-8 py-4 text-lg font-bold !text-white transition-all hover:shadow-lg hover:!text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                target={hero.primaryCta.external ? "_blank" : undefined}
+                rel={hero.primaryCta.external ? "noreferrer" : undefined}
+                className="rounded-xl bg-primary px-8 py-4 text-lg font-bold !text-white transition-all hover:shadow-[0_12px_26px_rgba(29,90,141,0.3)] hover:!text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               >
                 {hero.primaryCta.label}
               </a>
               <a
                 href={hero.secondaryCta.href}
-                className="rounded-xl border border-outline-variant/30 px-8 py-4 text-lg font-bold transition-all hover:bg-surface-container-low focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                target={hero.secondaryCta.external ? "_blank" : undefined}
+                rel={hero.secondaryCta.external ? "noreferrer" : undefined}
+                className="rounded-xl border border-outline-variant/30 bg-white px-8 py-4 text-lg font-bold transition-all hover:bg-surface-container-low focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               >
                 {hero.secondaryCta.label}
               </a>
@@ -80,7 +84,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
                 <span className="material-symbols-outlined [font-variation-settings:'FILL'_1]">format_quote</span>
               </div>
               <p className="font-serif text-sm leading-relaxed italic text-on-surface">
-                &quot;Kami tidak sekadar menulis kode. Kami merancang sistem yang mampu berkembang bersama bisnis Anda.&quot;
+                &quot;Kami membantu tim Anda bergerak lebih cepat lewat solusi digital yang jelas, stabil, dan bisa dikembangkan.&quot;
               </p>
               <div className="mt-4 flex items-center gap-3">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary-container text-[10px] font-bold text-on-secondary-container">

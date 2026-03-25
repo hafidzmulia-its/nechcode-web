@@ -36,6 +36,14 @@ function getItemTypes(item: PortfolioItem) {
   return item.types.filter((value) => value && value.trim().length > 0);
 }
 
+function getClientContext(item: PortfolioItem) {
+  return getItemCategories(item)[0] ?? "Business Client";
+}
+
+function getProjectType(item: PortfolioItem) {
+  return getItemTypes(item)[0] ?? "Custom Solution";
+}
+
 export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps) {
   const sorted = useMemo(() => [...items].sort((a, b) => a.order - b.order), [items]);
   const featured = sorted[0];
@@ -86,7 +94,7 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
         <div className="flex items-center gap-2">
           <a
             href="/portfolio"
-            className="inline-flex w-fit rounded-xl border border-outline-variant/35 bg-surface px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-primary transition hover:bg-surface-container-low"
+            className="inline-flex w-fit rounded-xl border border-primary/20 bg-[linear-gradient(120deg,rgba(29,90,141,0.08),rgba(88,230,255,0.2))] px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-primary transition hover:border-primary/35 hover:bg-[linear-gradient(120deg,rgba(29,90,141,0.12),rgba(88,230,255,0.28))]"
           >
             Lihat Semua Portfolio
           </a>
@@ -94,7 +102,7 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
             type="button"
             onClick={() => setIsImmersive((prev) => !prev)}
             aria-label={isImmersive ? "Minimize tampilan karya" : "Perbesar tampilan karya"}
-            className="inline-flex items-center gap-2 rounded-xl border border-outline-variant/35 bg-surface px-3 py-2.5 text-[11px] font-bold uppercase tracking-wider text-primary transition hover:bg-surface-container-low"
+            className="inline-flex items-center gap-2 rounded-xl border border-primary/20 bg-[linear-gradient(120deg,rgba(29,90,141,0.08),rgba(88,230,255,0.2))] px-3 py-2.5 text-[11px] font-bold uppercase tracking-wider text-primary transition hover:border-primary/35 hover:bg-[linear-gradient(120deg,rgba(29,90,141,0.12),rgba(88,230,255,0.28))]"
           >
             {isImmersive ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
             {isImmersive ? "Minimize" : "Fullscreen"}
@@ -125,6 +133,9 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
               <div>
                 <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.14em] text-secondary">Immersive Project View</p>
                 <h4 className="mb-2 font-headline text-3xl leading-tight text-primary md:text-4xl">{active.title}</h4>
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-on-surface-variant/75">
+                  Context: {getClientContext(active)} • Project: {getProjectType(active)}
+                </p>
                 <p className="text-sm leading-relaxed text-on-surface-variant md:text-base">{active.description}</p>
               </div>
               <div className="flex flex-wrap items-center gap-2 md:justify-end">
@@ -161,6 +172,9 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
               <div>
                 <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.14em] text-secondary">Featured Project</p>
                 <h4 className="mb-2 font-headline text-3xl leading-tight text-primary">{active.title}</h4>
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-on-surface-variant/75">
+                  Context: {getClientContext(active)} • Project: {getProjectType(active)}
+                </p>
                 <p className="text-sm leading-relaxed text-on-surface-variant">{active.description}</p>
               </div>
               <div className="mt-4 flex items-center gap-2">
@@ -186,8 +200,8 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
             onClick={() => setActiveId(item.id)}
             className={`group overflow-hidden rounded-[1.2rem] border bg-surface text-left shadow-[0_8px_20px_rgba(24,34,45,0.06)] transition ${
               active.id === item.id
-                ? "border-secondary/55 ring-2 ring-secondary/35"
-                : "border-outline-variant/20 hover:border-secondary/35"
+                ? "border-primary/45 ring-2 ring-primary/25"
+                : "border-outline-variant/20 hover:border-primary/25"
             }`}
           >
             <motion.div layoutId={`work-image-${item.id}`} className="relative h-40 overflow-hidden bg-surface-container-low">
@@ -201,10 +215,13 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
             </motion.div>
             <div className="p-4">
               <h5 className="mb-1 font-headline text-2xl leading-tight text-primary">{item.title}</h5>
+              <p className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-on-surface-variant/75">
+                {getClientContext(item)} • {getProjectType(item)}
+              </p>
               <p className="mb-3 line-clamp-2 text-xs leading-relaxed text-on-surface-variant">{item.description}</p>
               <div className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-wide">
                 <span className="text-secondary">{getItemCategories(item)[0] ?? "General"}</span>
-                <span className="text-on-surface-variant">{statusLabel(item)}</span>
+                <span className="text-on-surface-variant">Status: {statusLabel(item)}</span>
               </div>
             </div>
           </button>
@@ -215,7 +232,7 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
 
   return (
     <section id="karya" className="relative w-full overflow-hidden bg-gradient-to-b from-surface via-surface-container-low/30 to-surface py-16 md:py-20">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-surface-container/45 to-transparent" />
+     <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-surface-container/45 to-transparent" />
       <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
         <ContainerScroll
           titleComponent={

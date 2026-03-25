@@ -23,14 +23,29 @@ const coreServices = [
   {
     title: "AI-Assisted Workflows",
     description:
-      "Automasi proses repetitif dengan AI yang benar-benar usable, bukan sekadar demo teknis.",
+      "Workflow AI, chatbot, dan automasi proses yang membantu tim merespons lebih cepat dan konsisten.",
     bullets: ["Prompt workflow", "Knowledge routing", "Human-in-the-loop"],
   },
   {
-    title: "Integrations & Digital Support",
+    title: "Integrations & Custom Solutions",
     description:
-      "Integrasi tools lintas platform agar data tidak terpecah dan tim bisa bekerja dalam satu sistem yang konsisten.",
+      "Integrasi lintas tools dan pengembangan solusi custom untuk kebutuhan operasional yang tidak bisa diselesaikan template umum.",
     bullets: ["Payment/CRM integration", "Automation bridge", "Maintenance support"],
+  },
+];
+
+const waysToWork = [
+  {
+    title: "Consultation First",
+    description: "Sesi konsultasi untuk memetakan prioritas, risiko, dan urutan implementasi paling efisien.",
+  },
+  {
+    title: "Entry Package",
+    description: "Paket awal untuk website atau chatbot sebagai langkah cepat sebelum scale-up.",
+  },
+  {
+    title: "Strategic Custom Build",
+    description: "Scope end-to-end untuk sistem, integrasi, dan automation yang disesuaikan konteks bisnis.",
   },
 ];
 
@@ -52,10 +67,10 @@ export function ServicesPage({ content }: ServicesPageProps) {
             <Reveal once y={18} className="max-w-4xl">
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-secondary">Services</p>
               <h1 className="font-headline text-5xl leading-tight text-primary md:text-7xl">
-                Solusi Praktis untuk <span className="serif-italic">Growth</span> dan Operasional
+                Solusi Digital untuk <span className="serif-italic">Operasional dan Pertumbuhan</span>
               </h1>
               <p className="mt-6 max-w-2xl text-lg text-on-surface-variant">
-                NechCode membantu bisnis dan organisasi membangun fondasi digital yang rapi, scalable, dan benar-benar dipakai tim.
+                NechCode membantu bisnis, UMKM, organisasi, dan institusi membangun fondasi digital yang dapat dipakai tim sehari-hari dan siap dikembangkan bertahap.
               </p>
             </Reveal>
           </div>
@@ -102,11 +117,25 @@ export function ServicesPage({ content }: ServicesPageProps) {
                 </p>
                 <a
                   href={content.headerCta.href}
-                  className="inline-flex rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white transition hover:opacity-90"
+                  target={content.headerCta.external ? "_blank" : undefined}
+                  rel={content.headerCta.external ? "noreferrer" : undefined}
+                  className="inline-flex rounded-xl bg-primary px-6 py-3 text-sm font-bold !text-white visited:!text-white hover:!text-white transition hover:opacity-90"
                 >
-                  Mulai Diskusi
+                  Diskusikan Kebutuhan
                 </a>
               </Reveal>
+            </div>
+
+            <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+              {waysToWork.map((item, index) => (
+                <Reveal key={item.title} y={14} delay={index * 0.04} duration={0.3}>
+                  <article className="rounded-[1.25rem] border border-outline-variant/20 bg-surface-container-lowest p-6">
+                    <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Ways to Work</p>
+                    <h4 className="mb-2 font-headline text-2xl text-primary">{item.title}</h4>
+                    <p className="text-sm text-on-surface-variant">{item.description}</p>
+                  </article>
+                </Reveal>
+              ))}
             </div>
           </div>
         </section>

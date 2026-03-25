@@ -81,7 +81,12 @@ export function FaqSection({ faq }: FaqSectionProps) {
               transition={{ duration: 0.32, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="mt-8 text-center"
             >
-              <a href={faq.contactCta.href} className="text-sm font-bold text-primary underline underline-offset-4">
+              <a
+                href={faq.contactCta.href}
+                target={faq.contactCta.external ? "_blank" : undefined}
+                rel={faq.contactCta.external ? "noreferrer" : undefined}
+                className="text-sm font-bold text-primary underline underline-offset-4"
+              >
                 {faq.contactCta.label}
               </a>
             </motion.div>

@@ -62,8 +62,7 @@ export function SiteFooter({ brand, footer }: SiteFooterProps) {
             />
           </Link>
           <p className="font-body text-sm leading-relaxed text-on-surface-variant">
-            Studio teknologi yang berdedikasi membangun infrastruktur digital berkelas untuk mempercepat kemajuan
-            bisnis di Indonesia.
+            {footer.note}
           </p>
           <div className="flex gap-6">
             {socialLinks.map((item) => (
@@ -80,6 +79,13 @@ export function SiteFooter({ brand, footer }: SiteFooterProps) {
               </a>
             ))}
           </div>
+          {/* <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-on-surface-variant">
+            {socialLinks.map((item) => (
+              <a key={`label-${item.label}`} href={item.href} target="_blank" rel="noreferrer" className="hover:text-primary">
+                {item.label}
+              </a>
+            ))}
+          </div> */}
         </div>
 
         <div className="grid grid-cols-2 gap-12 md:gap-20">

@@ -11,20 +11,20 @@ type AboutPageProps = {
 
 const principles = [
   {
-    title: "Practical over Hype",
-    description: "Kami memilih solusi yang dipakai tim setiap hari, bukan sekadar impresif di demo.",
+    title: "Practical Over Hype",
+    description: "Kami memprioritaskan solusi yang dipakai tim harian dan memberi dampak operasional nyata.",
   },
   {
     title: "Founder-Level Ownership",
-    description: "Keputusan produk dan teknologi dijaga langsung agar kualitas tetap konsisten.",
+    description: "Arah produk, arsitektur, dan eksekusi dijaga langsung agar keputusan tetap konsisten.",
   },
   {
-    title: "Editorial Clarity",
-    description: "Komunikasi teknis dibuat jelas, ringkas, dan bisa dipahami stakeholder non-teknis.",
+    title: "Clear Communication",
+    description: "Update mingguan dibuat ringkas dan bisa dipahami tim bisnis maupun tim teknis.",
   },
   {
     title: "Long-Term Thinking",
-    description: "Arsitektur dibangun untuk bertahan dan scale bersama pertumbuhan organisasi.",
+    description: "Solusi disiapkan untuk maintainability, integrasi lanjutan, dan pertumbuhan bertahap.",
   },
 ];
 
@@ -41,7 +41,7 @@ export function AboutPage({ content }: AboutPageProps) {
             <Reveal once y={18}>
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-secondary">About</p>
               <h1 className="mb-5 font-headline text-5xl leading-tight text-primary md:text-7xl">
-                Founder-led Studio untuk Solusi Digital yang <span className="serif-italic">Kepakai</span>
+                Founder-led Partner untuk Solusi Digital yang <span className="serif-italic">Jelas Dampaknya</span>
               </h1>
               <p className="text-lg leading-relaxed text-on-surface-variant">{about.descriptionA}</p>
             </Reveal>
@@ -79,9 +79,19 @@ export function AboutPage({ content }: AboutPageProps) {
               ))}
             </div>
 
-            <Reveal y={16} delay={0.12} className="mt-8 rounded-[1.4rem] border border-outline-variant/20 bg-tertiary-fixed p-7 text-on-tertiary-fixed">
-              <p className="mb-2 font-headline text-3xl italic">&quot;{about.quote}&quot;</p>
-              <p className="text-xs font-bold uppercase tracking-[0.16em] opacity-80">{about.quoteAuthor}</p>
+            <Reveal y={16} delay={0.12} className="mt-8 grid gap-4 rounded-[1.4rem] border border-outline-variant/20 bg-tertiary-fixed p-7 text-on-tertiary-fixed md:grid-cols-3">
+              <div>
+                <p className="mb-2 font-headline text-3xl italic">&quot;{about.quote}&quot;</p>
+                <p className="text-xs font-bold uppercase tracking-[0.16em] opacity-80">{about.quoteAuthor}</p>
+              </div>
+              <div>
+                <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.16em] opacity-75">Strong Fit</p>
+                <p className="text-sm">Bisnis, UMKM, organisasi, atau institusi yang butuh partner eksekusi dan pendampingan.</p>
+              </div>
+              <div>
+                <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.16em] opacity-75">Cara Kolaborasi</p>
+                <p className="text-sm">Discovery singkat, scope prioritas, sprint mingguan, dan evaluasi pasca-rilis.</p>
+              </div>
             </Reveal>
           </div>
         </section>

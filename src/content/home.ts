@@ -1,4 +1,5 @@
-import { buildMailto, siteConfig } from "@/config/site";
+import { buildMailto, getSocialLinks, siteConfig } from "@/config/site";
+import { buildWhatsAppInquiryUrl } from "@/lib/whatsapp";
 import { defaultPortfolioItems } from "@/lib/portfolio/defaults";
 
 export type Locale = "id" | "en";
@@ -126,23 +127,31 @@ const idContent: HomeContent = {
     { label: "Contact", href: "/contact" },
   ],
   headerCta: {
-    label: "Mulai Proyek",
-    href: buildMailto("Mulai Proyek NechCode"),
+    label: "Diskusikan Kebutuhan",
+    href: buildWhatsAppInquiryUrl({
+      sourcePage: "Top Navbar",
+      serviceInterest: "Diskusi kebutuhan awal",
+    }),
+    external: true,
   },
   hero: {
-    badge: "Founder-Led Studio",
+    badge: "Founder-Led Technology Partner",
     headingA: "Solusi Digital",
-    headingEmphasis: "Praktis",
-    headingB: "untuk Masa Depan Bisnis Anda.",
+    headingEmphasis: "Praktis dan Terarah",
+    headingB: "untuk Bisnis, UMKM, Organisasi, dan Institusi.",
     description:
-      "Kami bukan pabrik kode. Kami adalah studio teknologi di mana setiap baris script dirancang dengan presisi untuk mendukung pertumbuhan eksponensial organisasi Anda di Indonesia.",
+      "NechCode membantu tim Anda membangun website, sistem internal, dan alur kerja berbasis AI yang rapi, mudah dipakai, dan siap dikembangkan jangka panjang.",
     primaryCta: {
-      label: "Konsultasi Gratis",
-      href: buildMailto("Konsultasi Gratis NechCode"),
+      label: "Konsultasi via WhatsApp",
+      href: buildWhatsAppInquiryUrl({
+        sourcePage: "Hero",
+        serviceInterest: "Website / Sistem Internal / AI Workflow",
+      }),
+      external: true,
     },
     secondaryCta: {
-      label: "Lihat Karya Kami",
-      href: "/portfolio",
+      label: "Lihat Opsi Solusi",
+      href: "/services",
     },
     showcaseImage: {
       src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAs_1E-9AE0xMJjaW1YZfH1FYD1zhHJTfPjqn5NsEuWWdzPC0HAqAe0Vrwog5XVXb7CwmRg_jvZGmfihQ0DhReq6f2ST9eDD5uciMxGJSkeL6TQU0O1BNZSENjif8n7Eh4nqa6nifYS9JSI-stC_0PNf4AoyEKZPgFrRm19b_J8qoGXHxHFzJ1xLsSPGyri0FNydcoMUklw36jVia4-Dg5XXdnfBw5nz2-9NXEpfYM_ixpA7pdtRubboPhCFcecc58B14U6GNQxbU4",
@@ -172,34 +181,34 @@ const idContent: HomeContent = {
   },
   services: {
     eyebrow: "Layanan Unggulan",
-    headingA: "Keahlian kami dirancang untuk",
-    headingEmphasis: "skalabilitas",
+    headingA: "Layanan inti kami untuk",
+    headingEmphasis: "operasional yang lebih rapi",
     description:
-      "Pendekatan modular kami memastikan teknologi Anda tidak hanya bekerja hari ini, tapi tetap relevan lima tahun ke depan.",
+      "Mulai dari website dan landing page, sistem internal, AI-assisted workflows, sampai integrasi dan custom solution. Anda bisa mulai dari paket entry-level atau scope strategis yang lebih kompleks.",
   },
   trustStrip: {
     items: [
       {
         icon: "developer_mode",
-        title: "Keahlian Sistem Web",
-        description: "Arsitektur robust untuk performa maksimal.",
+        title: "Website yang Fokus Konversi",
+        description: "Pesan jelas, performa cepat, siap dipakai sebagai mesin akuisisi.",
         imageUrl: "https://img.icons8.com/?id=M2rB4aGrYYOq&format=png&size=96",
       },
       {
         icon: "psychology",
-        title: "Fokus Automasi AI",
-        description: "Integrasi LLM dan AI workflow praktis.",
+        title: "AI Workflow yang Relevan",
+        description: "Otomasi tugas repetitif dengan kontrol manusia tetap di jalur.",
         imageUrl: "https://img.icons8.com/?id=269UT6k4i79F&format=png&size=96",
       },
       {
         icon: "biotech",
-        title: "Riset & Institusi",
-        description: "Berpengalaman menangani data kompleks.",
+        title: "Sistem Internal untuk Tim",
+        description: "Dashboard dan tools operasional agar keputusan lebih cepat.",
       },
       {
         icon: "handshake",
-        title: "Eksekusi Founder-Led",
-        description: "Komunikasi langsung dengan penentu kebijakan.",
+        title: "Kemitraan Jangka Panjang",
+        description: "Founder-led execution dengan komunikasi langsung dan terukur.",
       },
     ],
   },
@@ -230,24 +239,24 @@ const idContent: HomeContent = {
   },
   about: {
     eyebrow: "Tentang NechCode",
-    headingA: "Dibangun oleh Praktisi,",
-    headingEmphasis: "Bukan",
-    headingB: "Birokrasi.",
+    headingA: "Dibangun oleh Praktisi",
+    headingEmphasis: "yang ikut eksekusi",
+    headingB: "dari awal sampai jalan.",
     descriptionA:
-      "NechCode lahir dari keinginan untuk mengembalikan sisi manusiawi ke dalam pengembangan perangkat lunak. Kami percaya bahwa teknologi terbaik lahir dari diskusi mendalam antara founder bisnis dan partner teknologi yang mengerti visi mereka.",
+      "NechCode cocok untuk tim yang butuh partner teknologi yang bisa menerjemahkan kebutuhan bisnis menjadi roadmap implementasi yang realistis, bukan hanya daftar fitur.",
     descriptionB:
-      "Kami tidak mengejar kuantitas klien. Kami mengkurasi partner kerja untuk memastikan setiap proyek mendapatkan perhatian penuh dari tim ahli kami.",
-    quote: "Setiap proyek adalah karya seni teknis yang personal.",
+      "Model kerja kami sederhana: discovery yang jelas, prioritas sprint yang terukur, dan pendampingan setelah rilis agar solusi benar-benar dipakai.",
+    quote: "Teknologi yang baik bukan yang paling rumit, tapi yang paling berguna untuk tim Anda.",
     quoteAuthor: "Faisal N., Founder",
   },
   works: {
     heading: "Karya Pilihan",
-    description: "Bukti nyata dari dedikasi kami terhadap detail.",
+    description: "Proyek website, sistem internal, dan automasi yang dibangun untuk konteks bisnis nyata.",
   },
   whyPartner: {
     heading: "Mengapa Bermitra dengan Kami?",
     description:
-      "Kami mengedepankan kualitas studio butik: fokus pada kualitas detail, bukan kuantitas proyek massal.",
+      "Kami menjaga standar premium front-end sekaligus memastikan keputusan teknis tetap praktis untuk operasional harian.",
     items: [
       {
         title: "Founder-led",
@@ -259,7 +268,7 @@ const idContent: HomeContent = {
       },
       {
         title: "Business-minded",
-        description: "Setiap baris kode harus mendukung pertumbuhan ROI.",
+        description: "Setiap keputusan teknis diarahkan ke efisiensi dan dampak bisnis.",
       },
       {
         title: "Collaborative",
@@ -302,8 +311,12 @@ const idContent: HomeContent = {
     description:
       "Jawaban cepat untuk hal-hal yang paling sering ditanyakan sebelum memulai kolaborasi bersama NechCode.",
     contactCta: {
-      label: "Masih ada pertanyaan? Hubungi kami",
-      href: buildMailto("Tanya Seputar Layanan NechCode"),
+      label: "Masih ada pertanyaan? Diskusikan via WhatsApp",
+      href: buildWhatsAppInquiryUrl({
+        sourcePage: "FAQ Section",
+        serviceInterest: "Konsultasi sebelum mulai proyek",
+      }),
+      external: true,
     },
     items: [
       {
@@ -334,30 +347,34 @@ const idContent: HomeContent = {
     ],
   },
   cta: {
-    headingA: "Siap Membangun",
-    headingEmphasis: "Masa Depan",
-    headingB: "Anda?",
+    headingA: "Siap Menentukan",
+    headingEmphasis: "Langkah Digital",
+    headingB: "Berikutnya?",
     description:
-      "Mari bicara tentang bagaimana teknologi dapat bekerja untuk bisnis Anda, bukan sebaliknya.",
+      "Pilih cara kerja yang paling cocok: mulai dari konsultasi, paket implementasi awal, atau scope custom untuk kebutuhan yang lebih kompleks.",
     primaryCta: {
-      label: "Jadwalkan Panggilan",
-      href: buildMailto("Jadwalkan Panggilan NechCode"),
+      label: "Konsultasi via WhatsApp",
+      href: buildWhatsAppInquiryUrl({
+        sourcePage: "Final CTA Primary",
+        serviceInterest: "Diskusi kebutuhan dan opsi solusi",
+      }),
+      external: true,
     },
     secondaryCta: {
-      label: "Hubungi via WhatsApp",
-      href: siteConfig.whatsapp,
-      external: true,
+      label: "Kirim Brief Proyek via Email",
+      href: buildMailto("Brief Proyek NechCode"),
     },
   },
   footer: {
-    note: "Dibuat dengan presisi studio.",
+    note: "Solusi digital praktis, scalable, dan dapat diandalkan untuk pertumbuhan jangka panjang.",
     links: [
       { label: "Kebijakan Privasi", href: "#" },
       { label: "Syarat & Ketentuan", href: "#" },
-      { label: "LinkedIn", href: "#" },
-      { label: "Instagram", href: "#" },
-      { label: "TikTok", href: "#" },
-      { label: "X", href: "#" },
+      ...getSocialLinks().map((item) => ({
+        label: `${item.label} (${item.handle})`,
+        href: item.href,
+        external: true,
+      })),
     ],
   },
 };
