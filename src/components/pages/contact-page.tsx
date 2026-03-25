@@ -1,3 +1,6 @@
+"use client";
+
+import { useMemo, useState } from "react";
 import { Instagram, Linkedin } from "lucide-react";
 
 import { buildMailto, getSocialLinks, siteConfig } from "@/config/site";
@@ -13,11 +16,30 @@ type ContactPageProps = {
 
 export function ContactPage({ content }: ContactPageProps) {
   const socialLinks = getSocialLinks();
+  const [briefForm, setBriefForm] = useState({
+    name: "",
+    email: "",
+    projectType: "",
+    brief: "",
+  });
   
   const whatsappLink = buildWhatsAppInquiryUrl({
     sourcePage: "Contact Page",
     serviceInterest: "Diskusi kebutuhan proyek",
   });
+
+  const briefWhatsappLink = useMemo(
+    () =>
+      buildWhatsAppInquiryUrl({
+        sourcePage: "Contact Page - Brief Form",
+        name: briefForm.name,
+        serviceInterest: briefForm.projectType || "Brief proyek digital",
+        packageInterest: briefForm.projectType,
+        mainNeed: briefForm.brief,
+        additionalNote: briefForm.email ? `Email kontak: ${briefForm.email}` : undefined,
+      }),
+    [briefForm],
+  );
 
   function getSocialIcon(platform: string) {
     const normalized = platform.toLowerCase();
@@ -109,26 +131,53 @@ export function ContactPage({ content }: ContactPageProps) {
             </Reveal>
 
             <Reveal y={16} delay={0.06}>
-              <form className="rounded-[1.8rem] border border-outline-variant/20 bg-surface-container-lowest p-7 shadow-[0_10px_24px_rgba(24,34,45,0.06)]">
+              <form
+                onSubmit={(event) => event.preventDefault()}
+                className="rounded-[1.8rem] border border-outline-variant/20 bg-surface-container-lowest p-7 shadow-[0_10px_24px_rgba(24,34,45,0.06)]"
+              >
                 <h2 className="mb-4 font-headline text-3xl text-primary">Brief Form</h2>
                 <p className="mb-4 text-sm text-on-surface-variant">
                   Cocok untuk kebutuhan yang sudah lebih jelas. Isi poin inti agar kami bisa menyiapkan rekomendasi scope awal dengan cepat.
                 </p>
                 <div className="space-y-3">
-                  <input type="text" placeholder="Nama" className="w-full rounded-xl border border-outline-variant/35 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/30" />
-                  <input type="email" placeholder="Email" className="w-full rounded-xl border border-outline-variant/35 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/30" />
-                  <input type="text" placeholder="Jenis Proyek (Website, System, Automation)" className="w-full rounded-xl border border-outline-variant/35 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/30" />
-                  <textarea placeholder="Jelaskan kebutuhan Anda secara singkat" rows={5} className="w-full rounded-xl border border-outline-variant/35 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/30" />
+                  <input
+                    type="text"
+                    placeholder="Nama"
+                    value={briefForm.name}
+                    onChange={(event) => setBriefForm((prev) => ({ ...prev, name: event.target.value }))}
+                    className="w-full rounded-xl border border-outline-variant/35 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    value={briefForm.email}
+                    onChange={(event) => setBriefForm((prev) => ({ ...prev, email: event.target.value }))}
+                    className="w-full rounded-xl border border-outline-variant/35 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Jenis Proyek (Website, System, Automation)"
+                    value={briefForm.projectType}
+                    onChange={(event) => setBriefForm((prev) => ({ ...prev, projectType: event.target.value }))}
+                    className="w-full rounded-xl border border-outline-variant/35 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                  <textarea
+                    placeholder="Jelaskan kebutuhan Anda secara singkat"
+                    rows={5}
+                    value={briefForm.brief}
+                    onChange={(event) => setBriefForm((prev) => ({ ...prev, brief: event.target.value }))}
+                    className="w-full rounded-xl border border-outline-variant/35 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/30"
+                  />
                 </div>
                 <a
-                  href={whatsappLink}
+                  href={briefWhatsappLink}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-5 inline-flex rounded-xl bg-primary px-6 py-3 text-sm font-bold !text-white visited:!text-white hover:!text-white transition hover:opacity-90"
                 >
                   Kirim Brief via WhatsApp
                 </a>
-                <a href={buildMailto("Project Brief NechCode")} className="mt-3 inline-flex text-sm font-bold text-primary underline underline-offset-4">
+                <a href={buildMailto("Project Brief NechCode")} className="mt-4 block text-sm font-bold text-primary underline underline-offset-4">
                   atau kirim via Email
                 </a>
               </form>

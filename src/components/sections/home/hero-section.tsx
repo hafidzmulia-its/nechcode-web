@@ -12,28 +12,28 @@ export function HeroSection({ hero }: HeroSectionProps) {
 
   return (
     <section className="relative w-full overflow-hidden bg-surface">
-      <div className={`${layoutContainer} mb-32 grid grid-cols-1 items-start gap-12 py-20 lg:grid-cols-12`}>
-        <div className="mt-12 lg:col-span-7">
+      <div className={`${layoutContainer} mb-16 grid grid-cols-1 items-start gap-10 py-12 md:mb-24 md:gap-12 md:py-16 lg:mb-32 lg:grid-cols-12 lg:py-20`}>
+        <div className="mt-4 lg:col-span-7 lg:mt-12">
           <Reveal y={20} x={-18} duration={0.45} amount={0.35} once>
             <div className="mb-6 inline-block rounded-full border border-secondary/30 bg-[linear-gradient(120deg,rgba(88,230,255,0.3),rgba(88,230,255,0.3))] px-3 py-1 text-xs font-semibold uppercase tracking-[0.05rem] text-primary">
               {hero.badge}
             </div>
 
-            <h1 className="mb-8 font-headline text-3xl font-bold leading-tight tracking-tight text-on-surface md:text-5xl">
+            <h1 className="mb-6 font-headline text-3xl font-bold leading-tight tracking-tight text-on-surface sm:text-4xl md:mb-8 md:text-5xl lg:text-6xl">
               {hero.headingA} <span className="serif-italic font-normal text-primary-container">{hero.headingEmphasis} </span>
               {hero.headingB}
             </h1>
 
-            <p className="mb-10 max-w-lg text-xl leading-relaxed text-on-surface-variant">{hero.description}</p>
+            <p className="mb-8 max-w-lg text-base leading-relaxed text-on-surface-variant sm:text-lg md:mb-10 md:text-xl">{hero.description}</p>
           </Reveal>
 
           <Reveal y={16} x={-14} delay={0.28} duration={0.38} amount={0.35} once>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <a
                 href={hero.primaryCta.href}
                 target={hero.primaryCta.external ? "_blank" : undefined}
                 rel={hero.primaryCta.external ? "noreferrer" : undefined}
-                className="rounded-xl bg-primary px-8 py-4 text-lg font-bold !text-white transition-all hover:shadow-[0_12px_26px_rgba(29,90,141,0.3)] hover:!text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                className="inline-flex w-full items-center justify-center rounded-xl bg-primary px-6 py-3.5 text-base font-bold !text-white transition-all hover:shadow-[0_12px_26px_rgba(29,90,141,0.3)] hover:!text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-2 focus-visible:ring-offset-surface sm:w-auto sm:px-8 sm:py-4 sm:text-lg"
               >
                 {hero.primaryCta.label}
               </a>
@@ -41,7 +41,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
                 href={hero.secondaryCta.href}
                 target={hero.secondaryCta.external ? "_blank" : undefined}
                 rel={hero.secondaryCta.external ? "noreferrer" : undefined}
-                className="rounded-xl border border-outline-variant/30 bg-white px-8 py-4 text-lg font-bold transition-all hover:bg-surface-container-low focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                className="inline-flex w-full items-center justify-center rounded-xl border border-outline-variant/30 bg-white px-6 py-3.5 text-base font-bold transition-all hover:bg-surface-container-low focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-2 focus-visible:ring-offset-surface sm:w-auto sm:px-8 sm:py-4 sm:text-lg"
               >
                 {hero.secondaryCta.label}
               </a>
@@ -49,8 +49,8 @@ export function HeroSection({ hero }: HeroSectionProps) {
           </Reveal>
         </div>
 
-        <Reveal className="relative col-span-12 mt-12 lg:col-span-5 lg:mt-0" y={22} x={18} delay={0.16} duration={0.46} amount={0.35} once>
-          <div className="relative z-10 rounded-[2rem] bg-surface-container-low p-4 shadow-2xl shadow-on-surface/5 lg:rotate-2 lg:p-8">
+        <Reveal className="relative col-span-12 mt-4 w-full max-w-3xl lg:col-span-5 lg:mt-0" y={22} x={18} delay={0.16} duration={0.46} amount={0.35} once>
+          <div className="relative z-10 rounded-[2rem] md:rotate-2  bg-surface-container-low p-4 shadow-2xl shadow-on-surface/5 lg:p-8">
             <div className="overflow-hidden rounded-xl border border-outline-variant/10 bg-surface-container-lowest">
               <div className="flex h-10 items-center gap-2 bg-surface-container-high px-4">
                 <div className="h-2.5 w-2.5 rounded-full bg-red-400/30" />
@@ -58,7 +58,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
                 <div className="h-2.5 w-2.5 rounded-full bg-green-400/30" />
               </div>
 
-              <div className="space-y-4 p-6">
+              <div className="space-y-4 p-4 sm:p-6">
                 <div className="h-4 w-1/2 rounded-full bg-surface-container" />
 
                 <div className="grid grid-cols-3 gap-4">
@@ -67,7 +67,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
                   <div className="h-24 rounded-lg bg-tertiary-container/10" />
                 </div>
 
-                <div className="relative h-40 overflow-hidden rounded-lg bg-surface-container-low">
+                <div className="relative h-32 overflow-hidden rounded-lg bg-surface-container-low sm:h-40">
                   <Image
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB_zRJRVW10j7Idhd3_TUpdYt9Bvcq3mQDfnkcFJmWBInApbCjDOfvlYxbPXDxqYX5tFdXlKUi2pqgKxTkTeGapEUcMLMVT4chMQwtpJ-u8eevV34-OnGWBzDesBKc2qS35EU3Jy0riz0YHoBtpGEwwAQ2ELvpQE6P6HEzR5yCHz9oBjks3ZaG59XBFDkNyGwIDpP6wWuPMS3223g9TOskiRmyZ5b4z90CZK2myVRqti1bNdbQml4Q_5tOBbpw8VgBT2QN381HEmE"
                     alt="Dashboard Preview"
@@ -79,7 +79,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
               </div>
             </div>
 
-            <div className="absolute -bottom-6 -left-6 max-w-xs -rotate-3 rounded-2xl border border-outline-variant/10 bg-white p-6 shadow-xl md:-left-12">
+            <div className="relative mt-5 max-w-full rotate-0 rounded-2xl border border-outline-variant/10 bg-white p-5 shadow-xl md:absolute md:-bottom-6 md:-left-12 md:mt-0 md:max-w-xs md:-rotate-3 md:p-6">
               <div className="mb-2 text-tertiary">
                 <span className="material-symbols-outlined [font-variation-settings:'FILL'_1]">format_quote</span>
               </div>
@@ -103,7 +103,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
             </div>
           </div>
 
-          <div className="pointer-events-none absolute inset-0 -z-10 scale-150 -rotate-12 bg-[radial-gradient(#d0e4ff_1px,transparent_1px)] opacity-30 [background-size:24px_24px]" />
+          <div className="pointer-events-none absolute inset-0 -z-10 scale-125 -rotate-12 bg-[radial-gradient(#d0e4ff_1px,transparent_1px)] opacity-30 [background-size:24px_24px] sm:scale-150" />
         </Reveal>
       </div>
     </section>

@@ -79,6 +79,13 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
     }
   }
 
+  function handleSelectWork(itemId: string) {
+    setActiveId(itemId);
+
+    // Keep the active project card in view when selecting from the lower gallery grid.
+    contentRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   const content = (
     <div
       ref={contentRef}
@@ -197,7 +204,7 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
           <button
             key={item.id}
             type="button"
-            onClick={() => setActiveId(item.id)}
+            onClick={() => handleSelectWork(item.id)}
             className={`group overflow-hidden rounded-[1.2rem] border bg-surface text-left shadow-[0_8px_20px_rgba(24,34,45,0.06)] transition ${
               active.id === item.id
                 ? "border-primary/45 ring-2 ring-primary/25"

@@ -1,26 +1,10 @@
-import Image from "next/image";
-
 import { Reveal } from "@/components/shared/reveal";
+import { servicesContent } from "@/content/services";
 import type { HomeContent } from "@/content/home";
 
 type ServicesSectionProps = {
   services: HomeContent["services"];
 };
-
-const waysToWork = [
-  {
-    title: "Consultation First",
-    description: "Mulai dari konsultasi kebutuhan dan prioritas implementasi.",
-  },
-  {
-    title: "Entry Package",
-    description: "Paket awal website atau chatbot untuk validasi cepat.",
-  },
-  {
-    title: "Custom Build",
-    description: "Scope strategis untuk sistem, integrasi, dan automasi lanjutan.",
-  },
-];
 
 export function ServicesSection({ services }: ServicesSectionProps) {
   return (
@@ -42,98 +26,61 @@ export function ServicesSection({ services }: ServicesSectionProps) {
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <Reveal y={20} delay={0.05} duration={0.38} className="md:col-span-2">
-              <div className="group flex h-full flex-col justify-between rounded-3xl border border-[rgba(29,90,141,0.08)] bg-[#FBF7EE] p-10 transition-all duration-500 hover:border-secondary/35 hover:shadow-[0_14px_32px_rgba(31,48,62,0.09)]">
-                <div>
-                  <span className="material-symbols-outlined mb-6 text-4xl text-primary">web</span>
-                  <h3 className="mb-4 font-headline text-3xl text-primary">Website & Landing Pages</h3>
-                  <p className="max-w-md text-[#42505a]">
-                    Website bisnis dan landing page yang membantu tim menjelaskan value, membangun kredibilitas,
-                    dan meningkatkan konversi.
-                  </p>
-                </div>
-                <div className="mt-12 flex items-center gap-4">
-                  {"Company Profile,Landing Page,Website Revamp".split(",").map((tag) => (
-                    <span key={tag} className="rounded-full border border-[rgba(29,90,141,0.1)] bg-[#F2ECE0] px-4 py-1 text-xs font-bold text-primary">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal y={20} delay={0.1} duration={0.38}>
-              <div className="group relative h-full overflow-hidden rounded-3xl border border-[rgba(29,90,141,0.2)] bg-primary p-10 text-white shadow-[0_14px_34px_rgba(29,90,141,0.22)]">
-                <div className="relative z-10">
-                  <span className="material-symbols-outlined mb-6 text-4xl text-secondary-container">smart_toy</span>
-                  <h3 className="mb-4 font-headline text-3xl">AI-Assisted Workflows</h3>
-                  <p className="text-white/82">
-                    Chatbot, automation, dan workflow AI yang disesuaikan dengan SOP tim agar respon lebih
-                    cepat dan proses lebih konsisten.
-                  </p>
-                </div>
-                <div className="absolute -bottom-10 -right-10 opacity-10 transition-opacity group-hover:opacity-20">
-                  <span className="material-symbols-outlined text-[12rem]">blur_on</span>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal y={20} delay={0.16} duration={0.38}>
-              <div className="flex h-full flex-col justify-between rounded-3xl border border-[rgba(126,75,0,0.14)] bg-[#F8F1E3] p-10 shadow-[0_8px_18px_rgba(70,54,31,0.06)]">
-                <div>
-                  <span className="material-symbols-outlined mb-6 text-4xl text-[#7E4B00]">dynamic_form</span>
-                  <h3 className="mb-4 font-headline text-3xl text-[#7E4B00]">Integrations & Custom Solutions</h3>
-                  <p className="text-[#4a535c]">
-                    Hubungkan tools yang sudah Anda pakai sekarang, lalu bangun solusi custom untuk bottleneck
-                    operasional yang paling penting.
-                  </p>
-                </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {servicesContent.pillars.map((pillar, index) => (
+              <Reveal key={pillar.id} y={20} delay={index * 0.05} duration={0.38}>
                 <a
-                  href="#kontak"
-                  className="mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#7E4B00] transition-all hover:gap-4 hover:text-[#6b3f00] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F8F1E3]"
+                  href={`/services?pillar=${pillar.id}`}
+                  className={`group flex h-full flex-col rounded-3xl border p-8 shadow-[0_10px_24px_rgba(35,46,58,0.06)] transition-all duration-500 hover:-translate-y-1 ${
+                    pillar.id === "ai"
+                      ? "border-[rgba(29,90,141,0.2)] bg-primary text-white hover:shadow-[0_16px_34px_rgba(29,90,141,0.22)]"
+                      : "border-[rgba(29,90,141,0.08)] bg-[#FBF7EE] hover:border-secondary/35 hover:shadow-[0_14px_32px_rgba(31,48,62,0.09)]"
+                  }`}
                 >
-                  Pelajari Selengkapnya
-                  <span className="material-symbols-outlined text-sm text-[#7E4B00]">arrow_forward</span>
-                </a>
-              </div>
-            </Reveal>
-
-            <Reveal y={20} delay={0.22} duration={0.38} className="md:col-span-2">
-              <div className="group flex h-full items-center gap-12 rounded-3xl border border-[rgba(29,90,141,0.08)] bg-[#FBF7EE] p-10 shadow-[0_10px_24px_rgba(35,46,58,0.06)]">
-                <div className="relative hidden h-48 w-48 overflow-hidden rounded-2xl border border-[rgba(29,90,141,0.08)] bg-[#F2ECE0] grayscale transition-all duration-700 group-hover:grayscale-0 md:block">
-                  <Image
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiANUXTFiidGTU_jHxwKYAxYa3QvfMGGFfYJOcm3Yum8h_ya-lg23dukCtlbVu0i3OuqTUsfETZf2jYyM7ELzAlRVQyI-TTLBaG7hKXv6eOLcqTi8AQNOo4oIhMnsdn_DuEnmjYQKDXdpvlmI6S_MSqz4aQE0FJHJZbGg4E5SeW9RzKdp2-a0qN4ickoMYfxhtodxDjpVeapet2f3vtZlgnS73wI6OOknE_EEEiRFah-mT_Ty3sFvXD82-9QC5Qxics8Jz2SV0m6Y"
-                    alt="Custom Solution"
-                    fill
-                    className="object-cover"
-                    sizes="192px"
-                  />
-                </div>
-                <div className="flex-1">
-                  <h3 className="mb-4 font-headline text-3xl text-primary">Konsultasi Strategis</h3>
-                  <p className="text-[#42505a]">
-                    Mulai dari sesi konsultasi untuk memetakan opsi solusi, timeline implementasi, dan prioritas
-                    scope yang paling relevan dengan target bisnis Anda.
+                  <span
+                    className={`material-symbols-outlined mb-5 text-4xl ${
+                      pillar.id === "ai" ? "text-secondary-container" : "text-primary"
+                    }`}
+                  >
+                    {pillar.id === "web" ? "web" : pillar.id === "mobile" ? "phone_iphone" : "smart_toy"}
+                  </span>
+                  <h3 className={`mb-3 font-headline text-3xl ${pillar.id === "ai" ? "text-white/85" : "text-primary"}`}>
+                    {pillar.navbarTitle}
+                  </h3>
+                  <p className={`text-sm leading-relaxed ${pillar.id === "ai" ? "text-white/85" : "text-[#42505a]"}`}>
+                    {pillar.navbarBody}
                   </p>
-                  <div className="mt-6 flex gap-4">
-                    <span className="text-sm font-bold text-secondary">CTO as a Service</span>
-                    <span className="text-sm font-bold text-secondary/50">•</span>
-                    <span className="text-sm font-bold text-secondary">Tech Audit</span>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
+                  <p
+                    className={`mt-5 text-xs font-bold uppercase tracking-[0.16em] ${
+                      pillar.id === "ai" ? "text-secondary-container" : "text-secondary"
+                    }`}
+                  >
+                    {pillar.navbarPriceCue}
+                  </p>
+                  <span
+                    className={`mt-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest ${
+                      pillar.id === "ai" ? "!text-white" : "text-primary"
+                    }`}
+                  >
+                    {pillar.navbarCtaLabel}
+                    <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                  </span>
+                </a>
+              </Reveal>
+            ))}
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-3">
-            {waysToWork.map((item) => (
+          <div className="mt-10 rounded-[1.5rem] border border-[rgba(29,90,141,0.12)] bg-[#f8f2e6] p-5 md:p-7">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Engagement Model</p>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+              {servicesContent.waysToWork.items.map((item) => (
               <div key={item.title} className="rounded-2xl border border-[rgba(29,90,141,0.1)] bg-[#FBF7EE] p-5">
                 <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Ways to Work</p>
                 <h4 className="mb-1 font-headline text-2xl text-primary">{item.title}</h4>
                 <p className="text-sm text-[#42505a]">{item.description}</p>
               </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

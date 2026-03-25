@@ -1,8 +1,13 @@
 import { ServicesPage } from "@/components/pages/services-page";
 import { getHomeContent } from "@/content/home";
 
-export default function Page() {
-  const content = getHomeContent();
+type ServicesPageRouteProps = {
+  searchParams: Promise<{ pillar?: string }>;
+};
 
-  return <ServicesPage content={content} />;
+export default async function Page({ searchParams }: ServicesPageRouteProps) {
+  const content = getHomeContent();
+  const params = await searchParams;
+
+  return <ServicesPage content={content} initialPillar={params.pillar} />;
 }

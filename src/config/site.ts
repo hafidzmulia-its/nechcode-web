@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "NechCode",
   domain: "nechcode.id",
   url: "https://nechcode.id",
-  email: "halo@nechcode.id",
+  email: "projectmulyos1@gmail.com",
   whatsappNumber: "6289531848511",
   whatsappDisplayName: "NechMin",
   founder: "Nech Team.",

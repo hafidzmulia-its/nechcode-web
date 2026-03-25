@@ -142,7 +142,7 @@ const idContent: HomeContent = {
     description:
       "NechCode membantu tim Anda membangun website, sistem internal, dan alur kerja berbasis AI yang rapi, mudah dipakai, dan siap dikembangkan jangka panjang.",
     primaryCta: {
-      label: "Konsultasi via WhatsApp",
+      label: "Konsultasi Gratis",
       href: buildWhatsAppInquiryUrl({
         sourcePage: "Hero",
         serviceInterest: "Website / Sistem Internal / AI Workflow",
@@ -181,10 +181,10 @@ const idContent: HomeContent = {
   },
   services: {
     eyebrow: "Layanan Unggulan",
-    headingA: "Layanan inti kami untuk",
-    headingEmphasis: "operasional yang lebih rapi",
+    headingA: "Tiga layanan inti untuk",
+    headingEmphasis: "pertumbuhan yang lebih terarah",
     description:
-      "Mulai dari website dan landing page, sistem internal, AI-assisted workflows, sampai integrasi dan custom solution. Anda bisa mulai dari paket entry-level atau scope strategis yang lebih kompleks.",
+      "Pilih jalur mulai dari Web, Mobile Apps, atau AI Automation. Konsultasi, integrasi, dan custom build kami posisikan sebagai mode delivery agar implementasi tetap relevan dengan kebutuhan nyata.",
   },
   trustStrip: {
     items: [
