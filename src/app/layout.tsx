@@ -10,18 +10,43 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description:
-    "NechCode membangun landing page, website, automasi, dan sistem digital editorial untuk bisnis yang ingin tampil presisi dan bergerak cepat.",
+    "NechCode membangun web app kustom, sistem internal, dan automasi workflow untuk tim yang ingin mengurangi kerja manual dan meningkatkan efisiensi operasional bisnis.",
   applicationName: siteConfig.name,
   metadataBase: new URL(siteConfig.url),
   keywords: [
     "NechCode",
     "nechcode.id",
+    "jasa pembuatan website Indonesia",
+    "web app kustom",
+    "sistem internal bisnis",
+    "automasi workflow",
+    "AI workflow Indonesia",
     "landing page agency",
-    "website creator Indonesia",
-    "web design studio",
-    "automasi",
-    "AI workflow",
   ],
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: `${siteConfig.name} - Mitra Teknologi Strategis Anda`,
+    description:
+      "NechCode membangun web app kustom, sistem internal, dan automasi workflow untuk tim yang ingin mengurangi kerja manual dan meningkatkan efisiensi operasional bisnis.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} - Mitra Teknologi Strategis Anda`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} - Mitra Teknologi Strategis Anda`,
+    description:
+      "NechCode membangun web app kustom, sistem internal, dan automasi workflow untuk tim yang ingin mengurangi kerja manual dan meningkatkan efisiensi operasional bisnis.",
+    images: ["/logo.png"],
+  },
 };
 
 export default function RootLayout({
