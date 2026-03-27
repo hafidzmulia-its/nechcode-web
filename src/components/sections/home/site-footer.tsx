@@ -48,7 +48,7 @@ export function SiteFooter({ brand, footer }: SiteFooterProps) {
   }
 
   return (
-    <footer className="mt-20 w-full rounded-t-xl bg-surface-container-low">
+    <footer className="mt-20 w-full rounded-t-xl bg-surface-container">
       <div className="mx-auto flex w-full max-w-[1360px] flex-col items-start justify-between gap-12 px-6 py-16 md:flex-row md:items-center md:px-8 lg:px-10 xl:px-12">
         <div className="max-w-sm space-y-6">
           <Link href="/" aria-label={brand.name} className="inline-flex">
