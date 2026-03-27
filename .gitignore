@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /.pnp
@@ -39,3 +37,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ya begitulah
+.claude
+.vscode
+.next
+AGENTS.md
+BRIEF.md
+CAMPAIGN.md
+DESIGN.md
+CLAUDE.md
+improve.md
+improve2.md
