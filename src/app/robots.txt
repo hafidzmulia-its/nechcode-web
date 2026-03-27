@@ -9,4 +9,3 @@ Disallow: /admin
 Disallow: /api
 
 Sitemap: https://nechcode.id/sitemap.xml
-Sitemap: https://nechcode.vercel.app/sitemap.xml
