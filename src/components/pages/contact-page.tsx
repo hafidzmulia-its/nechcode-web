@@ -3,8 +3,8 @@
 import { useMemo, useState } from "react";
 
 import { SocialIcon } from "@/components/shared/social-icon";
-import { buildMailto, getSocialLinks, siteConfig } from "@/config/site";
 import { layoutContainer } from "@/config/layout";
+import { buildMailto, getSocialLinks, siteConfig } from "@/config/site";
 import { buildWhatsAppInquiryUrl } from "@/lib/whatsapp";
 import { Reveal } from "@/components/shared/reveal";
 import { SiteFooter } from "@/components/sections/home/site-footer";
