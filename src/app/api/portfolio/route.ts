@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 
+import { isFirebaseAdminEnabled } from "@/lib/firebase/admin";
 import {
   createPortfolioItem,
   getVerifiedAdminActor,
-  isPortfolioWriteEnabled,
   listAdminPortfolioItems,
   listPublicPortfolioItems,
   verifyAdminBearerToken,
@@ -22,7 +22,7 @@ export async function GET(request: Request) {
 
     const items = await listAdminPortfolioItems();
 
-    return NextResponse.json({ items, writeEnabled: isPortfolioWriteEnabled() });
+    return NextResponse.json({ items, writeEnabled: isFirebaseAdminEnabled() });
   }
 
   const items = await listPublicPortfolioItems();

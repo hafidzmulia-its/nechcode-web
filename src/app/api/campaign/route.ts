@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 
+import { isFirebaseAdminEnabled } from "@/lib/firebase/admin";
 import {
   createCampaignItem,
   getVerifiedAdminActor,
-  isCampaignWriteEnabled,
   listAdminCampaignItems,
   listPublicCampaignItems,
   verifyAdminBearerToken,
@@ -22,7 +22,7 @@ export async function GET(request: Request) {
 
     const items = await listAdminCampaignItems();
 
-    return NextResponse.json({ items, writeEnabled: isCampaignWriteEnabled() });
+    return NextResponse.json({ items, writeEnabled: isFirebaseAdminEnabled() });
   }
 
   const items = await listPublicCampaignItems();

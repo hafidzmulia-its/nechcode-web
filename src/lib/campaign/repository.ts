@@ -4,26 +4,20 @@ import {
   resolveEffectiveCampaignStatus,
 } from "@/lib/campaign/urgency";
 import {
-  getFirebaseAdminAuth,
   getFirebaseAdminDb,
   isFirebaseAdminEnabled,
 } from "@/lib/firebase/admin";
+import {
+  getVerifiedAdminActor,
+  verifyAdminBearerToken,
+  type AdminActor,
+} from "@/lib/firebase/admin-auth";
+import { withoutUndefined } from "@/lib/utils";
 import type { Campaign, CampaignPayload } from "@/types/campaign";
 
 const COLLECTION = "campaignItems";
 
 type CampaignPlacementKey = keyof Campaign["placements"];
-
-export type AdminActor = {
-  uid: string;
-  email?: string;
-};
-
-function withoutUndefined<T extends Record<string, unknown>>(data: T) {
-  return Object.fromEntries(
-    Object.entries(data).filter(([, value]) => value !== undefined),
-  ) as Partial<T>;
-}
 
 function sortCampaigns(items: Campaign[]) {
   return [...items].sort((a, b) => b.priority - a.priority);
@@ -362,73 +356,5 @@ export async function getActiveCampaignPlacements(now = new Date()) {
   };
 }
 
-export async function verifyAdminBearerToken(authHeader: string | null) {
-  if (!authHeader?.startsWith("Bearer ")) {
-    return false;
-  }
-
-  const token = authHeader.replace("Bearer ", "").trim();
-  const adminAuth = getFirebaseAdminAuth();
-
-  if (!adminAuth) {
-    return false;
-  }
-
-  const decoded = await adminAuth.verifyIdToken(token);
-  const allowedEmail = process.env.ADMIN_EMAIL;
-  const requireAdminClaim = process.env.ADMIN_REQUIRE_CUSTOM_CLAIM === "true";
-
-  if (requireAdminClaim && decoded.admin !== true) {
-    return false;
-  }
-
-  if (!allowedEmail) {
-    return Boolean(decoded.admin === true);
-  }
-
-  if (decoded.admin === true) {
-    return true;
-  }
-
-  return decoded.email?.toLowerCase() === allowedEmail.toLowerCase();
-}
-
-export async function getVerifiedAdminActor(authHeader: string | null) {
-  if (!authHeader?.startsWith("Bearer ")) {
-    return null;
-  }
-
-  const token = authHeader.replace("Bearer ", "").trim();
-  const adminAuth = getFirebaseAdminAuth();
-
-  if (!adminAuth) {
-    return null;
-  }
-
-  const decoded = await adminAuth.verifyIdToken(token);
-  const allowedEmail = process.env.ADMIN_EMAIL;
-  const requireAdminClaim = process.env.ADMIN_REQUIRE_CUSTOM_CLAIM === "true";
-
-  if (requireAdminClaim && decoded.admin !== true) {
-    return null;
-  }
-
-  const email = decoded.email?.toLowerCase();
-
-  if (!allowedEmail && decoded.admin !== true) {
-    return null;
-  }
-
-  if (allowedEmail && decoded.admin !== true && email !== allowedEmail.toLowerCase()) {
-    return null;
-  }
-
-  return {
-    uid: decoded.uid,
-    email: decoded.email,
-  } as AdminActor;
-}
-
-export function isCampaignWriteEnabled() {
-  return isFirebaseAdminEnabled();
-}
+export { getVerifiedAdminActor, verifyAdminBearerToken };
+export type { AdminActor };

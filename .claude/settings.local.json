@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//d/Downloads/nechcode-web/$LOCALAPPDATA/Programs/**)",
+      "Read(//d/Downloads/nechcode-web/$LOCALAPPDATA/**)",
+      "Read(//d/Downloads/nechcode-web/$APPDATA/**)",
+      "Skill(seo-audit)"
+    ]
+  }
+}

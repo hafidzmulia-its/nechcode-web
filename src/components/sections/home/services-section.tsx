@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/shared/reveal";
+import { layoutContainer } from "@/config/layout";
 import { servicesContent } from "@/content/services";
 import type { HomeContent } from "@/content/home";
 
@@ -10,7 +11,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
   return (
     <section id="layanan" className="relative w-full overflow-hidden bg-[#F5EEDC] pb-24 md:pb-32">
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent to-[#efe4cc]/65" />
-      <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+      <div className={layoutContainer}>
         <div className="rounded-[2rem] border border-[rgba(29,90,141,0.08)] bg-[#EFE4CC] px-6 py-12 shadow-[0_18px_46px_rgba(36,47,58,0.08)] backdrop-blur-sm md:px-8 md:py-14 lg:px-10">
           <Reveal y={20} duration={0.42}>
             <div className="mb-20 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">

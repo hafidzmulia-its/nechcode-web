@@ -1,23 +1,17 @@
 import { defaultPortfolioItems } from "@/lib/portfolio/defaults";
 import {
-  getFirebaseAdminAuth,
   getFirebaseAdminDb,
   isFirebaseAdminEnabled,
 } from "@/lib/firebase/admin";
+import {
+  getVerifiedAdminActor,
+  verifyAdminBearerToken,
+  type AdminActor,
+} from "@/lib/firebase/admin-auth";
+import { withoutUndefined } from "@/lib/utils";
 import type { PortfolioItem, PortfolioPayload } from "@/types/portfolio";
 
 const COLLECTION = "portfolioItems";
-
-export type AdminActor = {
-  uid: string;
-  email?: string;
-};
-
-function withoutUndefined<T extends Record<string, unknown>>(data: T) {
-  return Object.fromEntries(
-    Object.entries(data).filter(([, value]) => value !== undefined),
-  ) as Partial<T>;
-}
 
 function sortByOrder(items: PortfolioItem[]) {
   return [...items].sort((a, b) => a.order - b.order);
@@ -264,73 +258,5 @@ export async function reorderPortfolioItems(ids: string[], actor?: AdminActor) {
   await batch.commit();
 }
 
-export async function verifyAdminBearerToken(authHeader: string | null) {
-  if (!authHeader?.startsWith("Bearer ")) {
-    return false;
-  }
-
-  const token = authHeader.replace("Bearer ", "").trim();
-  const adminAuth = getFirebaseAdminAuth();
-
-  if (!adminAuth) {
-    return false;
-  }
-
-  const decoded = await adminAuth.verifyIdToken(token);
-  const allowedEmail = process.env.ADMIN_EMAIL;
-  const requireAdminClaim = process.env.ADMIN_REQUIRE_CUSTOM_CLAIM === "true";
-
-  if (requireAdminClaim && decoded.admin !== true) {
-    return false;
-  }
-
-  if (!allowedEmail) {
-    return Boolean(decoded.admin === true);
-  }
-
-  if (decoded.admin === true) {
-    return true;
-  }
-
-  return decoded.email?.toLowerCase() === allowedEmail.toLowerCase();
-}
-
-export async function getVerifiedAdminActor(authHeader: string | null) {
-  if (!authHeader?.startsWith("Bearer ")) {
-    return null;
-  }
-
-  const token = authHeader.replace("Bearer ", "").trim();
-  const adminAuth = getFirebaseAdminAuth();
-
-  if (!adminAuth) {
-    return null;
-  }
-
-  const decoded = await adminAuth.verifyIdToken(token);
-  const allowedEmail = process.env.ADMIN_EMAIL;
-  const requireAdminClaim = process.env.ADMIN_REQUIRE_CUSTOM_CLAIM === "true";
-
-  if (requireAdminClaim && decoded.admin !== true) {
-    return null;
-  }
-
-  const email = decoded.email?.toLowerCase();
-
-  if (!allowedEmail && decoded.admin !== true) {
-    return null;
-  }
-
-  if (allowedEmail && decoded.admin !== true && email !== allowedEmail.toLowerCase()) {
-    return null;
-  }
-
-  return {
-    uid: decoded.uid,
-    email: decoded.email,
-  } as AdminActor;
-}
-
-export function isPortfolioWriteEnabled() {
-  return isFirebaseAdminEnabled();
-}
+export { getVerifiedAdminActor, verifyAdminBearerToken };
+export type { AdminActor };

@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 
+import { isFirebaseAdminEnabled } from "@/lib/firebase/admin";
 import {
   createFaqItem,
   getVerifiedAdminActor,
-  isFaqWriteEnabled,
   listAdminFaqItems,
   listPublicFaqItems,
   verifyAdminBearerToken,
@@ -22,7 +22,7 @@ export async function GET(request: Request) {
 
     const items = await listAdminFaqItems();
 
-    return NextResponse.json({ items, writeEnabled: isFaqWriteEnabled() });
+    return NextResponse.json({ items, writeEnabled: isFirebaseAdminEnabled() });
   }
 
   const items = await listPublicFaqItems();

@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Reveal } from "@/components/shared/reveal";
+import { layoutContainer } from "@/config/layout";
 import type { HomeContent } from "@/content/home";
 
 type HeroSectionProps = {
@@ -8,8 +9,6 @@ type HeroSectionProps = {
 };
 
 export function HeroSection({ hero }: HeroSectionProps) {
-  const layoutContainer = "mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12";
-
   return (
     <section className="relative w-full overflow-hidden bg-surface">
       <div className={`${layoutContainer} mb-16 flex flex-col items-start gap-8 py-10 sm:gap-10 sm:py-12 md:mb-24 md:gap-12 md:py-16 lg:mb-32 lg:grid lg:grid-cols-12 lg:py-20`}>

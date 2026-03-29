@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { CampaignAnnouncementBar } from "@/components/campaign/campaign-announcement-bar";
 import { CampaignStickyUrgencyBar } from "@/components/campaign/campaign-sticky-urgency-bar";
+import { layoutContainer } from "@/config/layout";
 import type { HomeContent } from "@/content/home";
 import { servicesContent } from "@/content/services";
 import type { Campaign } from "@/types/campaign";
@@ -18,6 +19,12 @@ type TopNavbarProps = {
   cta: HomeContent["headerCta"];
 };
 
+function isNavItemActive(href: string, pathname: string | null): boolean {
+  return href === "/"
+    ? pathname === "/"
+    : pathname === href || pathname?.startsWith(`${href}/`) === true;
+}
+
 export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -27,7 +34,6 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
   const [stickyCampaign, setStickyCampaign] = useState<Campaign | null>(null);
   const servicesMenuRef = useRef<HTMLDivElement>(null);
   const closeMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const layoutContainer = "mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12";
 
   useEffect(() => {
     setMobileOpen(false);
@@ -217,10 +223,7 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
               );
             }
 
-            const isActive =
-              item.href === "/"
-                ? pathname === "/"
-                : pathname === item.href || pathname?.startsWith(`${item.href}/`);
+            const isActive = isNavItemActive(item.href, pathname);
 
             return (
               <Link
@@ -306,10 +309,7 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
                 );
               }
 
-              const isActive =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname === item.href || pathname?.startsWith(`${item.href}/`);
+              const isActive = isNavItemActive(item.href, pathname);
 
               return (
                 <Link
