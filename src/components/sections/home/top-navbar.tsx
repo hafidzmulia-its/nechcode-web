@@ -1,6 +1,6 @@
 "use client";
 
-import { Bot, ChevronDown, Globe, Menu, Smartphone, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,7 +10,6 @@ import { CampaignAnnouncementBar } from "@/components/campaign/campaign-announce
 import { CampaignStickyUrgencyBar } from "@/components/campaign/campaign-sticky-urgency-bar";
 import { layoutContainer } from "@/config/layout";
 import type { HomeContent } from "@/content/home";
-import { servicesContent } from "@/content/services";
 import type { Campaign } from "@/types/campaign";
 
 type TopNavbarProps = {
@@ -18,6 +17,12 @@ type TopNavbarProps = {
   nav: HomeContent["nav"];
   cta: HomeContent["headerCta"];
 };
+
+const layananDropdown = [
+  { label: "Web Packages", href: "/services?pillar=web" },
+  { label: "Mobile Apps", href: "/services?pillar=mobile" },
+  { label: "AI Automation & Chatbot", href: "/services?pillar=ai" },
+];
 
 function isNavItemActive(href: string, pathname: string | null): boolean {
   return href === "/"
@@ -27,36 +32,32 @@ function isNavItemActive(href: string, pathname: string | null): boolean {
 
 export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [desktopServicesOpen, setDesktopServicesOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileLayananOpen, setMobileLayananOpen] = useState(false);
   const [topBarCampaign, setTopBarCampaign] = useState<Campaign | null>(null);
   const [stickyCampaign, setStickyCampaign] = useState<Campaign | null>(null);
-  const servicesMenuRef = useRef<HTMLDivElement>(null);
-  const closeMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setMobileOpen(false);
-    setDesktopServicesOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
-    return () => {
-      if (closeMenuTimeoutRef.current) {
-        clearTimeout(closeMenuTimeoutRef.current);
-      }
-    };
+    setMounted(true);
   }, []);
 
   useEffect(() => {
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setDesktopServicesOpen(false);
+    setMobileOpen(false);
+    setDropdownOpen(false);
+  }, [pathname]);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
       }
     }
-
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
   useEffect(() => {
@@ -64,23 +65,20 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
 
     async function loadCampaignPlacements() {
       try {
-        const response = await fetch("/api/campaign/active", { cache: "no-store" });
+        const response = await fetch("/api/campaign/active", {
+          cache: "no-store",
+        });
         const data = (await response.json()) as {
           topBar: Campaign | null;
           stickyFinalHours: Campaign | null;
         };
 
-        if (!mounted) {
-          return;
-        }
+        if (!mounted) return;
 
         setTopBarCampaign(data.topBar ?? null);
         setStickyCampaign(data.stickyFinalHours ?? null);
       } catch {
-        if (!mounted) {
-          return;
-        }
-
+        if (!mounted) return;
         setTopBarCampaign(null);
         setStickyCampaign(null);
       }
@@ -97,242 +95,174 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
     };
   }, []);
 
-  function serviceIconById(pillarId: string) {
-    if (pillarId === "web") return <Globe size={18} />;
-    if (pillarId === "mobile") return <Smartphone size={18} />;
-    return <Bot size={18} />;
-  }
-
-  function cancelCloseServicesMenu() {
-    if (closeMenuTimeoutRef.current) {
-      clearTimeout(closeMenuTimeoutRef.current);
-      closeMenuTimeoutRef.current = null;
-    }
-  }
-
-  function openServicesMenu() {
-    cancelCloseServicesMenu();
-    setDesktopServicesOpen(true);
-  }
-
-  function scheduleCloseServicesMenu() {
-    cancelCloseServicesMenu();
-    closeMenuTimeoutRef.current = setTimeout(() => {
-      setDesktopServicesOpen(false);
-    }, 500);
-  }
+  const isLayananActive = pathname?.startsWith("/services") === true;
 
   return (
     <>
       <CampaignAnnouncementBar campaign={topBarCampaign} />
-      <nav className="sticky top-0 z-50 w-full border-b border-outline-variant/20 bg-surface-container-lowest/85 backdrop-blur-lg">
-      <div className={`${layoutContainer} flex items-center justify-between py-4 md:py-5`}>
-        <Link href="/" aria-label={brand.name} className="justify-self-start">
-          <Image
-            src="/logonav.png"
-            alt={brand.name}
-            width={176}
-            height={50}
-            priority
-            style={{ width: "auto", height: "auto" }}
-            className="h-auto w-[150px] md:w-[176px]"
-          />
-        </Link>
+      <nav className="sticky top-0 z-50 w-full bg-transparent px-6 pt-4 pb-2 md:px-16 md:pt-5">
+        <div className="relative flex items-center justify-between rounded-full border border-[#1d5a8d]/30 bg-[#f8f6f2] px-5 py-2.5 shadow-[0_4px_20px_rgba(0,0,0,0.10)] md:px-8 md:py-3">
+          <Link href="/" aria-label={brand.name} className="justify-self-start">
+            <Image
+              src="/logonav.png"
+              alt={brand.name}
+              width={176}
+              height={50}
+              priority
+              className="h-auto w-[120px] md:w-[150px]"
+            />
+          </Link>
 
-        <div className="hidden items-center gap-10 md:flex">
-          {nav.map((item) => {
-            if (item.href === "/services") {
-              return (
-                <div
-                  key={item.label}
-                  ref={servicesMenuRef}
-                  className="relative"
-                  onMouseEnter={openServicesMenu}
-                  onMouseLeave={scheduleCloseServicesMenu}
-                  onBlur={(event) => {
-                    const nextTarget = event.relatedTarget as Node | null;
-                    if (!servicesMenuRef.current?.contains(nextTarget)) {
-                      scheduleCloseServicesMenu();
-                    }
-                  }}
-                >
-                  <button
-                    type="button"
-                    aria-expanded={desktopServicesOpen}
-                    aria-haspopup="menu"
-                    onFocus={openServicesMenu}
-                    className={`inline-flex items-center gap-1 border-b-2 pb-1 font-headline text-lg italic transition ${
-                      pathname === "/services" || pathname?.startsWith("/services/")
-                        ? "border-secondary text-primary"
-                        : "border-transparent text-[#1e1c11]/70 hover:text-primary"
-                    }`}
-                  >
-                    Services
-                    <ChevronDown size={15} className={`transition ${desktopServicesOpen ? "rotate-180" : ""}`} />
-                  </button>
-
-                  {desktopServicesOpen ? (
-                    <>
-                      <div className="absolute left-1/2 top-full z-30 h-5 w-[760px] -translate-x-1/2" aria-hidden="true" />
-                      <div
-                        className="absolute left-1/2 top-full z-40 mt-5 w-[760px] -translate-x-1/2 rounded-3xl border border-outline-variant/20 bg-surface-container-lowest p-6 shadow-[0_24px_58px_rgba(22,34,47,0.18)]"
-                        onMouseEnter={cancelCloseServicesMenu}
-                        onMouseLeave={scheduleCloseServicesMenu}
-                      >
-                      <p className="max-w-2xl text-sm leading-relaxed text-on-surface-variant">{servicesContent.megaMenu.intro}</p>
-
-                      <div className="mt-5 grid grid-cols-3 gap-3">
-                        {servicesContent.pillars.map((pillar) => (
-                          <Link
-                            key={pillar.id}
-                            href={`/services?pillar=${pillar.id}`}
-                            className="rounded-2xl border border-outline-variant/20 bg-surface p-4 transition hover:-translate-y-0.5 hover:border-secondary/40 hover:shadow-[0_10px_24px_rgba(24,34,45,0.09)]"
-                            role="menuitem"
-                            onClick={() => setDesktopServicesOpen(false)}
-                          >
-                            <div className="mb-3 inline-flex rounded-lg bg-surface-container px-2.5 py-2 text-primary">
-                              {serviceIconById(pillar.id)}
-                            </div>
-                            <p className="font-headline text-xl text-primary">{pillar.navbarTitle}</p>
-                            <p className="mt-2 text-xs leading-relaxed text-on-surface-variant">{pillar.navbarBody}</p>
-                            <p className="mt-3 text-xs font-bold uppercase tracking-[0.14em] text-secondary">{pillar.navbarPriceCue}</p>
-                            <span className="mt-3 inline-flex text-xs font-bold uppercase tracking-[0.12em] text-primary">
-                              {pillar.navbarCtaLabel}
-                            </span>
-                          </Link>
-                        ))}
-                      </div>
-
-                      <div className="mt-5 flex items-center justify-between rounded-2xl border border-outline-variant/20 bg-surface-container-low px-4 py-3">
-                        <Link href={servicesContent.megaMenu.compareCta.href} className="text-sm font-bold text-primary">
-                          {servicesContent.megaMenu.compareCta.label}
-                        </Link>
-                        <a
-                          href={servicesContent.megaMenu.consultCta.href}
-                          target={servicesContent.megaMenu.consultCta.external ? "_blank" : undefined}
-                          rel={servicesContent.megaMenu.consultCta.external ? "noreferrer" : undefined}
-                          className="rounded-xl bg-primary px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] !text-white"
-                        >
-                          {servicesContent.megaMenu.consultCta.label}
-                        </a>
-                      </div>
-                      </div>
-                    </>
-                  ) : null}
-                </div>
-              );
-            }
-
-            const isActive = isNavItemActive(item.href, pathname);
-
-            return (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={
-                  isActive
-                    ? "border-b-2 border-secondary pb-1 font-headline text-lg italic text-primary"
-                    : "font-headline text-lg italic text-[#1e1c11]/70 transition-colors hover:text-primary"
-                }
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </div>
-
-        <a
-          href={cta.href}
-          target={cta.external ? "_blank" : undefined}
-          rel={cta.external ? "noreferrer" : undefined}
-          className="hidden rounded-xl bg-primary-container px-5 py-2.5 text-sm font-semibold !text-white transition-all hover:-translate-y-0.5 hover:bg-primary active:scale-95 md:inline-flex md:px-8 md:text-base"
-        >
-          {cta.label}
-        </a>
-
-        <button
-          type="button"
-          onClick={() => setMobileOpen((prev) => !prev)}
-          aria-label={mobileOpen ? "Tutup menu" : "Buka menu"}
-          aria-expanded={mobileOpen}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-outline-variant/35 bg-white text-primary md:hidden"
-        >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </div>
-
-      {mobileOpen ? (
-        <div className="border-t border-outline-variant/20 bg-surface-container-lowest md:hidden">
-          <div className={`${layoutContainer} space-y-2 py-4`}>
+          <div className="hidden items-center gap-10 md:flex">
             {nav.map((item) => {
-              if (item.href === "/services") {
+              const isLayanan = item.label === "Layanan";
+              const isActive = isLayanan
+                ? isLayananActive
+                : isNavItemActive(item.href, pathname);
+
+              if (isLayanan) {
                 return (
-                  <div key={`mobile-${item.label}`} className="rounded-lg border border-outline-variant/20 bg-surface-container-low px-3 py-2">
+                  <div key={item.label} className="relative" ref={dropdownRef}>
                     <button
                       type="button"
-                      onClick={() => setMobileServicesOpen((previous) => !previous)}
-                      aria-expanded={mobileServicesOpen}
-                      className="flex w-full items-center justify-between font-semibold text-primary"
+                      onClick={() => setDropdownOpen((prev) => !prev)}
+                      className={`inline-flex items-center gap-1 rounded-lg px-3 py-1.5 font-headline text-base transition-all ${
+                        isActive
+                          ? "bg-[#16425B] font-semibold !text-white"
+                          : "font-normal text-[#1e1c11]/70 hover:bg-[#16425B] hover:!text-white"
+                      }`}
                     >
-                      <span>Services</span>
-                      <ChevronDown size={16} className={`transition ${mobileServicesOpen ? "rotate-180" : ""}`} />
+                      {item.label}
+                      <ChevronDown
+                        size={15}
+                        className={`transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
+                      />
                     </button>
 
-                    {mobileServicesOpen ? (
-                      <div className="mt-3 space-y-2">
-                        {servicesContent.pillars.map((pillar) => (
+                    {dropdownOpen && (
+                      <div className="absolute left-1/2 top-full mt-2 w-56 -translate-x-1/2 overflow-hidden rounded-2xl border border-[#1d5a8d]/15 bg-[#f8f6f2] shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
+                        {layananDropdown.map((sub) => (
                           <Link
-                            key={`mobile-pillar-${pillar.id}`}
-                            href={`/services?pillar=${pillar.id}`}
-                            className="block rounded-lg bg-surface px-3 py-2"
-                            onClick={() => {
-                              setMobileOpen(false);
-                              setMobileServicesOpen(false);
-                            }}
+                            key={sub.label}
+                            href={sub.href}
+                            onClick={() => setDropdownOpen(false)}
+                            className="block px-5 py-3 font-sans text-sm font-medium text-[#1e1c11]/80 transition-colors hover:bg-[#16425B] hover:!text-white"
                           >
-                            <p className="text-sm font-bold text-primary">{pillar.navbarTitle}</p>
-                            <p className="mt-1 text-xs text-on-surface-variant">{pillar.navbarPriceCue}</p>
+                            {sub.label}
                           </Link>
                         ))}
-
-                        <a
-                          href={servicesContent.megaMenu.consultCta.href}
-                          target={servicesContent.megaMenu.consultCta.external ? "_blank" : undefined}
-                          rel={servicesContent.megaMenu.consultCta.external ? "noreferrer" : undefined}
-                          className="mt-2 inline-flex w-full items-center justify-center rounded-lg bg-primary px-3 py-2 text-xs font-bold !text-white"
-                        >
-                          Konsultasi via WhatsApp
-                        </a>
                       </div>
-                    ) : null}
+                    )}
                   </div>
                 );
               }
 
-              const isActive = isNavItemActive(item.href, pathname);
-
               return (
                 <Link
-                  key={`mobile-${item.label}`}
+                  key={item.label}
                   href={item.href}
-                  className={`block rounded-lg px-3 py-2 font-semibold ${isActive ? "bg-surface-container text-primary" : "text-on-surface-variant"}`}
+                  className={
+                    isActive
+                      ? "rounded-lg bg-[#16425B] px-3 py-1.5 font-headline text-base font-semibold !text-white"
+                      : "rounded-lg px-3 py-1.5 font-headline text-base font-normal text-[#1e1c11]/70 transition-all hover:bg-[#16425B] hover:!text-white"
+                  }
                 >
                   {item.label}
                 </Link>
               );
             })}
-
-            <a
-              href={cta.href}
-              target={cta.external ? "_blank" : undefined}
-              rel={cta.external ? "noreferrer" : undefined}
-              className="mt-3 inline-flex w-full items-center justify-center rounded-xl bg-primary-container px-5 py-3 text-sm font-semibold !text-white"
-            >
-              {cta.label}
-            </a>
           </div>
+
+          <a
+            href={cta.href}
+            target={cta.external ? "_blank" : undefined}
+            rel={cta.external ? "noreferrer" : undefined}
+            className="hidden rounded-xl bg-primary-container px-5 py-2.5 text-sm font-semibold !text-white transition-all hover:-translate-y-0.5 hover:bg-primary active:scale-95 md:inline-flex md:px-8 md:text-base"
+          >
+            {cta.label}
+          </a>
+
+          <button
+            type="button"
+            onClick={() => setMobileOpen((prev) => !prev)}
+            aria-label="Toggle menu"
+            suppressHydrationWarning
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-outline-variant/35 bg-white text-primary md:hidden"
+          >
+            {mounted && mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
-      ) : null}
+
+        {mounted && mobileOpen ? (
+          <div className="border-t border-outline-variant/20 bg-surface-container-lowest md:hidden">
+            <div className={`${layoutContainer} space-y-2 py-4`}>
+              {nav.map((item) => {
+                const isLayanan = item.label === "Layanan";
+                const isActive = isLayanan
+                  ? isLayananActive
+                  : isNavItemActive(item.href, pathname);
+
+                if (isLayanan) {
+                  return (
+                    <div key={item.label}>
+                      <button
+                        type="button"
+                        onClick={() => setMobileLayananOpen((prev) => !prev)}
+                        className={`flex w-full items-center justify-between rounded-lg px-3 py-2 font-semibold ${
+                          isActive
+                            ? "bg-surface-container text-primary"
+                            : "text-on-surface-variant"
+                        }`}
+                      >
+                        {item.label}
+                        <ChevronDown
+                          size={15}
+                          className={`transition-transform duration-200 ${mobileLayananOpen ? "rotate-180" : ""}`}
+                        />
+                      </button>
+                      {mobileLayananOpen && (
+                        <div className="ml-4 mt-1 space-y-1 border-l-2 border-[#16425B]/20 pl-3">
+                          {layananDropdown.map((sub) => (
+                            <Link
+                              key={sub.label}
+                              href={sub.href}
+                              onClick={() => {
+                                setMobileLayananOpen(false);
+                                setMobileOpen(false);
+                              }}
+                              className="block rounded-lg px-3 py-2 text-sm text-on-surface-variant transition-colors hover:bg-[#16425B] hover:!text-white"
+                            >
+                              {sub.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={`mobile-${item.label}`}
+                    href={item.href}
+                    className={`block rounded-lg px-3 py-2 font-semibold ${isActive ? "bg-surface-container text-primary" : "text-on-surface-variant"}`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+
+              <a
+                href={cta.href}
+                target={cta.external ? "_blank" : undefined}
+                rel={cta.external ? "noreferrer" : undefined}
+                className="mt-3 inline-flex w-full items-center justify-center rounded-xl bg-primary-container px-5 py-3 text-sm font-semibold !text-white"
+              >
+                {cta.label}
+              </a>
+            </div>
+          </div>
+        ) : null}
       </nav>
       <CampaignStickyUrgencyBar campaign={stickyCampaign} />
     </>

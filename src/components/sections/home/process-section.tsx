@@ -1,31 +1,143 @@
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
 import type { HomeContent } from "@/content/home";
-import { Reveal } from "@/components/shared/reveal";
 
 type ProcessSectionProps = {
   process: HomeContent["process"];
 };
 
+const cardRotations = [-6, 3, -4, 5, -3];
+const cardOffsets = [-30, 20, -20, 25, -15];
+
 export function ProcessSection({ process }: ProcessSectionProps) {
   return (
-    <section id="alur" className="relative w-full overflow-hidden bg-gradient-to-b from-surface-container-low/55 to-surface py-24 md:py-28">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-surface-container/45 to-transparent" />
+    <section
+      id="alur"
+      className="relative w-full overflow-hidden bg-[#F5EEDC] py-20 md:py-28"
+    >
       <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
-        <Reveal y={18} duration={0.38}>
-          <h2 className="mb-14 font-headline text-4xl text-primary md:text-5xl">{process.heading}</h2>
-        </Reveal>
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-12 text-center md:mb-16"
+        >
+          <h2 className="font-headline text-4xl font-bold text-[#1e1c11] md:text-5xl lg:text-6xl">
+            {process.heading}
+          </h2>
+        </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-5 md:gap-6">
-          {process.steps.map((step, index) => (
-            <Reveal key={step.title} y={16} delay={index * 0.05} duration={0.34}>
-              <article className="relative">
-                <p className="pointer-events-none absolute -top-8 left-0 font-headline text-6xl font-bold text-primary/10">
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <h3 className="relative z-10 mb-3 font-body text-lg font-bold text-primary">{step.title}</h3>
-                <p className="text-sm leading-relaxed text-on-surface-variant">{step.description}</p>
-              </article>
-            </Reveal>
-          ))}
+        {/* Desktop: diagonal rotated cards */}
+        <div className="hidden md:block">
+          <div className="relative flex items-center justify-center gap-0">
+            {process.steps.map((step, index) => {
+              const rotation = cardRotations[index % cardRotations.length];
+              const yOffset = cardOffsets[index % cardOffsets.length];
+              const isLast = index === process.steps.length - 1;
+
+              return (
+                <div key={step.title} className="relative flex items-center">
+                  {/* Card */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30, rotate: 0 }}
+                    whileInView={{ opacity: 1, y: yOffset, rotate: rotation }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: index * 0.1,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    style={{
+                      marginTop: yOffset > 0 ? yOffset : 0,
+                      marginBottom: yOffset < 0 ? Math.abs(yOffset) : 0,
+                    }}
+                    className="relative z-10 w-[170px] shrink-0 overflow-hidden rounded-2xl bg-[#16425B] p-1 shadow-[0_12px_32px_rgba(22,66,91,0.25)] lg:w-[200px]"
+                  >
+                    {/* Inner card */}
+                    <div className="rounded-xl bg-[#1e5a7a] p-4 lg:p-5">
+                      {/* Number */}
+                      <div className="mb-3 font-headline text-4xl font-bold leading-none text-white/30 lg:text-5xl">
+                        {String(index + 1).padStart(2, "0")}
+                      </div>
+                      {/* Asset on first card */}
+                      <h3 className="mb-1.5 font-headline text-base font-bold leading-snug text-white lg:text-lg">
+                        {step.title}
+                      </h3>
+                      <p className="text-xs leading-relaxed text-white/70">
+                        {step.description}
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  {/* Dashed connector line */}
+                  {!isLast && (
+                    <div className="relative z-0 mx-1 h-0.5 w-12 shrink-0 lg:w-14">
+                      <svg width="100%" height="2" className="overflow-visible">
+                        <line
+                          x1="0"
+                          y1="1"
+                          x2="100%"
+                          y2="1"
+                          stroke="#16425B"
+                          strokeWidth="2"
+                          strokeDasharray="5,4"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Mobile: zigzag stack */}
+        <div className="relative mt-4 block md:hidden">
+          {/* Vertical connector line */}
+          <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 border-l-2 border-dashed border-[#16425B]/30" />
+
+          <div className="space-y-10">
+            {process.steps.map((step, index) => {
+              const isEven = index % 2 === 0;
+
+              return (
+                <motion.div
+                  key={step.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.07,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className={`relative flex items-center gap-4 ${isEven ? "flex-row" : "flex-row-reverse"}`}
+                >
+                  {/* Center dot */}
+                  <div className="z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#16425B] text-xs font-bold text-white">
+                    {String(index + 1).padStart(2, "0")}
+                  </div>
+
+                  {/* Card */}
+                  <div className="flex-1 overflow-hidden rounded-2xl bg-[#16425B] p-1 shadow-[0_8px_20px_rgba(22,66,91,0.18)]">
+                    <div className="rounded-xl bg-[#1e5a7a] p-4">
+                      <h3 className="mb-1.5 font-headline text-lg font-bold text-white">
+                        {step.title}
+                      </h3>
+                      <p className="text-xs leading-relaxed text-white/70">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
