@@ -47,6 +47,11 @@ img {
   color: var(--on-secondary-container);
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
 section {
   scroll-margin-top: 7rem;
 }

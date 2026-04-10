@@ -19,7 +19,7 @@ type TopNavbarProps = {
 };
 
 const layananDropdown = [
-  { label: "Web Packages", href: "/services?pillar=web" },
+  { label: "Web Packages", href: "/services/web" },
   { label: "Mobile Apps", href: "/services?pillar=mobile" },
   { label: "AI Automation & Chatbot", href: "/services?pillar=ai" },
 ];

@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -16,6 +15,8 @@ type RevealProps = {
   once?: boolean;
 };
 
+type Phase = "initial" | "hidden" | "visible";
+
 export function Reveal({
   children,
   className,
@@ -24,24 +25,75 @@ export function Reveal({
   y = 28,
   x = 0,
   amount = 0.2,
-  once = false,
+  once = true,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { amount, once });
+  // "initial" = SSR/pre-mount, render visible (no hydration mismatch)
+  // "hidden"  = post-mount, element not yet intersected
+  // "visible" = element intersected and animated in
+  const [phase, setPhase] = useState<Phase>("initial");
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    // No IO support → stay visible.
+    if (typeof IntersectionObserver === "undefined") {
+      setPhase("visible");
+      return;
+    }
+
+    // Check if the element is already within the viewport on mount.
+    // If so, skip the hidden->visible animation (it would look like a flicker).
+    const rect = node.getBoundingClientRect();
+    const isAlreadyInView =
+      rect.top < window.innerHeight && rect.bottom > 0;
+
+    if (isAlreadyInView) {
+      setPhase("visible");
+      if (once) return;
+    } else {
+      setPhase("hidden");
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setPhase("visible");
+            if (once) observer.disconnect();
+          } else if (!once) {
+            setPhase("hidden");
+          }
+        }
+      },
+      { threshold: amount },
+    );
+
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, [amount, once]);
+
+  const isHidden = phase === "hidden";
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={{
-        hidden: { opacity: 0, y, x },
-        visible: { opacity: 1, y: 0, x: 0 },
-      }}
-      transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}
       className={cn(className)}
+      style={{
+        opacity: isHidden ? 0 : 1,
+        transform: isHidden
+          ? `translate3d(${x}px, ${y}px, 0)`
+          : "translate3d(0, 0, 0)",
+        transition:
+          phase === "initial"
+            ? undefined
+            : `opacity ${duration}s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s, transform ${duration}s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`,
+        willChange: phase === "visible" ? "auto" : "opacity, transform",
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
