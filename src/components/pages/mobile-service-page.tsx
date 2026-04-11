@@ -12,13 +12,13 @@ import type { HomeContent } from "@/content/home";
 import { servicePageCopy } from "@/content/service-pages";
 import { getServicePillarById } from "@/content/services";
 
-type WebServicePageProps = {
+type MobileServicePageProps = {
   content: HomeContent;
 };
 
-export function WebServicePage({ content }: WebServicePageProps) {
-  const pillar = getServicePillarById("web");
-  const copy = servicePageCopy.web;
+export function MobileServicePage({ content }: MobileServicePageProps) {
+  const pillar = getServicePillarById("mobile");
+  const copy = servicePageCopy.mobile;
 
   return (
     <div className="selection:bg-secondary-container selection:text-on-secondary-container">
@@ -32,7 +32,11 @@ export function WebServicePage({ content }: WebServicePageProps) {
         <ServiceHero hero={copy.hero} />
         <ServicePortfolio {...copy.portfolio} />
         <ServiceSpecialProgram />
-        <ServicePricing title={copy.pricing.title} pillar={pillar} />
+        <ServicePricing
+          title={copy.pricing.title}
+          pillar={pillar}
+          ctaSubnote="Konsultasi gratis sebelum mulai"
+        />
       </main>
 
       <SiteFooter brand={content.brand} footer={content.footer} />

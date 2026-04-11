@@ -360,8 +360,8 @@ const idContent: HomeContent = {
     description:
       "Pilih cara kerja yang paling cocok: mulai dari konsultasi, paket implementasi awal, atau scope custom untuk kebutuhan yang lebih kompleks.",
     primaryCta: {
-      label: "Lihat Testimoni!",
-      href: "/portfolio",
+      label: "Pesan Sekarang!",
+      href: "/https://wa.me/6289531848511?text=Halo%20NechMin%2C%0A%0ASaya%20ingin%20diskusi%20kebutuhan%20digital%20dengan%20NechCode.%0A%0ANama%20%2F%20Brand%3A%20-%0AJenis%20bisnis%20%2F%20organisasi%3A%20-%0AKebutuhan%20utama%3A%20-%0ALayanan%20%2F%20paket%20yang%20diminati%3A%20Pesan%20sekarang%0APaket%20awal%20(jika%20ada)%3A%20-%0AEstimasi%20timeline%3A%20-%0AEstimasi%20budget%3A%20-%0ACampaign%3A%20-%0ACampaign%20slug%3A%20-%0AUrgency%20state%3A%20-%0ACTA%20origin%3A%20-%0ASumber%20halaman%3A%20Top%20Navbar%0ACatatan%20tambahan%3A%20-",
     },
     secondaryCta: {
       label: "",

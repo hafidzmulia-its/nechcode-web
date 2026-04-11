@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { Maximize2, Minimize2 } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
@@ -117,17 +116,15 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
         </div>
       </div>
 
-      <AnimatePresence mode="wait">
+      <div
+        style={{
+          opacity: 1,
+          transition: "opacity 0.2s ease",
+        }}
+      >
         {isImmersive ? (
-          <motion.article
-            key="immersive"
-            initial={{ opacity: 0, scale: 0.96, y: 16 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.98, y: -8 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-6 overflow-hidden rounded-[1.6rem] border border-outline-variant/20 bg-surface-container-low p-4 md:p-5"
-          >
-            <motion.div layoutId={`work-image-${active.id}`} className="relative mb-4 min-h-[320px] overflow-hidden rounded-xl bg-surface-container md:min-h-[400px]">
+          <article className="mb-6 overflow-hidden rounded-[1.6rem] border border-outline-variant/20 bg-surface-container-low p-4 md:p-5">
+            <div className="relative mb-4 min-h-[320px] overflow-hidden rounded-xl bg-surface-container md:min-h-[400px]">
               <Image
                 src={active.imageUrl}
                 alt={active.imageAlt}
@@ -135,7 +132,7 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 90vw"
               />
-            </motion.div>
+            </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-[1.2fr_0.8fr] md:items-end">
               <div>
                 <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.14em] text-secondary">Tampilan Proyek Detail</p>
@@ -156,17 +153,10 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
                 </span>
               </div>
             </div>
-          </motion.article>
+          </article>
         ) : (
-          <motion.article
-            key="overview"
-            initial={{ opacity: 0, scale: 0.96, y: 16 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.98, y: -8 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-6 grid grid-cols-1 gap-5 overflow-hidden rounded-[1.6rem] border border-outline-variant/20 bg-surface-container-low p-5 md:grid-cols-[1.1fr_1fr]"
-          >
-            <motion.div layoutId={`work-image-${active.id}`} className="relative min-h-[250px] overflow-hidden rounded-xl bg-surface-container">
+          <article className="mb-6 grid grid-cols-1 gap-5 overflow-hidden rounded-[1.6rem] border border-outline-variant/20 bg-surface-container-low p-5 md:grid-cols-[1.1fr_1fr]">
+            <div className="relative min-h-[250px] overflow-hidden rounded-xl bg-surface-container">
               <Image
                 src={active.imageUrl}
                 alt={active.imageAlt}
@@ -174,7 +164,7 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 55vw"
               />
-            </motion.div>
+            </div>
             <div className="flex flex-col justify-between">
               <div>
                 <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.14em] text-secondary">Proyek Unggulan</p>
@@ -195,9 +185,9 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
                 </span>
               </div>
             </div>
-          </motion.article>
+          </article>
         )}
-      </AnimatePresence>
+      </div>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
         {gallery.map((item) => (
@@ -211,7 +201,7 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
                 : "border-outline-variant/20 hover:border-primary/25"
             }`}
           >
-            <motion.div layoutId={`work-image-${item.id}`} className="relative h-40 overflow-hidden bg-surface-container-low">
+            <div className="relative h-40 overflow-hidden bg-surface-container-low">
               <Image
                 src={item.imageUrl}
                 alt={item.imageAlt}
@@ -219,7 +209,7 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 24vw"
               />
-            </motion.div>
+            </div>
             <div className="p-4">
               <h5 className="mb-1 font-headline text-2xl leading-tight text-primary">{item.title}</h5>
               <p className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-on-surface-variant/75">
@@ -255,9 +245,9 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
             </div>
           }
         >
-          <motion.div className="relative h-full rounded-xl" transition={{ duration: 0.36, ease: [0.22, 1, 0.36, 1] }}>
+          <div className="relative h-full rounded-xl">
             {content}
-          </motion.div>
+          </div>
         </ContainerScroll>
       </div>
     </section>

@@ -10,7 +10,10 @@ type FinalCtaSectionProps = {
 
 export function FinalCtaSection({ cta }: FinalCtaSectionProps) {
   return (
-    <section id="kontak" className="relative w-full overflow-hidden bg-[#F5EEDC] py-16 md:py-24">
+    <section
+      id="kontak"
+      className="relative w-full overflow-hidden bg-[#F5EEDC] py-16 md:py-24"
+    >
       <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
         <Reveal y={22} duration={0.42}>
           <div className="relative overflow-hidden rounded-[2rem] bg-[#16425B] px-8 py-16 md:px-16 md:py-20">
@@ -40,9 +43,7 @@ export function FinalCtaSection({ cta }: FinalCtaSectionProps) {
             <div className="relative z-10 mx-auto max-w-2xl text-center">
               <Reveal y={16} delay={0.06} duration={0.38}>
                 <h2 className="mb-6 font-headline text-4xl font-bold leading-tight !text-white md:text-5xl lg:text-6xl">
-                  {cta.headingA}{" "}
-                  {cta.headingEmphasis}{" "}
-                  {cta.headingB}
+                  {cta.headingA} {cta.headingEmphasis} {cta.headingB}
                 </h2>
               </Reveal>
 
@@ -51,7 +52,8 @@ export function FinalCtaSection({ cta }: FinalCtaSectionProps) {
                   {cta.description}
                 </p>
                 <p className="mb-8 text-sm text-white/60 md:text-base">
-                  masih ragu dengan kami? lihat hasil testimoni !
+                  Tunggu apalagi? Hubungi kami sekarang untuk memulai perjalanan
+                  digital Anda bersama kami!
                 </p>
               </Reveal>
 

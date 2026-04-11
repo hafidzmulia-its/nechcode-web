@@ -8,6 +8,11 @@ type Cta = {
   external?: boolean;
 };
 
+export type FeatureRow = {
+  label: string;
+  included: boolean;
+};
+
 export type ServicePackage = {
   name: string;
   description: string;
@@ -16,6 +21,7 @@ export type ServicePackage = {
   isCustom?: boolean;
   badge?: string;
   features?: string[];
+  featureRows?: FeatureRow[];
   cta: Cta;
 };
 
@@ -53,13 +59,19 @@ const pillars: ServicePillar[] = [
         name: "Basic Web",
         description:
           "Untuk personal brand, UMKM, atau bisnis yang butuh website sederhana tapi tetap rapi, kredibel, dan siap online.",
-        priceCue: "Spesial Rp1.200.000",
+        priceCue: "Rp 1.200.000",
         subnote: "Satu kali bayar, termasuk domain dan hosting 1 tahun.",
-        features: [
-          "One page website atau landing page",
-          "Responsive mobile view",
-          "Contact form integration",
-          "Dukungan 7 hari setelah rilis",
+        featureRows: [
+          { label: "One page/landing page", included: true },
+          { label: "Responsive mobile view", included: true },
+          { label: "Contact form integration", included: true },
+          { label: "Lead Capture & CTA terstruktur", included: false },
+          { label: "Optimasi performa dasar", included: false },
+          { label: "Struktur SEO on-page", included: false },
+          { label: "Fitur custom operasional", included: false },
+          { label: "Integrasi API & database", included: false },
+          { label: "Role & panel admin lanjutan", included: false },
+          { label: "Dukungan 7 hari setelah rilis", included: true },
         ],
         cta: {
           label: "Pilih Basic",
@@ -75,14 +87,19 @@ const pillars: ServicePillar[] = [
         name: "Pro Web",
         description:
           "Untuk bisnis yang butuh website multi halaman dengan katalog, lead capture, dan integrasi komunikasi yang lebih lengkap.",
-        priceCue: "Spesial Rp2.800.000",
+        priceCue: "Rp 2.800.000",
         badge: "Paling Populer",
-        features: [
-          "Hingga 5 halaman utama",
-          "Lead capture dan CTA terstruktur",
-          "Optimasi performa dasar",
-          "Struktur SEO on-page",
-          "Dukungan 30 hari setelah rilis",
+        featureRows: [
+          { label: "Hingga 5 halaman utama", included: true },
+          { label: "Responsive mobile view", included: true },
+          { label: "Contact form integration", included: true },
+          { label: "Lead Capture & CTA terstruktur", included: true },
+          { label: "Optimasi performa dasar", included: true },
+          { label: "Struktur SEO on-page", included: false },
+          { label: "Fitur custom operasional", included: false },
+          { label: "Integrasi API & database", included: false },
+          { label: "Role & panel admin lanjutan", included: false },
+          { label: "Dukungan 30 hari setelah rilis", included: true },
         ],
         cta: {
           label: "Pilih Pro",
@@ -98,12 +115,18 @@ const pillars: ServicePillar[] = [
         name: "Advanced Web",
         description:
           "Untuk kebutuhan website yang lebih kompleks, sistem admin, integrasi database, dan fitur custom yang mendukung operasional.",
-        priceCue: "Spesial Rp4.500.000",
-        features: [
-          "Fitur custom berbasis kebutuhan operasional",
-          "Integrasi API dan database",
-          "Role dan panel admin lanjutan",
-          "Prioritas support pasca-rilis",
+        priceCue: "Rp 4.500.000",
+        featureRows: [
+          { label: "One page/landing page", included: true },
+          { label: "Responsive mobile view", included: true },
+          { label: "Contact form integration", included: true },
+          { label: "Lead Capture & CTA terstruktur", included: true },
+          { label: "Optimasi performa dasar", included: true },
+          { label: "Struktur SEO on-page", included: true },
+          { label: "Fitur custom operasional", included: true },
+          { label: "Integrasi API & database", included: true },
+          { label: "Role & panel admin lanjutan", included: true },
+          { label: "Dukungan 7 hari setelah rilis", included: true },
         ],
         cta: {
           label: "Pilih Advanced",

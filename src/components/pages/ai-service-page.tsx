@@ -12,13 +12,13 @@ import type { HomeContent } from "@/content/home";
 import { servicePageCopy } from "@/content/service-pages";
 import { getServicePillarById } from "@/content/services";
 
-type WebServicePageProps = {
+type AiServicePageProps = {
   content: HomeContent;
 };
 
-export function WebServicePage({ content }: WebServicePageProps) {
-  const pillar = getServicePillarById("web");
-  const copy = servicePageCopy.web;
+export function AiServicePage({ content }: AiServicePageProps) {
+  const pillar = getServicePillarById("ai");
+  const copy = servicePageCopy.ai;
 
   return (
     <div className="selection:bg-secondary-container selection:text-on-secondary-container">
@@ -32,7 +32,11 @@ export function WebServicePage({ content }: WebServicePageProps) {
         <ServiceHero hero={copy.hero} />
         <ServicePortfolio {...copy.portfolio} />
         <ServiceSpecialProgram />
-        <ServicePricing title={copy.pricing.title} pillar={pillar} />
+        <ServicePricing
+          title={copy.pricing.title}
+          pillar={pillar}
+          showOptionLabel
+        />
       </main>
 
       <SiteFooter brand={content.brand} footer={content.footer} />

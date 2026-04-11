@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
 type RevealProps = {
   children: ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   delay?: number;
   duration?: number;
   y?: number;
@@ -20,6 +21,7 @@ type Phase = "initial" | "hidden" | "visible";
 export function Reveal({
   children,
   className,
+  style,
   delay = 0,
   duration = 0.45,
   y = 28,
@@ -77,21 +79,28 @@ export function Reveal({
 
   const isHidden = phase === "hidden";
 
+  const baseTransform = isHidden
+    ? `translate3d(${x}px, ${y}px, 0)`
+    : "translate3d(0, 0, 0)";
+
+  const combinedStyle: CSSProperties = {
+    ...style,
+    opacity: isHidden ? 0 : 1,
+    transform: style?.transform
+      ? `${baseTransform} ${style.transform}`
+      : baseTransform,
+    transition:
+      phase === "initial"
+        ? style?.transition
+        : `opacity ${duration}s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s, transform ${duration}s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`,
+    willChange: phase === "visible" ? "auto" : "opacity, transform",
+  };
+
   return (
     <div
       ref={ref}
       className={cn(className)}
-      style={{
-        opacity: isHidden ? 0 : 1,
-        transform: isHidden
-          ? `translate3d(${x}px, ${y}px, 0)`
-          : "translate3d(0, 0, 0)",
-        transition:
-          phase === "initial"
-            ? undefined
-            : `opacity ${duration}s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s, transform ${duration}s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`,
-        willChange: phase === "visible" ? "auto" : "opacity, transform",
-      }}
+      style={combinedStyle}
     >
       {children}
     </div>

@@ -1,7 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/shared/reveal";
 import type { HomeContent } from "@/content/home";
 
 type ProcessSectionProps = {
@@ -19,17 +18,11 @@ export function ProcessSection({ process }: ProcessSectionProps) {
     >
       <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
         {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-12 text-center md:mb-16"
-        >
+        <Reveal y={18} duration={0.38} className="mb-12 text-center md:mb-16">
           <h2 className="font-headline text-4xl font-bold text-[#1e1c11] md:text-5xl lg:text-6xl">
             {process.heading}
           </h2>
-        </motion.div>
+        </Reveal>
 
         {/* Desktop: diagonal rotated cards */}
         <div className="hidden md:block">
@@ -42,18 +35,14 @@ export function ProcessSection({ process }: ProcessSectionProps) {
               return (
                 <div key={step.title} className="relative flex items-center">
                   {/* Card */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 30, rotate: 0 }}
-                    whileInView={{ opacity: 1, y: yOffset, rotate: rotation }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: index * 0.1,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
+                  <Reveal
+                    y={30}
+                    delay={index * 0.1}
+                    duration={0.5}
                     style={{
                       marginTop: yOffset > 0 ? yOffset : 0,
                       marginBottom: yOffset < 0 ? Math.abs(yOffset) : 0,
+                      transform: `rotate(${rotation}deg)`,
                     }}
                     className="relative z-10 w-[170px] shrink-0 overflow-hidden rounded-2xl bg-[#16425B] p-1 shadow-[0_12px_32px_rgba(22,66,91,0.25)] lg:w-[200px]"
                   >
@@ -63,7 +52,6 @@ export function ProcessSection({ process }: ProcessSectionProps) {
                       <div className="mb-3 font-headline text-4xl font-bold leading-none text-white/30 lg:text-5xl">
                         {String(index + 1).padStart(2, "0")}
                       </div>
-                      {/* Asset on first card */}
                       <h3 className="mb-1.5 font-headline text-base font-bold leading-snug text-white lg:text-lg">
                         {step.title}
                       </h3>
@@ -71,7 +59,7 @@ export function ProcessSection({ process }: ProcessSectionProps) {
                         {step.description}
                       </p>
                     </div>
-                  </motion.div>
+                  </Reveal>
 
                   {/* Dashed connector line */}
                   {!isLast && (
@@ -106,16 +94,11 @@ export function ProcessSection({ process }: ProcessSectionProps) {
               const isEven = index % 2 === 0;
 
               return (
-                <motion.div
+                <Reveal
                   key={step.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{
-                    duration: 0.4,
-                    delay: index * 0.07,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
+                  y={20}
+                  delay={index * 0.07}
+                  duration={0.4}
                   className={`relative flex items-center gap-4 ${isEven ? "flex-row" : "flex-row-reverse"}`}
                 >
                   {/* Center dot */}
@@ -134,7 +117,7 @@ export function ProcessSection({ process }: ProcessSectionProps) {
                       </p>
                     </div>
                   </div>
-                </motion.div>
+                </Reveal>
               );
             })}
           </div>

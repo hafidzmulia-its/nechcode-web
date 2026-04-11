@@ -39,7 +39,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                   {pillar.navbarBody}
                 </p>
                 <a
-                  href={pillar.id === "web" ? "/services/web" : `/services?pillar=${pillar.id}`}
+                  href={`/services/${pillar.id}`}
                   className="inline-flex w-fit items-center justify-center rounded-xl bg-[#E37434] px-6 py-3 text-sm font-bold !text-white transition-all hover:bg-[#b36a2a] hover:shadow-[0_8px_20px_rgba(196,123,58,0.35)] active:scale-95"
                 >
                   Lihat Paket!

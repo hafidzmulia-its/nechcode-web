@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 import { cn } from "@/lib/utils";
 
 type CountdownMode =
@@ -67,20 +65,16 @@ export function CampaignCountdown({ remainingMs, mode, compact = false, forceSho
     <div className={cn("flex items-center gap-2", compact ? "text-xs" : "text-sm")} aria-live="polite">
       {items.map((item) => (
         <div key={item.label} className="flex items-center gap-2">
-          <motion.div
-            key={`${item.label}-${item.value}`}
-            initial={{ y: flipStyle ? 10 : 0, opacity: 0.55 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.2 }}
+            <div
             className={cn(
-              "rounded-lg border border-primary/15 bg-white/85 px-2.5 py-1 text-center tabular-nums",
+              "rounded-lg border border-primary/15 bg-white/85 px-2.5 py-1 text-center tabular-nums transition-opacity duration-200",
               compact ? "min-w-[42px]" : "min-w-[58px]",
               flipStyle ? "shadow-[inset_0_-2px_0_rgba(29,90,141,0.1)]" : "",
             )}
           >
             <p suppressHydrationWarning className={cn("font-headline leading-none text-primary", compact ? "text-lg" : "text-2xl")}>{String(item.value).padStart(2, "0")}</p>
             <p className="mt-1 text-[10px] uppercase tracking-[0.12em] text-on-surface-variant/80">{item.label}</p>
-          </motion.div>
+          </div>
         </div>
       ))}
     </div>
