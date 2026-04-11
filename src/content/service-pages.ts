@@ -37,7 +37,8 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
   web: {
     hero: {
       eyebrow: "Layanan Website",
-      title: "Layanan digital yang bisa dimulai dari paket, lalu tumbuh sesuai kebutuhan.",
+      title:
+        "Layanan digital yang bisa dimulai dari paket, lalu tumbuh sesuai kebutuhan.",
       description:
         "NechCode membantu bisnis, UMKM, organisasi, dan institusi membangun website yang kredibel, cepat, dan siap dipakai sejak hari pertama.",
       visual: {
@@ -115,7 +116,7 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
           description:
             "REAL KEKE (Reporting Electronic Access Live Keselamatan dan Kesehatan Kerja) adalah solusi digital terintegrasi yang dirancang khusus untuk memperkuat budaya keselamatan kerja di lingkungan Poltekkes Kemenkes Surabaya. Aplikasi ini mendigitalisasi proses pelaporan insiden guna memastikan setiap risiko di tempat kerja dapat ditangani dengan cepat, akurat, dan transparan.",
           image: "/img/porto/mobile-2.png",
-          href: "#",
+          href: "https://realkeke.vercel.app",
         },
       ],
     },
@@ -126,10 +127,15 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
   ai: {
     hero: {
       eyebrow: "Layanan AI Automation",
-      title: "Automasi yang mengurangi kerja manual dan mempercepat respons tim.",
+      title:
+        "Automasi yang mengurangi kerja manual dan mempercepat respons tim.",
       description:
         "NechCode membantu bisnis mengimplementasikan AI chatbot dan workflow automation yang relevan — dari FAQ otomatis hingga sistem custom lintas tools.",
-      visual: { kind: "icon", name: "smart_toy" },
+      visual: {
+        kind: "image",
+        src: "/img/asset9.png",
+        alt: "Ilustrasi layanan AI automation NechCode",
+      },
     },
     portfolio: {
       eyebrow: "Portfolio Pilihan",

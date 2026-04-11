@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 
 import { SocialIcon } from "@/components/shared/social-icon";
 import { layoutContainer } from "@/config/layout";
-import { buildMailto, getSocialLinks, siteConfig } from "@/config/site";
+import { buildGmailComposeUrl, buildMailto, getSocialLinks, siteConfig } from "@/config/site";
 import { buildWhatsAppInquiryUrl } from "@/lib/whatsapp";
 import { Reveal } from "@/components/shared/reveal";
 import { SiteFooter } from "@/components/sections/home/site-footer";
@@ -42,6 +42,15 @@ export function ContactPage({ content }: ContactPageProps) {
     [briefForm],
   );
 
+  const briefMailtoLink = useMemo(() => {
+    const lines: string[] = [];
+    if (briefForm.name) lines.push(`Nama: ${briefForm.name}`);
+    if (briefForm.email) lines.push(`Email: ${briefForm.email}`);
+    if (briefForm.projectType) lines.push(`Jenis Proyek: ${briefForm.projectType}`);
+    if (briefForm.brief) lines.push(`\nKebutuhan:\n${briefForm.brief}`);
+    return buildGmailComposeUrl("Project Brief NechCode", lines.join("\n"));
+  }, [briefForm]);
+
   return (
     <div className="selection:bg-secondary-container selection:text-on-secondary-container">
       <TopNavbar brand={content.brand} nav={content.nav} cta={content.headerCta} />
@@ -76,7 +85,9 @@ export function ContactPage({ content }: ContactPageProps) {
                     Konsultasi via WhatsApp ({siteConfig.whatsappDisplayName})
                   </a>
                   <a
-                    href={buildMailto("Konsultasi Proyek NechCode")}
+                    href={buildGmailComposeUrl("Konsultasi Proyek NechCode")}
+                    target="_blank"
+                    rel="noreferrer"
                     className="inline-flex w-full items-center justify-center rounded-xl border border-outline-variant/30 bg-surface px-5 py-3 text-sm font-bold text-primary transition hover:bg-surface-container"
                   >
                     Kirim Brief via Email
@@ -155,7 +166,7 @@ export function ContactPage({ content }: ContactPageProps) {
                 >
                   Kirim Brief via WhatsApp
                 </a>
-                <a href={buildMailto("Project Brief NechCode")} className="mt-4 block text-sm font-bold text-primary underline underline-offset-4">
+                <a href={briefMailtoLink} className="mt-4 block text-sm font-bold text-primary underline underline-offset-4">
                   Kirim Brief via Email
                 </a>
               </form>

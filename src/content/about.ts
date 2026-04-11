@@ -62,5 +62,5 @@ export const aboutContent = {
         "Solusi dirancang agar mudah dirawat, mudah dikembangkan, dan tetap relevan saat bisnis Anda tumbuh.",
     },
   ] satisfies AboutPrinciple[],
-  quoteAuthor: "Faisal N., Founder",
+  quoteAuthor: "NechCode Team",
 };

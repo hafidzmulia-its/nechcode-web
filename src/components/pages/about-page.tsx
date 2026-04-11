@@ -198,32 +198,26 @@ export function AboutPage({ content }: AboutPageProps) {
             <Reveal
               y={16}
               delay={0.12}
-              className="mt-8 grid gap-4 rounded-[1.4rem] border border-outline-variant/20 bg-tertiary-fixed p-7 text-on-tertiary-fixed md:grid-cols-3"
+              className="mt-8 flex flex-col items-center gap-6 rounded-[1.4rem] border border-outline-variant/20 bg-tertiary-fixed p-8 text-on-tertiary-fixed sm:flex-row sm:items-start"
             >
+              <div className="relative h-36 w-28 shrink-0 overflow-hidden rounded-2xl border-2 border-white/30 shadow-md sm:h-44 sm:w-36">
+                <Image
+                  src="/img/founder-fotbar.png"
+                  alt="Faishal N., Founder NechCode"
+                  fill
+                  sizes="144px"
+                  className="object-cover object-top"
+                />
+              </div>
               <div>
-                <p className="mb-2 font-headline text-3xl italic">
+                <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] opacity-75">
+                  Meet The Founder
+                </p>
+                <p className="mb-3 font-headline text-3xl italic md:text-4xl">
                   &quot;{about.quote}&quot;
                 </p>
                 <p className="text-xs font-bold uppercase tracking-[0.18em] opacity-80">
                   {about.quoteAuthor}
-                </p>
-              </div>
-              <div>
-                <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.18em] opacity-75">
-                  Strong Fit
-                </p>
-                <p className="text-sm">
-                  Bisnis, UMKM, organisasi, atau institusi yang butuh partner
-                  eksekusi dan pendampingan.
-                </p>
-              </div>
-              <div>
-                <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.18em] opacity-75">
-                  Format Komunikasi
-                </p>
-                <p className="text-sm">
-                  Update mingguan, prioritas sprint, dan keputusan penting
-                  selalu disampaikan ringkas dengan konteks yang jelas.
                 </p>
               </div>
             </Reveal>

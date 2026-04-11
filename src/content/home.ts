@@ -256,7 +256,7 @@ const idContent: HomeContent = {
       "Model kerja kami sederhana: discovery yang jelas, prioritas sprint yang terukur, dan pendampingan setelah rilis agar solusi benar-benar dipakai.",
     quote:
       "Teknologi yang baik bukan yang paling rumit, tapi yang paling berguna untuk tim Anda.",
-    quoteAuthor: "Faisal N., Founder",
+    quoteAuthor: "NechCode Team",
   },
   works: {
     heading: "Karya Pilihan",

@@ -29,8 +29,20 @@ export const siteConfig = {
   },
 } as const;
 
-export function buildMailto(subject: string) {
-  return `mailto:${siteConfig.email}?subject=${encodeURIComponent(subject)}`;
+export function buildMailto(subject: string, body?: string) {
+  const params = new URLSearchParams({ subject });
+  if (body) params.set("body", body);
+  return `mailto:${siteConfig.email}?${params.toString()}`;
+}
+
+export function buildGmailComposeUrl(subject: string, body?: string) {
+  const params = new URLSearchParams({
+    view: "cm",
+    to: siteConfig.email,
+    su: subject,
+  });
+  if (body) params.set("body", body);
+  return `https://mail.google.com/mail/?${params.toString()}`;
 }
 
 export function getSocialLinks() {
