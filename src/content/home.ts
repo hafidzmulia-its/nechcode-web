@@ -200,17 +200,20 @@ const idContent: HomeContent = {
         title: "Business-minded",
         description:
           "Setiap keputusan teknis diarahkan ke efisiensi dan dampak bisnis.",
+        imageUrl: "/img/bisnis.png",
       },
       {
         icon: "build",
         title: "Practical",
         description: "Solusi yang realistis dan mudah digunakan tim Anda.",
+        imageUrl: "/img/eng.png",
       },
       {
         icon: "group",
         title: "Collaborative",
         description:
           "Transparansi penuh melalui sprint board dan update rutin.",
+        imageUrl: "/img/coll.png",
       },
     ],
   },

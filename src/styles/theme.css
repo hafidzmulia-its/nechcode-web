@@ -54,6 +54,18 @@
   --color-border: #c1c7d0;
   --shadow-soft: 0 20px 50px rgba(30, 28, 17, 0.08);
   --shadow-panel: 0 30px 80px rgba(30, 28, 17, 0.14);
+
+  /* Brand accent palette (landing page / warm-tech studio) */
+  --brand-deep: #16425b;
+  --brand-accent: #e37434;
+  --brand-accent-soft: #d97d55;
+  --brand-cream: #efe4cc;
+  --brand-cream-soft: #fbf7ee;
+
+  /* Radius scale (3 canonical values) */
+  --radius-card: 1.4rem;
+  --radius-container: 1.75rem;
+  --radius-hero: 2rem;
 }
 
 @theme {
@@ -117,6 +129,14 @@
   --font-display: var(--font-coolvetica);
   --shadow-soft: var(--shadow-soft);
   --shadow-panel: var(--shadow-panel);
+  --color-brand-deep: #16425b;
+  --color-brand-accent: #e37434;
+  --color-brand-accent-soft: #d97d55;
+  --color-brand-cream: #efe4cc;
+  --color-brand-cream-soft: #fbf7ee;
+  --radius-card: 1.4rem;
+  --radius-container: 1.75rem;
+  --radius-hero: 2rem;
 }
 
 @keyframes float {

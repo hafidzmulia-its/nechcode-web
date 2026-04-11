@@ -11,7 +11,7 @@ type SiteFooterProps = {
 
 export function SiteFooter({ brand, footer }: SiteFooterProps) {
   return (
-    <footer className="w-full bg-[#EFE4CC]">
+    <footer className="w-full bg-brand-cream">
       <div className={`${layoutContainer} py-12 md:py-16`}>
         <div className="mb-8">
           <Link href="/" aria-label={brand.name} className="inline-flex">

@@ -8,7 +8,7 @@ type HeroSectionProps = {
 
 export function HeroSection({ hero }: HeroSectionProps) {
   return (
-    <section className="relative -mt-[72px] w-full overflow-hidden bg-[#16425B] pt-[72px]">
+    <section className="relative -mt-[72px] w-full overflow-hidden bg-brand-deep pt-[72px]">
       <div
         className={`${layoutContainer} flex flex-col items-start gap-8 py-14 sm:gap-10 sm:py-16 md:gap-12 md:py-20 lg:grid lg:grid-cols-12 lg:py-24`}
       >
@@ -58,7 +58,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
               href={hero.primaryCta.href}
               target={hero.primaryCta.external ? "_blank" : undefined}
               rel={hero.primaryCta.external ? "noreferrer" : undefined}
-              className="inline-flex items-center justify-center rounded-2xl bg-[#E37434] px-8 py-4 text-base font-bold !text-white transition-all hover:bg-[#b36a2a] hover:shadow-[0_8px_24px_rgba(196,123,58,0.4)] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C47B3A]/50"
+              className="inline-flex items-center justify-center rounded-2xl bg-brand-accent px-8 py-4 text-base font-bold !text-white transition-all hover:bg-[#b36a2a] hover:shadow-[0_8px_24px_rgba(196,123,58,0.4)] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C47B3A]/50"
             >
               {hero.primaryCta.label}
             </a>

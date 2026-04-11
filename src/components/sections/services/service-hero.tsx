@@ -18,7 +18,7 @@ export function ServiceHero({
   ctaLabel = "Lihat Selengkapnya",
 }: ServiceHeroProps) {
   return (
-    <section className="relative w-full overflow-hidden bg-[#16425B]">
+    <section className="relative w-full overflow-hidden bg-brand-deep">
       <div className="pointer-events-none absolute -left-32 top-10 h-[420px] w-[420px] rounded-full bg-secondary/15 blur-[140px]" />
       <div className="pointer-events-none absolute -right-20 bottom-0 h-[360px] w-[360px] rounded-full bg-secondary-container/15 blur-[130px]" />
 
@@ -39,7 +39,7 @@ export function ServiceHero({
 
             <a
               href={ctaHref}
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#E37434] px-7 py-3.5 text-sm font-bold !text-white shadow-[0_10px_24px_rgba(227,116,52,0.35)] transition hover:-translate-y-0.5 hover:bg-[#c9652a]"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-accent px-7 py-3.5 text-sm font-bold !text-white shadow-[0_10px_24px_rgba(227,116,52,0.35)] transition hover:-translate-y-0.5 hover:bg-[#c9652a]"
             >
               {ctaLabel}
               <span className="material-symbols-outlined text-base">

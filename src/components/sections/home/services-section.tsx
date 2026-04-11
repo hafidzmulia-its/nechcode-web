@@ -11,7 +11,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
   return (
     <section
       id="layanan"
-      className="relative w-full overflow-hidden bg-[#16425B] py-24 md:py-32"
+      className="relative w-full overflow-hidden bg-brand-deep py-24 md:py-32"
     >
       <div className={layoutContainer}>
         <Reveal y={20} duration={0.42}>
@@ -40,7 +40,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                 </p>
                 <a
                   href={`/services/${pillar.id}`}
-                  className="inline-flex w-fit items-center justify-center rounded-xl bg-[#E37434] px-6 py-3 text-sm font-bold !text-white transition-all hover:bg-[#b36a2a] hover:shadow-[0_8px_20px_rgba(196,123,58,0.35)] active:scale-95"
+                  className="inline-flex w-fit items-center justify-center rounded-xl bg-brand-accent px-6 py-3 text-sm font-bold !text-white transition-all hover:bg-[#b36a2a] hover:shadow-[0_8px_20px_rgba(196,123,58,0.35)] active:scale-95"
                 >
                   Lihat Paket!
                 </a>

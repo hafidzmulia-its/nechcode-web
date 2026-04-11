@@ -24,7 +24,7 @@ export function AboutPage({ content }: AboutPageProps) {
 
       <main className="pb-20">
         {/* ===================== HERO — SIAPA NECHCODE ===================== */}
-        <section className="w-full bg-[#16425B] py-20 md:py-24">
+        <section className="w-full bg-brand-deep py-20 md:py-24">
           <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 items-center gap-12 px-6 md:grid-cols-2 md:px-8 lg:px-10 xl:px-12">
             <Reveal once y={18}>
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-secondary-container">
@@ -59,8 +59,7 @@ export function AboutPage({ content }: AboutPageProps) {
 
             <Reveal y={16} delay={0.06} className="flex justify-center">
               <div
-                className="flex h-[320px] w-[320px] items-center justify-center rounded-full shadow-[0_24px_56px_rgba(22,66,91,0.28)] md:h-[380px] md:w-[380px] xl:h-[420px] xl:w-[420px]"
-                style={{ backgroundColor: "#F5EEDC" }}
+                className="flex h-[320px] w-[320px] items-center justify-center rounded-full bg-surface shadow-[0_24px_56px_rgba(22,66,91,0.28)] md:h-[380px] md:w-[380px] xl:h-[420px] xl:w-[420px]"
               >
                 <div className="relative h-[180px] w-[180px] md:h-[220px] md:w-[220px] xl:h-[250px] xl:w-[250px]">
                   <Image
@@ -93,8 +92,7 @@ export function AboutPage({ content }: AboutPageProps) {
             <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
               <Reveal once y={14} delay={0}>
                 <div
-                  className="h-full rounded-[1.4rem] p-6 shadow-[0_4px_16px_rgba(227,116,52,0.25)]"
-                  style={{ backgroundColor: "#E37434" }}
+                  className="h-full rounded-[1.4rem] bg-brand-accent p-6 shadow-[0_4px_16px_rgba(227,116,52,0.25)]"
                 >
                   <p className="mb-1 text-xs font-bold uppercase tracking-[0.18em] text-white/70">
                     Visi
@@ -107,8 +105,7 @@ export function AboutPage({ content }: AboutPageProps) {
 
               <Reveal once y={14} delay={0.05}>
                 <div
-                  className="h-full rounded-[1.4rem] p-6 shadow-[0_4px_16px_rgba(227,116,52,0.25)]"
-                  style={{ backgroundColor: "#E37434" }}
+                  className="h-full rounded-[1.4rem] bg-brand-accent p-6 shadow-[0_4px_16px_rgba(227,116,52,0.25)]"
                 >
                   <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-white/70">
                     Misi
@@ -132,7 +129,7 @@ export function AboutPage({ content }: AboutPageProps) {
         </section>
 
         {/* ===================== APA YANG BISA KAMI LAKUKAN ===================== */}
-        <section className="w-full bg-[#16425B] py-16 md:py-20">
+        <section className="w-full bg-brand-deep py-16 md:py-20">
           <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
             <Reveal once y={16} className="max-w-2xl">
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary-container">
@@ -148,10 +145,7 @@ export function AboutPage({ content }: AboutPageProps) {
               {capabilities.map((item, index) => (
                 <Reveal key={item.title} once y={18} delay={index * 0.07}>
                   <article className="flex h-full flex-col rounded-[1.4rem] border border-white/10 bg-white/10 p-6 backdrop-blur-sm">
-                    <div
-                      className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl"
-                      style={{ backgroundColor: "#E37434" }}
-                    >
+                    <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-accent">
                       <span className="material-symbols-outlined text-lg text-white">
                         {item.icon}
                       </span>

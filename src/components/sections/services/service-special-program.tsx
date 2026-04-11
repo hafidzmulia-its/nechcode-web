@@ -12,10 +12,7 @@ export function ServiceSpecialProgram() {
     <section className="w-full bg-surface pb-20 md:pb-24">
       <div className="mx-auto w-full max-w-[1240px] px-6 md:px-8 lg:px-10 xl:px-12">
         <Reveal once y={18}>
-          <div
-            className="rounded-[2rem] p-8 md:p-12 lg:p-14"
-            style={{ backgroundColor: "#D97D55" }}
-          >
+          <div className="rounded-[2rem] bg-brand-accent-soft p-8 md:p-12 lg:p-14">
             <h2 className="font-headline text-3xl font-bold text-white md:text-4xl">
               Program Khusus untuk tahap awal!
             </h2>
@@ -27,14 +24,8 @@ export function ServiceSpecialProgram() {
             <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
               {specialPrograms.items.map((item, index) => (
                 <Reveal key={item.title} once y={14} delay={index * 0.06}>
-                  <article
-                    className="h-full rounded-[1.25rem] p-6 md:p-7"
-                    style={{ backgroundColor: "#F5EEDC" }}
-                  >
-                    <div
-                      className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg"
-                      style={{ backgroundColor: "#D97D55" }}
-                    >
+                  <article className="h-full rounded-[1.25rem] bg-surface p-6 md:p-7">
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-accent-soft">
                       <span className="material-symbols-outlined text-lg text-white">
                         {ITEM_ICONS[index] ?? "star"}
                       </span>

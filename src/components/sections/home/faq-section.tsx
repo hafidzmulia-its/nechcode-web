@@ -23,7 +23,7 @@ function FaqItem({
   const bodyRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-[rgba(29,90,141,0.09)] bg-[#FBF7EE] shadow-[0_8px_18px_rgba(34,48,60,0.055)]">
+    <div className="overflow-hidden rounded-2xl border border-[rgba(29,90,141,0.09)] bg-brand-cream-soft shadow-[0_8px_18px_rgba(34,48,60,0.055)]">
       <button
         type="button"
         onClick={onToggle}
@@ -59,10 +59,10 @@ export function FaqSection({ faq }: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="faq" className="relative w-full overflow-hidden bg-[#F5EEDC] py-24 md:py-28">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#efe4cc]/70 to-transparent" />
+    <section id="faq" className="relative w-full overflow-hidden bg-surface py-24 md:py-28">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-brand-cream/70 to-transparent" />
       <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
-        <div className="rounded-[2rem] border border-[rgba(29,90,141,0.08)] bg-[#EFE4CC] px-6 py-12 shadow-[0_12px_28px_rgba(34,46,58,0.07)] md:px-8 md:py-14">
+        <div className="rounded-[2rem] border border-[rgba(29,90,141,0.08)] bg-brand-cream px-6 py-12 shadow-[0_12px_28px_rgba(34,46,58,0.07)] md:px-8 md:py-14">
           <div className="mx-auto max-w-3xl">
             <Reveal y={18} duration={0.36} className="mb-12 text-center">
               <h2 className="font-headline text-4xl text-primary md:text-5xl">
