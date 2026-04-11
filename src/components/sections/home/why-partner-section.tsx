@@ -11,7 +11,7 @@ export function WhyPartnerSection({ whyPartner }: WhyPartnerSectionProps) {
   return (
     <section
       id="kemitraan"
-      className="w-full overflow-hidden bg-[#F5EEDC] py-16 md:py-24"
+      className="w-full overflow-hidden bg-surface py-16 md:py-24"
     >
       <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
         {/* Heading */}
@@ -23,11 +23,11 @@ export function WhyPartnerSection({ whyPartner }: WhyPartnerSectionProps) {
 
         {/* Main container */}
         <Reveal y={24} duration={0.45}>
-          <div className="overflow-hidden rounded-2xl bg-[#16425B]">
+          <div className="overflow-hidden rounded-2xl bg-brand-deep">
             {/* Desktop: 4 kolom — Mobile: stack */}
             <div className="flex flex-col md:flex-row md:items-stretch">
               {/* 1. Orange square — persegi di desktop */}
-              <div className="w-full shrink-0 bg-[#D97D55] p-7 md:aspect-square md:w-[220px] lg:w-[260px]">
+              <div className="w-full shrink-0 bg-brand-accent-soft p-7 md:aspect-square md:w-[220px] lg:w-[260px]">
                 <p className="font-headline text-xl font-bold uppercase text-white">
                   {whyPartner.featured.label}
                 </p>

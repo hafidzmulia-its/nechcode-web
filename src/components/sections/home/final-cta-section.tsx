@@ -12,11 +12,11 @@ export function FinalCtaSection({ cta }: FinalCtaSectionProps) {
   return (
     <section
       id="kontak"
-      className="relative w-full overflow-hidden bg-[#F5EEDC] py-16 md:py-24"
+      className="relative w-full overflow-hidden bg-surface py-16 md:py-24"
     >
       <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
         <Reveal y={22} duration={0.42}>
-          <div className="relative overflow-hidden rounded-[2rem] bg-[#16425B] px-8 py-16 md:px-16 md:py-20">
+          <div className="relative overflow-hidden rounded-[2rem] bg-brand-deep px-8 py-16 md:px-16 md:py-20">
             {/* Left character — asset7 */}
             <div className="pointer-events-none absolute bottom-0 left-0 hidden h-[85%] w-[220px] lg:block xl:w-[260px]">
               <Image
@@ -60,7 +60,7 @@ export function FinalCtaSection({ cta }: FinalCtaSectionProps) {
               <Reveal y={12} delay={0.18} duration={0.38}>
                 <Link
                   href={cta.primaryCta.href}
-                  className="inline-flex items-center justify-center rounded-full bg-[#D97D55] px-10 py-4 text-base font-bold !text-white transition-all hover:bg-[#b36a2a] hover:shadow-[0_12px_30px_rgba(217,125,85,0.4)] active:scale-95"
+                  className="inline-flex items-center justify-center rounded-full bg-brand-accent-soft px-10 py-4 text-base font-bold !text-white transition-all hover:bg-[#b36a2a] hover:shadow-[0_12px_30px_rgba(217,125,85,0.4)] active:scale-95"
                 >
                   {cta.primaryCta.label}
                 </Link>

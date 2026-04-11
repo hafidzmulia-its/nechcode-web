@@ -19,7 +19,7 @@ export function ServicePricing({
   ctaSubnote,
 }: ServicePricingProps) {
   return (
-    <section id="pricing" className="w-full bg-[#F5EEDC] pb-24 md:pb-32">
+    <section id="pricing" className="w-full bg-surface pb-24 md:pb-32">
       <div className="mx-auto w-full max-w-[1240px] px-6 md:px-8 lg:px-10 xl:px-12">
         <Reveal once y={16} className="pb-12 pt-20 md:pt-24">
           <h2 className="font-headline text-3xl leading-snug text-primary md:text-4xl lg:text-5xl">

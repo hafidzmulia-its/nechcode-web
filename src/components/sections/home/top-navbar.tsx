@@ -128,8 +128,8 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
                       onClick={() => setDropdownOpen((prev) => !prev)}
                       className={`inline-flex items-center gap-1 rounded-lg px-3 py-1.5 font-headline text-base transition-all ${
                         isActive
-                          ? "bg-[#16425B] font-semibold !text-white"
-                          : "font-normal text-[#1e1c11]/70 hover:bg-[#16425B] hover:!text-white"
+                          ? "bg-brand-deep font-semibold !text-white"
+                          : "font-normal text-[#1e1c11]/70 hover:bg-brand-deep hover:!text-white"
                       }`}
                     >
                       {item.label}
@@ -146,7 +146,7 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
                             key={sub.label}
                             href={sub.href}
                             onClick={() => setDropdownOpen(false)}
-                            className="block px-5 py-3 font-sans text-sm font-medium text-[#1e1c11]/80 transition-colors hover:bg-[#16425B] hover:!text-white"
+                            className="block px-5 py-3 font-sans text-sm font-medium text-[#1e1c11]/80 transition-colors hover:bg-brand-deep hover:!text-white"
                           >
                             {sub.label}
                           </Link>
@@ -163,8 +163,8 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
                   href={item.href}
                   className={
                     isActive
-                      ? "rounded-lg bg-[#16425B] px-3 py-1.5 font-headline text-base font-semibold !text-white"
-                      : "rounded-lg px-3 py-1.5 font-headline text-base font-normal text-[#1e1c11]/70 transition-all hover:bg-[#16425B] hover:!text-white"
+                      ? "rounded-lg bg-brand-deep px-3 py-1.5 font-headline text-base font-semibold !text-white"
+                      : "rounded-lg px-3 py-1.5 font-headline text-base font-normal text-[#1e1c11]/70 transition-all hover:bg-brand-deep hover:!text-white"
                   }
                 >
                   {item.label}
@@ -221,7 +221,7 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
                         />
                       </button>
                       {mobileLayananOpen && (
-                        <div className="ml-4 mt-1 space-y-1 border-l-2 border-[#16425B]/20 pl-3">
+                        <div className="ml-4 mt-1 space-y-1 border-l-2 border-brand-deep/20 pl-3">
                           {layananDropdown.map((sub) => (
                             <Link
                               key={sub.label}
@@ -230,7 +230,7 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
                                 setMobileLayananOpen(false);
                                 setMobileOpen(false);
                               }}
-                              className="block rounded-lg px-3 py-2 text-sm text-on-surface-variant transition-colors hover:bg-[#16425B] hover:!text-white"
+                              className="block rounded-lg px-3 py-2 text-sm text-on-surface-variant transition-colors hover:bg-brand-deep hover:!text-white"
                             >
                               {sub.label}
                             </Link>

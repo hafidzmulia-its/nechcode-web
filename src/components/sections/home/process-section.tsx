@@ -14,7 +14,7 @@ export function ProcessSection({ process }: ProcessSectionProps) {
   return (
     <section
       id="alur"
-      className="relative w-full overflow-hidden bg-[#F5EEDC] py-20 md:py-28"
+      className="relative w-full overflow-hidden bg-surface py-20 md:py-28"
     >
       <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
         {/* Heading */}
@@ -44,7 +44,7 @@ export function ProcessSection({ process }: ProcessSectionProps) {
                       marginBottom: yOffset < 0 ? Math.abs(yOffset) : 0,
                       transform: `rotate(${rotation}deg)`,
                     }}
-                    className="relative z-10 w-[170px] shrink-0 overflow-hidden rounded-2xl bg-[#16425B] p-1 shadow-[0_12px_32px_rgba(22,66,91,0.25)] lg:w-[200px]"
+                    className="relative z-10 w-[170px] shrink-0 overflow-hidden rounded-2xl bg-brand-deep p-1 shadow-[0_12px_32px_rgba(22,66,91,0.25)] lg:w-[200px]"
                   >
                     {/* Inner card */}
                     <div className="rounded-xl bg-[#1e5a7a] p-4 lg:p-5">
@@ -70,7 +70,7 @@ export function ProcessSection({ process }: ProcessSectionProps) {
                           y1="1"
                           x2="100%"
                           y2="1"
-                          stroke="#16425B"
+                          stroke="var(--brand-deep)"
                           strokeWidth="2"
                           strokeDasharray="5,4"
                           strokeLinecap="round"
@@ -87,7 +87,7 @@ export function ProcessSection({ process }: ProcessSectionProps) {
         {/* Mobile: zigzag stack */}
         <div className="relative mt-4 block md:hidden">
           {/* Vertical connector line */}
-          <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 border-l-2 border-dashed border-[#16425B]/30" />
+          <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 border-l-2 border-dashed border-brand-deep/30" />
 
           <div className="space-y-10">
             {process.steps.map((step, index) => {
@@ -102,12 +102,12 @@ export function ProcessSection({ process }: ProcessSectionProps) {
                   className={`relative flex items-center gap-4 ${isEven ? "flex-row" : "flex-row-reverse"}`}
                 >
                   {/* Center dot */}
-                  <div className="z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#16425B] text-xs font-bold text-white">
+                  <div className="z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-deep text-xs font-bold text-white">
                     {String(index + 1).padStart(2, "0")}
                   </div>
 
                   {/* Card */}
-                  <div className="flex-1 overflow-hidden rounded-2xl bg-[#16425B] p-1 shadow-[0_8px_20px_rgba(22,66,91,0.18)]">
+                  <div className="flex-1 overflow-hidden rounded-2xl bg-brand-deep p-1 shadow-[0_8px_20px_rgba(22,66,91,0.18)]">
                     <div className="rounded-xl bg-[#1e5a7a] p-4">
                       <h3 className="mb-1.5 font-headline text-lg font-bold text-white">
                         {step.title}

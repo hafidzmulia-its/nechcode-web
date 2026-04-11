@@ -9,11 +9,11 @@ type ProblemsSectionProps = {
 
 export function ProblemsSection({ problems }: ProblemsSectionProps) {
   return (
-    <section className="relative w-full overflow-hidden bg-[#F5EEDC] py-24 md:py-32">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#efe4cc]/85 to-transparent" />
+    <section className="relative w-full overflow-hidden bg-surface py-24 md:py-32">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-brand-cream/85 to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-[#f2e9d7]/65" />
       <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
-        <div className="rounded-[2rem] border border-[rgba(29,90,141,0.08)] bg-[#EFE4CC] px-6 py-12 shadow-[0_18px_44px_rgba(43,56,70,0.08)] md:px-8 md:py-14 lg:px-10">
+        <div className="rounded-[2rem] border border-[rgba(29,90,141,0.08)] bg-brand-cream px-6 py-12 shadow-[0_18px_44px_rgba(43,56,70,0.08)] md:px-8 md:py-14 lg:px-10">
           <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-16">
             <Reveal className="lg:col-span-5" y={20} x={-14} duration={0.4}>
               <h2 className="mb-6 font-headline text-4xl leading-tight text-primary md:text-5xl">{problems.heading}</h2>
@@ -33,7 +33,7 @@ export function ProblemsSection({ problems }: ProblemsSectionProps) {
             </Reveal>
 
             <Reveal className="lg:col-span-7" y={20} x={14} delay={0.1} duration={0.42}>
-              <div className="rounded-[1.5rem] border border-[rgba(29,90,141,0.1)] bg-[#FBF7EE] p-6 shadow-[0_14px_32px_rgba(37,50,62,0.08)] md:p-8">
+              <div className="rounded-[1.5rem] border border-[rgba(29,90,141,0.1)] bg-brand-cream-soft p-6 shadow-[0_14px_32px_rgba(37,50,62,0.08)] md:p-8">
                 <div className="mb-6 rounded-xl border border-[rgba(29,90,141,0.1)] bg-[#f2ece0] p-5">
                   <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Indikator Umum</p>
                   <ul className="space-y-2 text-sm text-[#41505b]">
