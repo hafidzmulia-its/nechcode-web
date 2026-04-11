@@ -13,9 +13,11 @@ type CampaignState = {
 };
 
 export function useCampaignState(campaign: Campaign | null, forcedUrgency?: Campaign["urgencyMode"]) {
-  const [now, setNow] = useState(() => Date.now());
+  const [now, setNow] = useState(0);
 
   useEffect(() => {
+    setNow(Date.now());
+
     if (!campaign?.showCountdown) {
       return;
     }

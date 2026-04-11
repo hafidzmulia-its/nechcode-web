@@ -7,23 +7,23 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "Layanan",
   description:
-    "Layanan NechCode: pembuatan web app kustom, sistem internal bisnis, automasi workflow, dan integrasi AI — untuk tim yang ingin bergerak lebih efisien.",
+    "Layanan digital NechCode: website, mobile app, dan AI automation — mulai dari paket awal hingga implementasi custom sesuai kebutuhan bisnis.",
   alternates: {
     canonical: `${siteConfig.url}/services`,
   },
   openGraph: {
     title: `Layanan | ${siteConfig.name}`,
     description:
-      "Layanan NechCode: pembuatan web app kustom, sistem internal bisnis, automasi workflow, dan integrasi AI — untuk tim yang ingin bergerak lebih efisien.",
+      "Layanan digital NechCode: website, mobile app, dan AI automation — mulai dari paket awal hingga implementasi custom sesuai kebutuhan bisnis.",
     url: `${siteConfig.url}/services`,
   },
 };
 
-type ServicesPageRouteProps = {
+export default async function Page({
+  searchParams,
+}: {
   searchParams: Promise<{ pillar?: string }>;
-};
-
-export default async function Page({ searchParams }: ServicesPageRouteProps) {
+}) {
   const content = getHomeContent();
   const params = await searchParams;
 

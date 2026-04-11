@@ -1,18 +1,10 @@
-import { Manrope, Newsreader } from "next/font/google";
+import { Poppins } from "next/font/google";
 import localFont from "next/font/local";
 
-export const manrope = Manrope({
-  variable: "--font-manrope",
+export const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
-  display: "swap",
-});
-
-export const newsreader = Newsreader({
-  variable: "--font-newsreader",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -33,4 +25,4 @@ export const coolvetica = localFont({
   ],
 });
 
-export const appFontVariables = `${manrope.variable} ${newsreader.variable} ${coolvetica.variable}`;
+export const appFontVariables = `${poppins.variable} ${coolvetica.variable}`;
