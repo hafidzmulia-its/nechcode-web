@@ -67,7 +67,7 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
           description:
             "SOULMOM adalah platform digital yang dirancang untuk membantu ibu di Indonesia melakukan deteksi dini kesehatan mental pasca melahirkan secara mandiri, mudah, dan privat.",
           image: "/img/porto/web-2.png",
-          href: "https://elkpd.vercel.app",
+          href: "https://soulmom.vercel.app ",
         },
         {
           title: "E-LKPD",
@@ -75,7 +75,7 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
           description:
             "ELKPD - E-Learning Platform adalah sebuah media pembelajaran digital inovatif berbentuk Lembar Kerja Peserta Didik Elektronik (E-LKPD).",
           image: "/img/porto/web-3.png",
-          href: "https://soulmom.vercel.app",
+          href: "https://elkpd.vercel.app",
         },
       ],
     },
