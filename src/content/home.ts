@@ -274,16 +274,16 @@ const idContent: HomeContent = {
     },
     stats: [
       {
-        value: "3+",
+        value: "1+",
         suffix: "Tahun",
         description:
-          "Pengalaman membangun solusi digital untuk berbagai skala bisnis dan organisasi.",
+          "Tahun pengalaman membangun solusi digital untuk berbagai skala bisnis dan organisasi.",
       },
       {
-        value: "20+",
+        value: "10+",
         suffix: "Proyek",
         description:
-          "Website, sistem internal, dan automasi AI yang sudah berjalan di production.",
+          "Proyek Website, sistem internal, dan automasi AI yang sudah berjalan di production.",
       },
     ],
     items: [],
