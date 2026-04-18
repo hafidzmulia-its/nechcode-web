@@ -1,6 +1,6 @@
 import { buildWhatsAppInquiryUrl } from "@/lib/whatsapp";
 
-export type ServicePillarId = "web" | "mobile" | "ai";
+export type ServicePillarId = "web" | "mobile" | "ai" | "data";
 
 type Cta = {
   label: string;
@@ -25,6 +25,11 @@ export type ServicePackage = {
   cta: Cta;
 };
 
+export type AddOnItem = {
+  name: string;
+  price: string;
+};
+
 export type ServicePillar = {
   id: ServicePillarId;
   label: string;
@@ -37,6 +42,12 @@ export type ServicePillar = {
   sectionBody: string;
   microcopy: string;
   packages: ServicePackage[];
+  addOns?: {
+    title: string;
+    description: string;
+    items: AddOnItem[];
+    note: string;
+  };
 };
 
 const pillars: ServicePillar[] = [
@@ -300,12 +311,117 @@ const pillars: ServicePillar[] = [
       },
     ],
   },
+  {
+    id: "data",
+    label: "Predictive Data",
+    navbarTitle: "Predictive Data",
+    navbarBody:
+      "Analisis dan prediksi data menggunakan Machine Learning untuk mengubah dataset Anda menjadi insight dan prediksi yang bermanfaat bagi bisnis maupun penelitian.",
+    navbarPriceCue: "Mulai dari Rp1.500.000",
+    navbarCtaLabel: "Lihat Paket Data",
+    selectorLabel: "Predictive Data",
+    sectionTitle: "Predictive Data — Analisis & Prediksi berbasis Machine Learning",
+    sectionBody:
+      "Kami membantu bisnis, UMKM, dan peneliti mengubah data historis menjadi model prediksi yang actionable. Cukup siapkan data dalam format CSV, Excel, atau dataset numerik — kami yang kerjakan analisisnya.",
+    microcopy:
+      "Harga bervariasi tergantung kompleksitas dataset, jumlah variabel, dan kedalaman analisis yang dibutuhkan.",
+    packages: [
+      {
+        name: "Basic Prediction",
+        description:
+          "Solusi prediksi data sederhana untuk memahami tren dari dataset Anda. Cocok untuk UMKM, mahasiswa, dan bisnis yang baru mulai analisis data.",
+        priceCue: "Rp 1.500.000",
+        subnote: "Estimasi pengerjaan 4–6 hari kerja.",
+        features: [
+          "Analisis dataset",
+          "Membuat model prediksi",
+          "Identifikasi pola data",
+          "Visualisasi hasil prediksi",
+          "Laporan analisis (PDF)",
+          "Grafik tren dan prediksi",
+          "Model prediksi (.pkl)",
+          "Konsultasi interpretasi",
+        ],
+        cta: {
+          label: "Mulai Analisis Data",
+          href: buildWhatsAppInquiryUrl({
+            sourcePage: "Services Page - Predictive Data",
+            serviceInterest: "Predictive Data",
+            packageInterest: "Basic Prediction",
+          }),
+          external: true,
+        },
+      },
+      {
+        name: "Pro Prediction",
+        description:
+          "Analisis data lebih mendalam untuk menghasilkan prediksi yang lebih akurat. Sudah termasuk semua fitur Basic Prediction. Cocok untuk bisnis berbasis data, penelitian akademik, dan analisis data kompleks.",
+        priceCue: "Rp 4.000.000",
+        subnote: "Estimasi pengerjaan 1–2 minggu.",
+        badge: "Paling Populer",
+        features: [
+          "Semua fitur Basic Prediction",
+          "Analisis hubungan antar variabel",
+          "Pengujian beberapa model ML",
+          "Evaluasi performa model",
+          "Prediksi lebih akurat",
+          "Analisis faktor yang memengaruhi hasil",
+          "Optimasi model Machine Learning",
+          "Laporan analisis (PDF) + visualisasi data",
+        ],
+        cta: {
+          label: "Mulai Analisis",
+          href: buildWhatsAppInquiryUrl({
+            sourcePage: "Services Page - Predictive Data",
+            serviceInterest: "Predictive Data",
+            packageInterest: "Pro Prediction",
+          }),
+          external: true,
+        },
+      },
+      {
+        name: "Custom Prediction",
+        description:
+          "Jika kebutuhan Anda tidak termasuk paket Basic atau Pro, kami dapat menyesuaikan solusi analisis data sepenuhnya dengan konteks bisnis atau penelitian Anda.",
+        priceCue: "Mulai dari konsultasi",
+        isCustom: true,
+        features: [
+          "Dataset lebih kompleks",
+          "Kebutuhan analisis khusus",
+          "Integrasi ke sistem bisnis",
+          "Scope dan harga menyesuaikan kebutuhan proyek",
+        ],
+        cta: {
+          label: "Konsultasi Data Anda",
+          href: buildWhatsAppInquiryUrl({
+            sourcePage: "Services Page - Predictive Data",
+            serviceInterest: "Predictive Data",
+            packageInterest: "Custom Prediction",
+          }),
+          external: true,
+        },
+      },
+    ],
+    addOns: {
+      title: "Add-On Services",
+      description:
+        "Fitur tambahan yang dapat digunakan bersama paket Basic atau Pro Prediction untuk meningkatkan kualitas analisis data Anda.",
+      items: [
+        { name: "Data preprocessing", price: "Rp 50.000 – Rp 150.000" },
+        { name: "Feature engineering", price: "Rp 100.000 – Rp 250.000" },
+        { name: "Hyperparameter tuning", price: "Rp 150.000 – Rp 250.000" },
+        { name: "Advanced model evaluation", price: "Rp 100.000 – Rp 200.000" },
+        { name: "Deployment model ke API", price: "Rp 200.000 – Rp 250.000" },
+      ],
+      note: "Add-on dapat dipilih sesuai kebutuhan analisis data Anda.",
+    },
+  },
 ];
 
 export const servicesContent = {
   hero: {
     title: "Layanan digital yang bisa dimulai dari paket, lalu tumbuh sesuai kebutuhan",
-    body: "NechCode membantu bisnis, UMKM, organisasi, dan institusi membangun website, mobile app, dan automasi AI yang relevan dengan tahap pertumbuhan mereka - mulai dari kebutuhan dasar yang harus cepat jalan sampai solusi custom yang lebih kompleks.",
+    body: "NechCode membantu bisnis, UMKM, organisasi, dan institusi membangun website, mobile app, automasi AI, dan solusi Predictive Data yang relevan dengan tahap pertumbuhan mereka - mulai dari kebutuhan dasar yang harus cepat jalan sampai solusi custom yang lebih kompleks.",
   },
   pricingIntro: {
     title: "Pilih jalur mulai yang paling masuk akal",
@@ -403,4 +519,8 @@ export const servicesContent = {
 
 export function getServicePillarById(id: ServicePillarId) {
   return servicesContent.pillars.find((pillar) => pillar.id === id) ?? servicesContent.pillars[0];
+}
+
+export function isValidPillarId(value: string | null): value is ServicePillarId {
+  return value === "web" || value === "mobile" || value === "ai" || value === "data";
 }

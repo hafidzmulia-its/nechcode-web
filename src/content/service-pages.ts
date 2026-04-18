@@ -34,6 +34,28 @@ export type ServicePageCopy = {
 };
 
 export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
+  data: {
+    hero: {
+      eyebrow: "Layanan Predictive Data",
+      title: "Ubah data Anda menjadi insight dan prediksi yang actionable.",
+      description:
+        "NechCode membantu bisnis, UMKM, dan peneliti menganalisis dataset dan membangun model prediksi berbasis Machine Learning — cukup siapkan data dalam format CSV, Excel, atau dataset numerik.",
+      visual: {
+        kind: "icon",
+        name: "analytics",
+      },
+    },
+    portfolio: {
+      eyebrow: "Portfolio Pilihan",
+      title: "Hasil Karya dari Kami",
+      body: "Beberapa implementasi Predictive Data yang kami kerjakan.",
+      maxColumns: 2,
+      items: [],
+    },
+    pricing: {
+      title: "Mulai dari dataset sederhana hingga analisis Machine Learning yang kompleks.",
+    },
+  },
   web: {
     hero: {
       eyebrow: "Layanan Website",

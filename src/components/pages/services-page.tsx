@@ -7,7 +7,7 @@ import { Reveal } from "@/components/shared/reveal";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SiteFooter } from "@/components/sections/home/site-footer";
 import { TopNavbar } from "@/components/sections/home/top-navbar";
-import { servicesContent, type ServicePillarId } from "@/content/services";
+import { isValidPillarId, servicesContent, type ServicePillarId } from "@/content/services";
 import type { HomeContent } from "@/content/home";
 
 type ServicesPageProps = {
@@ -16,7 +16,7 @@ type ServicesPageProps = {
 };
 
 function isPillarId(value: string | null): value is ServicePillarId {
-  return value === "web" || value === "mobile" || value === "ai";
+  return isValidPillarId(value);
 }
 
 export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
@@ -48,6 +48,7 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
   function pillarIcon(pillarId: ServicePillarId) {
     if (pillarId === "web") return "language";
     if (pillarId === "mobile") return "phone_iphone";
+    if (pillarId === "data") return "analytics";
     return "smart_toy";
   }
 
@@ -126,7 +127,7 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
             </Reveal>
 
             <Reveal y={14} delay={0.04} className="mt-8">
-              <div className="grid grid-cols-1 gap-2 rounded-2xl border border-outline-variant/20 bg-surface-container-low p-2.5 md:grid-cols-3 md:gap-3">
+              <div className="grid grid-cols-1 gap-2 rounded-2xl border border-outline-variant/20 bg-surface-container-low p-2.5 sm:grid-cols-2 md:grid-cols-4 md:gap-3">
                 {servicesContent.pillars.map((pillar) => {
                   const isActive = pillar.id === activePillarId;
                   return (
@@ -217,6 +218,26 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
                 </div>
 
                 <p className="mt-6 text-sm text-on-surface-variant">{activePillar.microcopy}</p>
+
+                {activePillar.addOns && (
+                  <div className="mt-8 rounded-[1.35rem] border border-secondary/30 bg-[#e9f6f9] p-6 md:p-8">
+                    <p className="mb-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Add-On</p>
+                    <h4 className="font-headline text-2xl text-primary">{activePillar.addOns.title}</h4>
+                    <p className="mt-2 text-sm text-on-surface-variant">{activePillar.addOns.description}</p>
+                    <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
+                      {activePillar.addOns.items.map((addon) => (
+                        <div key={addon.name} className="flex items-start gap-2.5 rounded-xl border border-secondary/20 bg-white/70 p-4">
+                          <span className="material-symbols-outlined mt-0.5 text-base text-secondary">check_circle</span>
+                          <div>
+                            <p className="text-sm font-semibold text-primary">{addon.name}</p>
+                            <p className="mt-0.5 text-xs text-on-surface-variant">{addon.price}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="mt-5 text-xs text-on-surface-variant">{activePillar.addOns.note}</p>
+                  </div>
+                )}
               </div>
             </Reveal>
 

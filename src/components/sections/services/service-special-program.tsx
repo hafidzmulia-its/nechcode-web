@@ -9,7 +9,7 @@ export function ServiceSpecialProgram() {
   const { specialPrograms } = servicesContent;
 
   return (
-    <section className="w-full bg-surface pb-20 md:pb-24">
+    <section className="w-full bg-surface pb-20 pt-16 md:pb-24 md:pt-24">
       <div className="mx-auto w-full max-w-[1240px] px-6 md:px-8 lg:px-10 xl:px-12">
         <Reveal once y={18}>
           <div className="rounded-[2rem] bg-brand-accent-soft p-8 md:p-12 lg:p-14">

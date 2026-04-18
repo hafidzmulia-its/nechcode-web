@@ -22,6 +22,7 @@ const layananDropdown = [
   { label: "Web Packages", href: "/services/web" },
   { label: "Mobile Apps", href: "/services/mobile" },
   { label: "AI Automation & Chatbot", href: "/services/ai" },
+  { label: "Predictive Data", href: "/services/predictive-data" },
 ];
 
 function isNavItemActive(href: string, pathname: string | null): boolean {

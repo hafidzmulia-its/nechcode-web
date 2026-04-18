@@ -1,6 +1,7 @@
 "use client";
 
 import { Reveal } from "@/components/shared/reveal";
+import { buildWhatsAppInquiryUrl } from "@/lib/whatsapp";
 import type { ServicePackage, ServicePillar } from "@/content/services";
 
 type ServicePricingProps = {
@@ -46,6 +47,47 @@ export function ServicePricing({
             {pillar.microcopy}
           </p>
         </Reveal>
+
+        {pillar.addOns && (
+          <Reveal once y={14} delay={0.16} className="mt-10">
+            <div className="rounded-[1.75rem] border border-secondary/30 bg-[#e9f6f9] p-7 md:p-10">
+              <p className="mb-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Add-On</p>
+              <h3 className="font-headline text-2xl text-primary md:text-3xl">{pillar.addOns.title}</h3>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-on-surface-variant md:text-base">
+                {pillar.addOns.description}
+              </p>
+              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
+                {pillar.addOns.items.map((addon) => (
+                  <div
+                    key={addon.name}
+                    className="flex items-start gap-3 rounded-xl border border-secondary/20 bg-white/70 p-4"
+                  >
+                    <span className="material-symbols-outlined mt-0.5 text-base text-secondary">check_circle</span>
+                    <div>
+                      <p className="text-sm font-semibold text-primary">{addon.name}</p>
+                      <p className="mt-0.5 text-xs text-on-surface-variant">{addon.price}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+                <p className="text-xs text-on-surface-variant">{pillar.addOns.note}</p>
+                <a
+                  href={buildWhatsAppInquiryUrl({
+                    sourcePage: "Services Page - Predictive Data",
+                    serviceInterest: "Predictive Data",
+                    packageInterest: "Add-On Services",
+                  })}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center rounded-full border border-secondary/30 bg-white px-5 py-2.5 text-sm font-bold text-primary transition hover:bg-surface-container-high"
+                >
+                  Konsultasi Kebutuhan Data
+                </a>
+              </div>
+            </div>
+          </Reveal>
+        )}
       </div>
     </section>
   );
