@@ -41,8 +41,9 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
       description:
         "NechCode membantu bisnis, UMKM, dan peneliti menganalisis dataset dan membangun model prediksi berbasis Machine Learning — cukup siapkan data dalam format CSV, Excel, atau dataset numerik.",
       visual: {
-        kind: "icon",
-        name: "analytics",
+        kind: "image",
+        src: "/img/asset9.png",
+        alt: "Ilustrasi layanan predictive data NechCode",
       },
     },
     portfolio: {
@@ -53,7 +54,8 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
       items: [],
     },
     pricing: {
-      title: "Mulai dari dataset sederhana hingga analisis Machine Learning yang kompleks.",
+      title:
+        "Mulai dari dataset sederhana hingga analisis Machine Learning yang kompleks.",
     },
   },
   web: {
