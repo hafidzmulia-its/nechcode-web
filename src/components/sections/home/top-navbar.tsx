@@ -101,8 +101,8 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
   return (
     <>
       <CampaignAnnouncementBar campaign={topBarCampaign} />
-      <nav className="sticky top-0 z-50 w-full bg-transparent px-6 pt-4 pb-2 md:px-16 md:pt-5">
-        <div className="relative flex items-center justify-between rounded-full border border-[#1d5a8d]/30 bg-[#f8f6f2] px-5 py-2.5 shadow-[0_4px_20px_rgba(0,0,0,0.10)] md:px-8 md:py-3">
+      <nav className="sticky top-0 z-50 w-full bg-transparent px-0 pt-0 pb-0">
+        <div className="relative flex min-h-[84px] w-full items-center justify-between border-b border-[#1d5a8d]/18 bg-[#f8f6f2] px-4 shadow-[0_4px_20px_rgba(0,0,0,0.08)] sm:px-6 md:px-10 lg:px-16 xl:px-24">
           <Link href="/" aria-label={brand.name} className="justify-self-start">
             <Image
               src="/logonav.png"
@@ -127,10 +127,10 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
                     <button
                       type="button"
                       onClick={() => setDropdownOpen((prev) => !prev)}
-                      className={`inline-flex items-center gap-1 rounded-lg px-3 py-1.5 font-headline text-base transition-all ${
+                      className={`inline-flex items-center gap-1 px-3 py-1.5 font-headline text-base transition-all ${
                         isActive
-                          ? "bg-brand-deep font-semibold !text-white"
-                          : "font-normal text-[#1e1c11]/70 hover:bg-brand-deep hover:!text-white"
+                          ? "font-semibold text-brand-deep"
+                          : "font-normal text-[#1e1c11]/70 hover:text-brand-deep"
                       }`}
                     >
                       {item.label}
@@ -141,7 +141,7 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
                     </button>
 
                     {dropdownOpen && (
-                      <div className="absolute left-1/2 top-full mt-2 w-56 -translate-x-1/2 overflow-hidden rounded-2xl border border-[#1d5a8d]/15 bg-[#f8f6f2] shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
+                      <div className="absolute left-1/2 top-full mt-3 w-56 -translate-x-1/2 overflow-hidden border border-[#1d5a8d]/15 bg-[#f8f6f2] shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
                         {layananDropdown.map((sub) => (
                           <Link
                             key={sub.label}
@@ -164,8 +164,8 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
                   href={item.href}
                   className={
                     isActive
-                      ? "rounded-lg bg-brand-deep px-3 py-1.5 font-headline text-base font-semibold !text-white"
-                      : "rounded-lg px-3 py-1.5 font-headline text-base font-normal text-[#1e1c11]/70 transition-all hover:bg-brand-deep hover:!text-white"
+                      ? "px-3 py-1.5 font-headline text-base font-semibold text-brand-deep"
+                      : "px-3 py-1.5 font-headline text-base font-normal text-[#1e1c11]/70 transition-all hover:text-brand-deep"
                   }
                 >
                   {item.label}
@@ -178,7 +178,7 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
             href={cta.href}
             target={cta.external ? "_blank" : undefined}
             rel={cta.external ? "noreferrer" : undefined}
-            className="hidden rounded-xl bg-primary-container px-5 py-2.5 text-sm font-semibold !text-white transition-all hover:-translate-y-0.5 hover:bg-primary active:scale-95 md:inline-flex md:px-8 md:text-base"
+            className="hidden bg-primary-container px-5 py-2.5 text-sm font-semibold !text-white transition-all hover:-translate-y-0.5 hover:bg-primary active:scale-95 md:inline-flex md:px-8 md:text-base"
           >
             {cta.label}
           </a>
@@ -188,7 +188,7 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
             onClick={() => setMobileOpen((prev) => !prev)}
             aria-label="Toggle menu"
             suppressHydrationWarning
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-outline-variant/35 bg-white text-primary md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center border border-outline-variant/35 bg-white text-primary md:hidden"
           >
             {mounted && mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -209,7 +209,7 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
                       <button
                         type="button"
                         onClick={() => setMobileLayananOpen((prev) => !prev)}
-                        className={`flex w-full items-center justify-between rounded-lg px-3 py-2 font-semibold ${
+                        className={`flex w-full items-center justify-between px-3 py-2 font-semibold ${
                           isActive
                             ? "bg-surface-container text-primary"
                             : "text-on-surface-variant"
@@ -231,7 +231,7 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
                                 setMobileLayananOpen(false);
                                 setMobileOpen(false);
                               }}
-                              className="block rounded-lg px-3 py-2 text-sm text-on-surface-variant transition-colors hover:bg-brand-deep hover:!text-white"
+                              className="block px-3 py-2 text-sm text-on-surface-variant transition-colors hover:bg-brand-deep hover:!text-white"
                             >
                               {sub.label}
                             </Link>
@@ -246,7 +246,7 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
                   <Link
                     key={`mobile-${item.label}`}
                     href={item.href}
-                    className={`block rounded-lg px-3 py-2 font-semibold ${isActive ? "bg-surface-container text-primary" : "text-on-surface-variant"}`}
+                    className={`block px-3 py-2 font-semibold ${isActive ? "bg-surface-container text-primary" : "text-on-surface-variant"}`}
                   >
                     {item.label}
                   </Link>
@@ -257,7 +257,7 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
                 href={cta.href}
                 target={cta.external ? "_blank" : undefined}
                 rel={cta.external ? "noreferrer" : undefined}
-                className="mt-3 inline-flex w-full items-center justify-center rounded-xl bg-primary-container px-5 py-3 text-sm font-semibold !text-white"
+                className="mt-3 inline-flex w-full items-center justify-center bg-primary-container px-5 py-3 text-sm font-semibold !text-white"
               >
                 {cta.label}
               </a>

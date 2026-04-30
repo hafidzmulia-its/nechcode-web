@@ -49,7 +49,7 @@ export function ServicePortfolio({
               <Link
                 href={item.href}
                 target="_blank"
-                className="group relative block h-full overflow-hidden rounded-[1.75rem] bg-surface-container-low shadow-[0_12px_28px_rgba(34,46,58,0.08)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_48px_rgba(34,46,58,0.14)]"
+                className="group relative block h-full overflow-hidden rounded-[1.75rem] bg-[#FFFFFF] shadow-[0_12px_28px_rgba(34,46,58,0.08)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_48px_rgba(34,46,58,0.14)]"
               >
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface-container">
                   <Image

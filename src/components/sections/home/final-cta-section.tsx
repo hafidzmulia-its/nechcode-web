@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { Reveal } from "@/components/shared/reveal";
 import type { HomeContent } from "@/content/home";
@@ -8,62 +7,61 @@ type FinalCtaSectionProps = {
   cta: HomeContent["cta"];
 };
 
+function normalizeHref(href: string) {
+  if (href.startsWith("/https://") || href.startsWith("/http://")) {
+    return href.slice(1);
+  }
+
+  return href;
+}
+
 export function FinalCtaSection({ cta }: FinalCtaSectionProps) {
+  const primaryHref = normalizeHref(cta.primaryCta.href);
+
   return (
     <section
       id="kontak"
-      className="relative w-full overflow-hidden bg-surface py-16 md:py-24"
+      className="relative w-full overflow-hidden bg-[#F6EEDB] pt-10 pb-0 sm:pt-12 sm:pb-0 lg:pt-16 lg:pb-0"
     >
-      <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+      <div className="mx-auto w-full max-w-[1440px] px-0">
         <Reveal y={22} duration={0.42}>
-          <div className="relative overflow-hidden rounded-[2rem] bg-brand-deep px-8 py-16 md:px-16 md:py-20">
-            {/* Left character — asset7 */}
-            <div className="pointer-events-none absolute bottom-0 left-0 hidden h-[85%] w-[220px] lg:block xl:w-[260px]">
+          <div className="relative min-h-[600px] overflow-hidden bg-[#F6EEDB] px-6 pt-14 pb-40 sm:min-h-[660px] sm:px-8 sm:pt-16 sm:pb-46 md:px-10 md:pt-20 md:pb-52 lg:min-h-[760px] lg:px-12 lg:pt-24 lg:pb-56">
+            <div className="pointer-events-none absolute inset-x-0 -bottom-3 h-[52%] sm:-bottom-4 sm:h-[54%] md:-bottom-5 md:h-[56%] lg:-bottom-6 lg:h-[58%]">
               <Image
-                src="/img/asset7.png"
-                alt="Character left"
+                src="/img/asset8_7.png"
+                alt="Characters for final CTA"
                 fill
+                priority
                 className="object-contain object-bottom"
-                sizes="260px"
+                sizes="100vw"
               />
             </div>
 
-            {/* Right character — asset8 */}
-            <div className="pointer-events-none absolute bottom-0 right-0 hidden h-[75%] w-[180px] lg:block xl:w-[220px]">
-              <Image
-                src="/img/asset8.png"
-                alt="Character right"
-                fill
-                className="object-contain object-bottom"
-                sizes="220px"
-              />
-            </div>
-
-            {/* Center content */}
-            <div className="relative z-10 mx-auto max-w-2xl text-center">
+            <div className="relative z-10 mx-auto flex max-w-[880px] flex-col items-center text-center">
               <Reveal y={16} delay={0.06} duration={0.38}>
-                <h2 className="mb-6 font-headline text-4xl font-bold leading-tight !text-white md:text-5xl lg:text-6xl">
-                  {cta.headingA} {cta.headingEmphasis} {cta.headingB}
+                <h2 className="font-headline text-[clamp(2.8rem,5.8vw,5rem)] font-bold leading-[0.98] text-brand-accent">
+                  {cta.headingA}
+                  <br />
+                  {cta.headingEmphasis} {cta.headingB}
                 </h2>
               </Reveal>
 
               <Reveal y={14} delay={0.12} duration={0.38}>
-                <p className="mb-4 text-base leading-relaxed text-white/80 md:text-lg">
-                  {cta.description}
-                </p>
-                <p className="mb-8 text-sm text-white/60 md:text-base">
+                <p className="mt-8 max-w-[30ch] text-[clamp(1.05rem,1.9vw,1.5rem)] leading-[1.45] text-[#1e1c11]">
                   Tunggu apalagi? Hubungi kami sekarang untuk memulai perjalanan
                   digital Anda bersama kami!
                 </p>
               </Reveal>
 
               <Reveal y={12} delay={0.18} duration={0.38}>
-                <Link
-                  href={cta.primaryCta.href}
-                  className="inline-flex items-center justify-center rounded-full bg-brand-accent-soft px-10 py-4 text-base font-bold !text-white transition-all hover:bg-[#b36a2a] hover:shadow-[0_12px_30px_rgba(217,125,85,0.4)] active:scale-95"
+                <a
+                  href={primaryHref}
+                  target={cta.primaryCta.external ? "_blank" : undefined}
+                  rel={cta.primaryCta.external ? "noreferrer" : undefined}
+                  className="mt-10 inline-flex items-center justify-center rounded-full bg-brand-accent px-8 py-3.5 text-[clamp(1rem,1.7vw,1.25rem)] font-medium !text-white transition-all hover:bg-[#cf692f] hover:shadow-[0_12px_30px_rgba(217,125,85,0.28)] active:scale-95 sm:px-10"
                 >
                   {cta.primaryCta.label}
-                </Link>
+                </a>
               </Reveal>
             </div>
           </div>

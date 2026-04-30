@@ -13,15 +13,18 @@ export function ServiceSpecialProgram() {
       <div className="mx-auto w-full max-w-[1240px] px-6 md:px-8 lg:px-10 xl:px-12">
         <Reveal once y={18}>
           <div className="rounded-[2rem] bg-brand-accent-soft p-8 md:p-12 lg:p-14">
-            <h2 className="font-headline text-3xl font-bold text-white md:text-4xl">
+            <h2
+              className="font-headline text-3xl font-bold leading-[1.18] text-white md:text-4xl lg:whitespace-nowrap"
+              style={{ wordSpacing: "0.14em" }}
+            >
               Program Khusus untuk tahap awal!
             </h2>
-            <p className="mt-3 text-base text-white/85 md:text-lg">
+            <p className="mt-5 max-w-[34rem] text-base leading-relaxed text-white/85 md:text-lg">
               Kami membuka program ini agar Anda dapat memulai transformasi
               digital bersama kami!
             </p>
 
-            <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
               {specialPrograms.items.map((item, index) => (
                 <Reveal key={item.title} once y={14} delay={index * 0.06}>
                   <article className="h-full rounded-[1.25rem] bg-surface p-6 md:p-7">

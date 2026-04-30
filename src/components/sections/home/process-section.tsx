@@ -19,7 +19,7 @@ export function ProcessSection({ process }: ProcessSectionProps) {
       <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
         {/* Heading */}
         <Reveal y={18} duration={0.38} className="mb-12 text-center md:mb-16">
-          <h2 className="font-headline text-4xl font-bold text-[#1e1c11] md:text-5xl lg:text-6xl">
+          <h2 className="font-headline text-4xl font-bold text-[#E37434] md:text-5xl lg:text-6xl">
             {process.heading}
           </h2>
         </Reveal>

@@ -15,14 +15,14 @@ export function AboutPage({ content }: AboutPageProps) {
   const { vision, missions, capabilities, principles } = aboutContent;
 
   return (
-    <div className="selection:bg-secondary-container selection:text-on-secondary-container">
+    <div className="bg-[#FFFFFF] selection:bg-secondary-container selection:text-on-secondary-container">
       <TopNavbar
         brand={content.brand}
         nav={content.nav}
         cta={content.headerCta}
       />
 
-      <main className="pb-20">
+      <main className="bg-[#FFFFFF] pb-20">
         {/* ===================== HERO — SIAPA NECHCODE ===================== */}
         <section className="w-full bg-brand-deep py-20 md:py-24">
           <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 items-center gap-12 px-6 md:grid-cols-2 md:px-8 lg:px-10 xl:px-12">
@@ -47,9 +47,7 @@ export function AboutPage({ content }: AboutPageProps) {
                 <strong className="text-white">Solusi Teknologi</strong> yang
                 berfokus pada pengembangan software, sistem digital, AI, dan
                 otomatisasi — untuk membantu{" "}
-                <strong className="text-white">
-                  Bisnis, UMKM, Organisasi
-                </strong>
+                <strong className="text-white">Bisnis, UMKM, Organisasi</strong>
                 , serta Masyarakat berkembang di era digital.
               </p>
               <p className="mt-4 text-sm italic text-white/60">
@@ -58,9 +56,7 @@ export function AboutPage({ content }: AboutPageProps) {
             </Reveal>
 
             <Reveal y={16} delay={0.06} className="flex justify-center">
-              <div
-                className="flex h-[320px] w-[320px] items-center justify-center rounded-full bg-surface shadow-[0_24px_56px_rgba(22,66,91,0.28)] md:h-[380px] md:w-[380px] xl:h-[420px] xl:w-[420px]"
-              >
+              <div className="flex h-[320px] w-[320px] items-center justify-center rounded-full bg-surface shadow-[0_24px_56px_rgba(22,66,91,0.28)] md:h-[380px] md:w-[380px] xl:h-[420px] xl:w-[420px]">
                 <div className="relative h-[180px] w-[180px] md:h-[220px] md:w-[220px] xl:h-[250px] xl:w-[250px]">
                   <Image
                     src="/logo-aseli.png"
@@ -77,7 +73,7 @@ export function AboutPage({ content }: AboutPageProps) {
         </section>
 
         {/* ===================== KENAPA KAMI HADIR ===================== */}
-        <section className="w-full bg-surface py-16 md:py-20">
+        <section className="w-full bg-[#FFFFFF] py-16 md:py-20">
           <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
             <Reveal once y={16} className="max-w-2xl">
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary">
@@ -91,9 +87,7 @@ export function AboutPage({ content }: AboutPageProps) {
 
             <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
               <Reveal once y={14} delay={0}>
-                <div
-                  className="h-full rounded-[1.4rem] bg-brand-accent p-6 shadow-[0_4px_16px_rgba(227,116,52,0.25)]"
-                >
+                <div className="h-full rounded-[1.4rem] bg-brand-accent p-6 shadow-[0_4px_16px_rgba(227,116,52,0.25)]">
                   <p className="mb-1 text-xs font-bold uppercase tracking-[0.18em] text-white/70">
                     Visi
                   </p>
@@ -104,9 +98,7 @@ export function AboutPage({ content }: AboutPageProps) {
               </Reveal>
 
               <Reveal once y={14} delay={0.05}>
-                <div
-                  className="h-full rounded-[1.4rem] bg-brand-accent p-6 shadow-[0_4px_16px_rgba(227,116,52,0.25)]"
-                >
+                <div className="h-full rounded-[1.4rem] bg-brand-accent p-6 shadow-[0_4px_16px_rgba(227,116,52,0.25)]">
                   <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-white/70">
                     Misi
                   </p>
@@ -164,7 +156,7 @@ export function AboutPage({ content }: AboutPageProps) {
         </section>
 
         {/* ===================== PRINSIP KERJA ===================== */}
-        <section className="w-full bg-surface py-16 md:py-20">
+        <section className="w-full bg-[#FFFFFF] py-16 md:py-20">
           <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
             <Reveal once y={16} className="mb-8 max-w-xl">
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary">
@@ -183,7 +175,7 @@ export function AboutPage({ content }: AboutPageProps) {
                   delay={index * 0.04}
                   duration={0.3}
                 >
-                  <article className="h-full rounded-[1.4rem] border border-outline-variant/20 bg-surface-container-lowest p-6">
+                  <article className="h-full rounded-[1.4rem] border border-outline-variant/20 bg-surface-container p-6">
                     <h3 className="mb-2 font-headline text-3xl text-primary">
                       {principle.title}
                     </h3>

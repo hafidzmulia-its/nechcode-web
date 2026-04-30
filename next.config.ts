@@ -1,7 +1,26 @@
 import type { NextConfig } from "next";
 
+const noStoreHeaders = [
+  {
+    key: "Cache-Control",
+    value: "no-store, max-age=0, must-revalidate",
+  },
+];
+
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  async headers() {
+    return [
+      {
+        source: "/sw.js",
+        headers: noStoreHeaders,
+      },
+      {
+        source: "/firebase-messaging-sw.js",
+        headers: noStoreHeaders,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {

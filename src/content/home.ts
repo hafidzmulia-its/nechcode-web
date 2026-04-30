@@ -144,11 +144,11 @@ const idContent: HomeContent = {
   },
   hero: {
     badge: "Welcome to NechCode",
-    headingA: "Innovate Locally,",
-    headingEmphasis: "Deliver Globally",
+    headingA: "We Turn Ideas into",
+    headingEmphasis: "Digital Solutions!",
     headingB: "",
     description:
-      "Hadir sebagai Solusi Teknologi dengan berfokus pada Pengembangan Software, Sistem Digital, AI, dan Otomatisasi untuk membantu Bisnis, UMKM, Organisasi, serta Masyarakat berkembang di era digital!",
+      "Melalui Pengembangan Software, Sistem Digital, AI, dan Otomatisasi, kami membantu Bisnis, UMKM, Organisasi serta Masyarakat berkembang di Era Digital!",
     primaryCta: {
       label: "Konsultasi Gratis!",
       href: buildWhatsAppInquiryUrl({

@@ -10,10 +10,10 @@ export function HeroSection({ hero }: HeroSectionProps) {
   return (
     <section className="relative -mt-[72px] w-full overflow-hidden bg-brand-deep pt-[72px]">
       <div
-        className={`${layoutContainer} flex flex-col items-start gap-8 py-14 sm:gap-10 sm:py-16 md:gap-12 md:py-20 lg:grid lg:grid-cols-12 lg:py-24`}
+        className={`${layoutContainer} relative z-10 flex flex-col items-start gap-10 pt-12 pb-28 sm:gap-12 sm:pt-14 sm:pb-32 md:gap-14 md:pt-16 md:pb-36 lg:grid lg:min-h-[620px] lg:grid-cols-12 lg:items-center lg:gap-8 lg:pt-16 lg:pb-40 xl:min-h-[660px] xl:gap-10 xl:pt-20 xl:pb-44`}
       >
         {/* Left content */}
-        <div className="w-full lg:col-span-6 lg:mt-4">
+        <div className="w-full lg:col-span-5 lg:mt-0">
           <Reveal
             className="w-full"
             y={20}
@@ -23,25 +23,25 @@ export function HeroSection({ hero }: HeroSectionProps) {
             once
           >
             {/* Badge */}
-            <div className="mb-6 inline-flex rounded-full border border-[#C47B3A]/60 px-4 py-1.5 text-sm font-medium italic text-white/80">
+            <div className="mb-8 inline-flex rounded-full border border-[#E37434] px-5 py-2 text-[clamp(1rem,1.2vw,1.1rem)] font-medium italic leading-none text-white/92">
               {hero.badge}
             </div>
 
             {/* Heading */}
-            <h1 className="mb-6 font-sans text-[clamp(2rem,6vw,3.5rem)] font-bold leading-[1.1] tracking-tight text-white">
+            <h1 className="mb-7 max-w-[620px] font-sans text-[clamp(2.35rem,4.2vw,4.6rem)] font-bold leading-[0.96] tracking-[-0.035em] text-white">
               {hero.headingA}
               <br />
               {hero.headingEmphasis}
             </h1>
 
             {/* Description */}
-            <p className="mb-10 max-w-lg text-justify text-[1.5rem] leading-relaxed text-white/80 sm:text-base">
-              Hadir sebagai Solusi Teknologi dengan berfokus pada Pengembangan
-              Software, sistem digital, AI dan otomatisasi, untuk membantu{" "}
+            <p className="mb-9 max-w-[29ch] text-left text-[clamp(0.95rem,1vw,1rem)] leading-[1.52] text-white/85 lg:max-w-[30ch]">
+              Melalui{" "}
               <strong className="font-bold text-white">
-                Bisnis, UMKM, Organisasi, serta Masyarakat berkembang di era
-                digital!
+                Pengembangan Software, Sistem Digital, AI, dan Otomatisasi
               </strong>
+              , kami membantu Bisnis, UMKM, Organisasi serta Masyarakat
+              berkembang di Era Digital!
             </p>
           </Reveal>
 
@@ -58,7 +58,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
               href={hero.primaryCta.href}
               target={hero.primaryCta.external ? "_blank" : undefined}
               rel={hero.primaryCta.external ? "noreferrer" : undefined}
-              className="inline-flex items-center justify-center rounded-2xl bg-brand-accent px-8 py-4 text-base font-bold !text-white transition-all hover:bg-[#b36a2a] hover:shadow-[0_8px_24px_rgba(196,123,58,0.4)] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C47B3A]/50"
+              className="inline-flex items-center justify-center rounded-none bg-brand-accent px-6 py-3.5 text-[clamp(1rem,1.1vw,1.08rem)] font-bold !text-white transition-all hover:bg-[#b36a2a] hover:shadow-[0_8px_24px_rgba(196,123,58,0.4)] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C47B3A]/50"
             >
               {hero.primaryCta.label}
             </a>
@@ -67,7 +67,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
 
         {/* Right — 3D character */}
         <Reveal
-          className="flex w-full items-center justify-center lg:col-span-6"
+          className="flex w-full items-center justify-center lg:col-span-7 lg:justify-end"
           y={22}
           x={18}
           delay={0.16}
@@ -75,11 +75,11 @@ export function HeroSection({ hero }: HeroSectionProps) {
           amount={0.35}
           once
         >
-          <div className="relative flex h-[320px] w-[320px] items-center justify-center rounded-full sm:h-[380px] sm:w-[380px] md:h-[420px] md:w-[420px]">
+          <div className="relative flex h-[320px] w-full max-w-[640px] items-center justify-center sm:h-[390px] md:h-[420px] lg:h-[430px] lg:max-w-[520px] xl:h-[450px] xl:max-w-[545px]">
             <img
               src="/img/asset4.png"
               alt="Character 3D"
-              className="absolute bottom-0 h-[95%] w-auto object-contain object-bottom"
+              className="absolute bottom-0 h-full w-auto max-w-full object-contain object-bottom"
             />
           </div>
         </Reveal>
