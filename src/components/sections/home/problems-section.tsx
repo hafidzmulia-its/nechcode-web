@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { layoutContainer } from "@/config/layout";
 import { Reveal } from "@/components/shared/reveal";
 import type { HomeContent } from "@/content/home";
 
@@ -12,7 +13,7 @@ export function ProblemsSection({ problems }: ProblemsSectionProps) {
     <section className="relative w-full overflow-hidden bg-surface py-24 md:py-32">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-brand-cream/85 to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-[#f2e9d7]/65" />
-      <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+      <div className={layoutContainer}>
         <div className="rounded-[2rem] border border-[rgba(29,90,141,0.08)] bg-brand-cream px-6 py-12 shadow-[0_18px_44px_rgba(43,56,70,0.08)] md:px-8 md:py-14 lg:px-10">
           <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-16">
             <Reveal className="lg:col-span-5" y={20} x={-14} duration={0.4}>

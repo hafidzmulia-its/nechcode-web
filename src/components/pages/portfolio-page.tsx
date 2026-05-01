@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { Reveal } from "@/components/shared/reveal";
 import { SiteFooter } from "@/components/sections/home/site-footer";
 import { TopNavbar } from "@/components/sections/home/top-navbar";
+import { layoutContainer } from "@/config/layout";
 import type { HomeContent } from "@/content/home";
 import type { PortfolioItem } from "@/types/portfolio";
 
@@ -143,7 +144,7 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
 
       <main className="pb-24">
         <section className="relative w-full overflow-hidden bg-surface">
-          <div className="mx-auto w-full max-w-[1360px] px-6 py-20 md:px-8 lg:px-10 xl:px-12">
+          <div className={`${layoutContainer} py-20`}>
             <Reveal once y={18} className="max-w-4xl">
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-secondary">Portfolio</p>
               <h1 className="font-headline text-5xl leading-tight text-primary md:text-7xl">
@@ -158,7 +159,7 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
 
         {featured ? (
           <section className="w-full bg-gradient-to-b from-surface-container-low/55 to-surface py-8 md:py-10">
-            <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+            <div className={layoutContainer}>
               <Reveal y={18}>
                 <article className="grid grid-cols-1 gap-7 overflow-hidden rounded-[2rem] border border-outline-variant/20 bg-surface-container-lowest p-7 shadow-[0_16px_36px_rgba(24,34,45,0.09)] md:grid-cols-[1.2fr_1fr]">
                   <div className="relative min-h-[280px] overflow-hidden rounded-2xl bg-surface-container-low">
@@ -204,7 +205,7 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
         ) : null}
 
         <section className="w-full bg-surface py-10 md:py-14">
-          <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+          <div className={layoutContainer}>
             <div className="mb-8 flex flex-wrap gap-2">
               {filters.map((filter) => (
                 <button

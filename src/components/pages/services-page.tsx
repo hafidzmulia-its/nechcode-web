@@ -7,6 +7,7 @@ import { Reveal } from "@/components/shared/reveal";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SiteFooter } from "@/components/sections/home/site-footer";
 import { TopNavbar } from "@/components/sections/home/top-navbar";
+import { layoutContainer } from "@/config/layout";
 import { isValidPillarId, servicesContent, type ServicePillarId } from "@/content/services";
 import type { HomeContent } from "@/content/home";
 
@@ -71,7 +72,7 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
       <main className="pb-36 md:pb-20">
         <section className="relative w-full overflow-hidden bg-surface">
           <div className="pointer-events-none absolute -right-24 top-4 h-[420px] w-[420px] rounded-full bg-primary/10 blur-[120px]" />
-          <div className="mx-auto w-full max-w-[1360px] px-6 py-20 md:px-8 lg:px-10 xl:px-12">
+          <div className={`${layoutContainer} py-20`}>
             <Reveal once y={18} className="max-w-4xl">
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-secondary">Services</p>
               <h1 className="font-headline text-5xl leading-tight text-primary md:text-7xl">
@@ -118,7 +119,7 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
         </div>
 
         <section id="pricing" className="w-full bg-gradient-to-b from-surface-container-low/55 to-surface py-12 md:py-16">
-          <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+          <div className={layoutContainer}>
             <Reveal once y={14} className="max-w-4xl">
               <h2 className="font-headline text-4xl text-primary md:text-5xl">{servicesContent.pricingIntro.title}</h2>
               <p className="mt-4 text-base leading-relaxed text-on-surface-variant md:text-lg">
@@ -277,7 +278,7 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
         </section>
 
         <section id="ways" className="w-full bg-surface py-14 md:py-20">
-          <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+          <div className={layoutContainer}>
             <Reveal y={16}>
               <div className="rounded-[2rem] border border-outline-variant/20 bg-surface-container-low p-8 md:p-10">
                 <h3 className="font-headline text-4xl text-primary">Cara Kerja Kami</h3>

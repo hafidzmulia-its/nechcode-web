@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { layoutContainer } from "@/config/layout";
 import type { HomeContent } from "@/content/home";
 
 type AboutSectionProps = {
@@ -9,7 +10,7 @@ type AboutSectionProps = {
 export function AboutSection({ about }: AboutSectionProps) {
   return (
     <section id="tentang" className="w-full bg-surface pb-24 md:pb-36">
-      <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+      <div className={layoutContainer}>
         <div className="rounded-[2rem] border border-outline-variant/20 bg-surface-container-low px-6 py-12 shadow-[0_18px_44px_rgba(24,34,45,0.08)] md:px-8 md:py-14 lg:px-10 lg:py-16">
           <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
             <div className="relative">

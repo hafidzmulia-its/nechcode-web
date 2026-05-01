@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Maximize2, Minimize2 } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 
+import { layoutContainer } from "@/config/layout";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import type { HomeContent } from "@/content/home";
 import type { PortfolioItem } from "@/types/portfolio";
@@ -230,7 +231,7 @@ export function SelectedWorksSection({ works, items }: SelectedWorksSectionProps
   return (
     <section id="karya" className="relative w-full overflow-hidden bg-gradient-to-b from-surface via-surface-container-low/30 to-surface py-16 md:py-20">
      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-surface-container/45 to-transparent" />
-      <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+      <div className={layoutContainer}>
         <ContainerScroll
           titleComponent={
             <div className="mx-auto max-w-3xl">

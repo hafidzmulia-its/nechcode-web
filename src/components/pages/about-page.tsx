@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Reveal } from "@/components/shared/reveal";
 import { SiteFooter } from "@/components/sections/home/site-footer";
 import { TopNavbar } from "@/components/sections/home/top-navbar";
+import { layoutContainer } from "@/config/layout";
 import { aboutContent } from "@/content/about";
 import type { HomeContent } from "@/content/home";
 
@@ -25,7 +26,7 @@ export function AboutPage({ content }: AboutPageProps) {
       <main className="bg-[#FFFFFF] pb-20">
         {/* ===================== HERO — SIAPA NECHCODE ===================== */}
         <section className="w-full bg-brand-deep py-20 md:py-24">
-          <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 items-center gap-12 px-6 md:grid-cols-2 md:px-8 lg:px-10 xl:px-12">
+          <div className={`${layoutContainer} grid grid-cols-1 items-center gap-12 md:grid-cols-2`}>
             <Reveal once y={18}>
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-secondary-container">
                 Tentang NechCode
@@ -74,7 +75,7 @@ export function AboutPage({ content }: AboutPageProps) {
 
         {/* ===================== KENAPA KAMI HADIR ===================== */}
         <section className="w-full bg-[#FFFFFF] py-16 md:py-20">
-          <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+          <div className={layoutContainer}>
             <Reveal once y={16} className="max-w-2xl">
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary">
                 Mengapa Kami Hadir
@@ -122,7 +123,7 @@ export function AboutPage({ content }: AboutPageProps) {
 
         {/* ===================== APA YANG BISA KAMI LAKUKAN ===================== */}
         <section className="w-full bg-brand-deep py-16 md:py-20">
-          <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+          <div className={layoutContainer}>
             <Reveal once y={16} className="max-w-2xl">
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary-container">
                 Apa yang Bisa Kami Lakukan
@@ -157,7 +158,7 @@ export function AboutPage({ content }: AboutPageProps) {
 
         {/* ===================== PRINSIP KERJA ===================== */}
         <section className="w-full bg-[#FFFFFF] py-16 md:py-20">
-          <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+          <div className={layoutContainer}>
             <Reveal once y={16} className="mb-8 max-w-xl">
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary">
                 Prinsip Kerja

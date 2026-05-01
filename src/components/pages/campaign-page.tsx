@@ -5,6 +5,7 @@ import { CampaignFaq } from "@/components/campaign/campaign-faq";
 import { CampaignHeroCountdown } from "@/components/campaign/campaign-hero-countdown";
 import { SiteFooter } from "@/components/sections/home/site-footer";
 import { TopNavbar } from "@/components/sections/home/top-navbar";
+import { layoutContainer } from "@/config/layout";
 import type { HomeContent } from "@/content/home";
 import type { Campaign } from "@/types/campaign";
 
@@ -55,7 +56,7 @@ export function CampaignPage({ content, campaign }: CampaignPageProps) {
         <CampaignHeroCountdown campaign={campaign} />
 
         <section className="w-full bg-gradient-to-b from-surface-container-low/60 to-surface py-10 md:py-14">
-          <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 gap-6 px-6 md:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:px-10 xl:px-12">
+          <div className={`${layoutContainer} grid grid-cols-1 gap-6 lg:grid-cols-[1.15fr_0.85fr]`}>
             <article className="rounded-[1.8rem] border border-outline-variant/20 bg-surface-container-lowest p-6 md:p-8">
               <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Tentang Campaign</p>
               <h2 className="font-headline text-3xl text-primary md:text-4xl">{campaign.title}</h2>
@@ -78,7 +79,7 @@ export function CampaignPage({ content, campaign }: CampaignPageProps) {
         </section>
 
         <section id="contoh" className="w-full bg-surface-container-low py-16 md:py-24">
-          <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+          <div className={layoutContainer}>
             <div className="mx-auto mb-12 max-w-3xl text-center">
               <h3 className="font-headline text-4xl font-bold text-primary">Semua Yang Kamu Butuhkan</h3>
               <p className="mt-3 text-on-surface-variant">Kado digital yang tidak hanya sekadar link, tapi pengalaman personal yang berkesan.</p>
@@ -107,7 +108,7 @@ export function CampaignPage({ content, campaign }: CampaignPageProps) {
         </section>
 
         <section id="packages" className="w-full bg-surface py-20 md:py-28">
-          <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+          <div className={layoutContainer}>
             <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
               <div>
                 <h3 className="font-headline text-4xl font-bold text-primary md:text-5xl">Pilih Paket Spesial Batch April</h3>
@@ -157,7 +158,7 @@ export function CampaignPage({ content, campaign }: CampaignPageProps) {
         </section>
 
         <section className="w-full bg-surface py-8 md:py-12">
-          <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+          <div className={layoutContainer}>
             <CampaignFaq campaign={campaign} />
             {campaign.termsLong ? (
               <div className="mt-6 rounded-2xl border border-outline-variant/20 bg-surface-container-lowest p-5">
@@ -169,7 +170,7 @@ export function CampaignPage({ content, campaign }: CampaignPageProps) {
         </section>
 
         <section className="w-full px-6 pb-4 pt-8 md:px-8 lg:px-10 xl:px-12">
-          <div className="mx-auto w-full max-w-[1360px] overflow-hidden rounded-[2rem] bg-primary p-10 text-center md:p-16">
+          <div className="mx-auto w-full max-w-[1360px] overflow-hidden rounded-[2rem] bg-primary p-10 text-center desktop:max-w-[1560px] md:p-16">
             <h3 className="mx-auto max-w-3xl font-headline text-4xl font-bold text-white md:text-5xl">Abadikan Momen Wisuda Batch April Ini dengan Elegan</h3>
             <p className="mx-auto mt-4 max-w-2xl text-primary-fixed">Jangan biarkan momen sekali seumur hidup berlalu tanpa jejak digital yang berkesan. Ambil slot Anda sekarang.</p>
             <a

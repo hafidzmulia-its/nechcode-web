@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { layoutContainerBleed } from "@/config/layout";
 import { Reveal } from "@/components/shared/reveal";
 import type { HomeContent } from "@/content/home";
 
@@ -23,7 +24,7 @@ export function FinalCtaSection({ cta }: FinalCtaSectionProps) {
       id="kontak"
       className="relative w-full overflow-hidden bg-[#F6EEDB] pt-10 pb-0 sm:pt-12 sm:pb-0 lg:pt-16 lg:pb-0"
     >
-      <div className="mx-auto w-full max-w-[1440px] px-0">
+      <div className={layoutContainerBleed}>
         <Reveal y={22} duration={0.42}>
           <div className="relative min-h-[600px] overflow-hidden bg-[#F6EEDB] px-6 pt-14 pb-40 sm:min-h-[660px] sm:px-8 sm:pt-16 sm:pb-46 md:px-10 md:pt-20 md:pb-52 lg:min-h-[760px] lg:px-12 lg:pt-24 lg:pb-56">
             <div className="pointer-events-none absolute inset-x-0 -bottom-3 h-[52%] sm:-bottom-4 sm:h-[54%] md:-bottom-5 md:h-[56%] lg:-bottom-6 lg:h-[58%]">

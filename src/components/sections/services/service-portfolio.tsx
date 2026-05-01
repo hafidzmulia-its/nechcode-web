@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Reveal } from "@/components/shared/reveal";
+import { layoutContainer } from "@/config/layout";
 import type { ShowcaseItem } from "@/content/service-pages";
 
 type ServicePortfolioProps = {
@@ -30,7 +31,7 @@ export function ServicePortfolio({
 
   return (
     <section className="w-full bg-surface py-20 md:py-28">
-      <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+      <div className={layoutContainer}>
         <Reveal once y={16} className="max-w-3xl">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-secondary">
             {eyebrow}

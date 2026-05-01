@@ -69,6 +69,7 @@
 }
 
 @theme {
+  --breakpoint-desktop: 123.75rem;
   --color-background: #f5eedc;
   --color-surface: #f5eedc;
   --color-surface-dim: #ddd6c4;

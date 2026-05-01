@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 
+import { layoutContainer } from "@/config/layout";
 import { Reveal } from "@/components/shared/reveal";
 import type { HomeContent } from "@/content/home";
 
@@ -61,7 +62,7 @@ export function FaqSection({ faq }: FaqSectionProps) {
   return (
     <section id="faq" className="relative w-full overflow-hidden bg-surface py-24 md:py-28">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-brand-cream/70 to-transparent" />
-      <div className="mx-auto w-full max-w-[1360px] px-6 md:px-8 lg:px-10 xl:px-12">
+      <div className={layoutContainer}>
         <div className="rounded-[2rem] border border-[rgba(29,90,141,0.08)] bg-brand-cream px-6 py-12 shadow-[0_12px_28px_rgba(34,46,58,0.07)] md:px-8 md:py-14">
           <div className="mx-auto max-w-3xl">
             <Reveal y={18} duration={0.36} className="mb-12 text-center">
