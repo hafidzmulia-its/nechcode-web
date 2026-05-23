@@ -47,15 +47,48 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
       },
     },
     portfolio: {
-      eyebrow: "Portfolio Pilihan",
-      title: "Hasil Karya dari Kami",
-      body: "Beberapa implementasi Predictive Data yang kami kerjakan.",
+      eyebrow: "Our Portfolio",
+      title: "These are some of the products we have worked on",
+      body: "",
       maxColumns: 2,
-      items: [],
+      items: [
+        {
+          title: "Decision Tree Model",
+          category: "Predictive Data",
+          description:
+            "Model decision tree untuk membantu membaca pola data secara lebih terstruktur dan mudah dijelaskan ke tim non-teknis.",
+          image: "/img/porto/Decision%20Tree%20Model.JPG",
+          href: "/img/porto/Decision%20Tree%20Model.JPG",
+        },
+        {
+          title: "Neural Networks",
+          category: "Predictive Data",
+          description:
+            "Implementasi neural networks untuk kebutuhan prediksi dengan pola yang lebih kompleks dan hubungan antar-variabel yang lebih dinamis.",
+          image: "/img/porto/Neural%20Networks.JPG",
+          href: "/img/porto/Neural%20Networks.JPG",
+        },
+        {
+          title: "Random Forest Classifier Model",
+          category: "Predictive Data",
+          description:
+            "Model random forest classifier untuk klasifikasi data dengan pendekatan ensemble yang lebih stabil dan akurat.",
+          image: "/img/porto/Random%20Forest%20Classifier%20Model.JPG",
+          href: "/img/porto/Random%20Forest%20Classifier%20Model.JPG",
+        },
+        {
+          title: "XGBoost Model",
+          category: "Predictive Data",
+          description:
+            "Model XGBoost untuk kebutuhan prediksi dan scoring yang membutuhkan performa tinggi pada dataset terstruktur.",
+          image: "/img/porto/XGBoost%20Model.JPG",
+          href: "/img/porto/XGBoost%20Model.JPG",
+        },
+      ],
     },
     pricing: {
       title:
-        "Mulai dari dataset sederhana hingga analisis Machine Learning yang kompleks.",
+        "Starting from simple datasets to complex Machine Learning analysis",
     },
   },
   web: {
@@ -72,9 +105,9 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
       },
     },
     portfolio: {
-      eyebrow: "Portfolio Pilihan",
-      title: "Hasil Karya dari Kami",
-      body: "Beberapa website yang kami kerjakan untuk klien dari berbagai industri. Klik salah satu untuk melihat studi kasusnya.",
+      eyebrow: "Our Portfolio",
+      title: "These are some of the products we have worked on",
+      body: "",
       maxColumns: 3,
       items: [
         {
@@ -104,8 +137,7 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
       ],
     },
     pricing: {
-      title:
-        "Mulai dari kebutuhan dasar yang harus cepat jalan sampai implementasi custom yang lebih kompleks.",
+      title: "Starting from simple chatbots to complex\nAI workflows",
     },
   },
   mobile: {
@@ -121,9 +153,9 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
       },
     },
     portfolio: {
-      eyebrow: "Portfolio Pilihan",
-      title: "Hasil Karya dari Kami",
-      body: "Beberapa mobile app yang kami kerjakan untuk klien dari berbagai industri. Klik salah satu untuk melihat studi kasusnya.",
+      eyebrow: "Our Portfolio",
+      title: "These are some of the products we have worked on",
+      body: "",
       maxColumns: 2,
       items: [
         {
@@ -145,7 +177,8 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
       ],
     },
     pricing: {
-      title: "Mulai dari validasi ide hingga aplikasi terintegrasi penuh.",
+      title:
+        "Estimates based on flow, integration,\nnumber of roles, and release targets.",
     },
   },
   ai: {
@@ -162,9 +195,9 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
       },
     },
     portfolio: {
-      eyebrow: "Portfolio Pilihan",
-      title: "Hasil Karya dari Kami",
-      body: "Beberapa implementasi AI automation yang kami kerjakan untuk klien dari berbagai industri.",
+      eyebrow: "Our Portfolio",
+      title: "These are some of the products we have worked on",
+      body: "",
       maxColumns: 2,
       items: [
         {
@@ -186,7 +219,7 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
       ],
     },
     pricing: {
-      title: "Mulai dari chatbot sederhana hingga workflow AI yang kompleks.",
+      title: "Starting from simple chatbots to complex\nAI workflows",
     },
   },
 };

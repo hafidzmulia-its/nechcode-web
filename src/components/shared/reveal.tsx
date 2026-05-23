@@ -39,10 +39,26 @@ export function Reveal({
     const node = ref.current;
     if (!node) return;
 
+    let frameId: number | null = null;
+    const updatePhase = (nextPhase: Phase) => {
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
+
+      frameId = window.requestAnimationFrame(() => {
+        setPhase(nextPhase);
+        frameId = null;
+      });
+    };
+
     // No IO support → stay visible.
     if (typeof IntersectionObserver === "undefined") {
-      setPhase("visible");
-      return;
+      updatePhase("visible");
+      return () => {
+        if (frameId !== null) {
+          window.cancelAnimationFrame(frameId);
+        }
+      };
     }
 
     // Check if the element is already within the viewport on mount.
@@ -52,20 +68,20 @@ export function Reveal({
       rect.top < window.innerHeight && rect.bottom > 0;
 
     if (isAlreadyInView) {
-      setPhase("visible");
+      updatePhase("visible");
       if (once) return;
     } else {
-      setPhase("hidden");
+      updatePhase("hidden");
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            setPhase("visible");
+            updatePhase("visible");
             if (once) observer.disconnect();
           } else if (!once) {
-            setPhase("hidden");
+            updatePhase("hidden");
           }
         }
       },
@@ -74,7 +90,12 @@ export function Reveal({
 
     observer.observe(node);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
+    };
   }, [amount, once]);
 
   const isHidden = phase === "hidden";

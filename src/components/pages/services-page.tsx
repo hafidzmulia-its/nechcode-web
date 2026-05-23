@@ -81,8 +81,9 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-on-surface-variant md:text-2xl">
                 NechCode membantu bisnis, UMKM, organisasi, dan institusi membangun website, mobile app, dan automasi AI yang relevan dengan tahap pertumbuhan mereka.
               </p>
-              <p className="mt-3 max-w-2xl text-base leading-relaxed text-on-surface-variant md:text-lg">
-                Mulai dari kebutuhan dasar yang harus cepat jalan sampai implementasi custom yang lebih kompleks.
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-on-surface-variant sm:text-base md:text-lg">
+                <span className="block">Starting from simple chatbots to complex</span>
+                <span className="block">AI workflows</span>
               </p>
             </Reveal>
           </div>

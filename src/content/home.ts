@@ -188,7 +188,7 @@ const idContent: HomeContent = {
     },
   },
   services: {
-    eyebrow: "Layanan Unggulan",
+    eyebrow: "Our Principles",
     headingA: "Solusi yang Kami tawarkan",
     headingEmphasis: "kepada Anda",
     description: "",
@@ -255,7 +255,7 @@ const idContent: HomeContent = {
     descriptionB:
       "Model kerja kami sederhana: discovery yang jelas, prioritas sprint yang terukur, dan pendampingan setelah rilis agar solusi benar-benar dipakai.",
     quote:
-      "Teknologi yang baik bukan yang paling rumit, tapi yang paling berguna untuk tim Anda.",
+      "Good technology isn’t the most complicated, but the most useful for your team",
     quoteAuthor: "NechCode Team",
   },
   works: {

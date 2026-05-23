@@ -6,7 +6,6 @@ import { SocialIcon } from "@/components/shared/social-icon";
 import { layoutContainer } from "@/config/layout";
 import {
   buildGmailComposeUrl,
-  buildMailto,
   getSocialLinks,
   siteConfig,
 } from "@/config/site";
@@ -124,7 +123,8 @@ export function ContactPage({ content }: ContactPageProps) {
                   </p>
                   <p className="pt-1 text-xs">
                     Respon awal umumnya dalam 1x24 jam kerja. Jika kebutuhan
-                    Anda mendesak, tulis kata "URGENT" di awal pesan WhatsApp.
+                    Anda mendesak, tulis kata &quot;URGENT&quot; di awal pesan
+                    WhatsApp.
                   </p>
                 </div>
                 <div className="mt-5 border-t border-outline-variant/20 pt-5">
@@ -163,8 +163,8 @@ export function ContactPage({ content }: ContactPageProps) {
                   agar kami bisa menyiapkan rekomendasi scope awal dengan cepat.
                 </p>
                 <p className="mb-4 text-xs text-on-surface-variant">
-                  Jelaskan kebutuhan Anda secara singkat. Contoh: Saya ingin
-                  mengintegrasikan sistem stok gudang ke website e-commerce.
+                  Jelaskan kebutuhan Anda secara singkat. Contoh: &quot;Saya ingin
+                  mengintegrasikan sistem stok gudang ke website e-commerce.&quot;
                 </p>
                 <div className="space-y-3">
                   <input

@@ -1,16 +1,12 @@
 "use client";
 
-import { ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { CampaignAnnouncementBar } from "@/components/campaign/campaign-announcement-bar";
-import { CampaignStickyUrgencyBar } from "@/components/campaign/campaign-sticky-urgency-bar";
 import { layoutContainer } from "@/config/layout";
-import type { HomeContent } from "@/content/home";
-import type { Campaign } from "@/types/campaign";
+import { MobileNavMenu } from "@/components/shared/mobile-nav-menu";
+import type { HomeContent, LinkItem } from "@/content/home";
 
 type TopNavbarProps = {
   brand: HomeContent["brand"];
@@ -18,254 +14,92 @@ type TopNavbarProps = {
   cta: HomeContent["headerCta"];
 };
 
-const layananDropdown = [
-  { label: "Web Packages", href: "/services/web" },
-  { label: "Mobile Apps", href: "/services/mobile" },
-  { label: "AI Automation & Chatbot", href: "/services/ai" },
-  { label: "Predictive Data", href: "/services/predictive-data" },
-];
+function NavbarLink({
+  item,
+  className,
+}: {
+  item: LinkItem;
+  className?: string;
+}) {
+  const isInternalRoute = !item.external && item.href.startsWith("/");
 
-function isNavItemActive(href: string, pathname: string | null): boolean {
-  return href === "/"
-    ? pathname === "/"
-    : pathname === href || pathname?.startsWith(`${href}/`) === true;
+  if (isInternalRoute) {
+    return (
+      <Link href={item.href} className={className}>
+        {item.label}
+      </Link>
+    );
+  }
+
+  return (
+    <a
+      href={item.href}
+      target={item.external ? "_blank" : undefined}
+      rel={item.external ? "noreferrer" : undefined}
+      className={className}
+    >
+      {item.label}
+    </a>
+  );
 }
 
 export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
-  const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [mobileLayananOpen, setMobileLayananOpen] = useState(false);
-  const [topBarCampaign, setTopBarCampaign] = useState<Campaign | null>(null);
-  const [stickyCampaign, setStickyCampaign] = useState<Campaign | null>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [introStarted, setIntroStarted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const introTimer = window.setTimeout(() => {
+      setIntroStarted(true);
+    }, 800);
+
+    return () => window.clearTimeout(introTimer);
   }, []);
-
-  useEffect(() => {
-    setMobileOpen(false);
-    setDropdownOpen(false);
-  }, [pathname]);
-
-  // Close dropdown on outside click
-  useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, []);
-
-  useEffect(() => {
-    let mounted = true;
-
-    async function loadCampaignPlacements() {
-      try {
-        const response = await fetch("/api/campaign/active", {
-          cache: "no-store",
-        });
-        const data = (await response.json()) as {
-          topBar: Campaign | null;
-          stickyFinalHours: Campaign | null;
-        };
-
-        if (!mounted) return;
-
-        setTopBarCampaign(data.topBar ?? null);
-        setStickyCampaign(data.stickyFinalHours ?? null);
-      } catch {
-        if (!mounted) return;
-        setTopBarCampaign(null);
-        setStickyCampaign(null);
-      }
-    }
-
-    void loadCampaignPlacements();
-    const interval = window.setInterval(() => {
-      void loadCampaignPlacements();
-    }, 60000);
-
-    return () => {
-      mounted = false;
-      window.clearInterval(interval);
-    };
-  }, []);
-
-  const isLayananActive = pathname?.startsWith("/services") === true;
 
   return (
-    <>
-      <CampaignAnnouncementBar campaign={topBarCampaign} />
-      <nav className="sticky top-0 z-50 w-full bg-transparent px-0 pt-0 pb-0">
-        <div className="relative flex min-h-[84px] w-full items-center justify-between border-b border-[#1d5a8d]/18 bg-[#f8f6f2] px-4 shadow-[0_4px_20px_rgba(0,0,0,0.08)] sm:px-6 md:px-10 lg:px-16 xl:px-24">
-          <Link href="/" aria-label={brand.name} className="justify-self-start">
-            <Image
-              src="/logonav.png"
-              alt={brand.name}
-              width={176}
-              height={50}
-              priority
-              className="h-auto w-[120px] md:w-[150px]"
+    <header
+      className={`sticky top-0 z-50 w-full bg-transparent ${
+        introStarted ? "animate-navbar-in" : "opacity-0"
+      }`}
+    >
+      <div
+        className={`${layoutContainer} flex min-h-[96px] items-center justify-between gap-4 py-5`}
+      >
+        <Link
+          href="/"
+          className="flex shrink-0 items-center gap-3 text-white transition-opacity hover:opacity-90"
+          aria-label={`${brand.name} home`}
+        >
+          <Image
+            src="/logo-aseli.png"
+            alt={`${brand.name} logo`}
+            width={40}
+            height={40}
+            priority
+            className="h-10 w-10 object-contain"
+          />
+          <span className="text-[22px] font-bold tracking-tight text-[#1782c4]">
+            {brand.name}
+          </span>
+        </Link>
+
+        <nav className="hidden items-center gap-[60px] lg:flex">
+          {nav.map((item) => (
+            <NavbarLink
+              key={`${item.href}-${item.label}`}
+              item={item}
+              className="text-[21px] font-medium uppercase tracking-normal text-white/95 transition-colors duration-200 hover:text-[#9fe8ff]"
             />
-          </Link>
+          ))}
+        </nav>
 
-          <div className="hidden items-center gap-10 md:flex">
-            {nav.map((item) => {
-              const isLayanan = item.label === "Layanan";
-              const isActive = isLayanan
-                ? isLayananActive
-                : isNavItemActive(item.href, pathname);
-
-              if (isLayanan) {
-                return (
-                  <div key={item.label} className="relative" ref={dropdownRef}>
-                    <button
-                      type="button"
-                      onClick={() => setDropdownOpen((prev) => !prev)}
-                      className={`inline-flex items-center gap-1 px-3 py-1.5 font-headline text-base transition-all ${
-                        isActive
-                          ? "font-semibold text-brand-deep"
-                          : "font-normal text-[#1e1c11]/70 hover:text-brand-deep"
-                      }`}
-                    >
-                      {item.label}
-                      <ChevronDown
-                        size={15}
-                        className={`transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
-                      />
-                    </button>
-
-                    {dropdownOpen && (
-                      <div className="absolute left-1/2 top-full mt-3 w-56 -translate-x-1/2 overflow-hidden border border-[#1d5a8d]/15 bg-[#f8f6f2] shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
-                        {layananDropdown.map((sub) => (
-                          <Link
-                            key={sub.label}
-                            href={sub.href}
-                            onClick={() => setDropdownOpen(false)}
-                            className="block px-5 py-3 font-sans text-sm font-medium text-[#1e1c11]/80 transition-colors hover:bg-brand-deep hover:!text-white"
-                          >
-                            {sub.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                );
-              }
-
-              return (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className={
-                    isActive
-                      ? "px-3 py-1.5 font-headline text-base font-semibold text-brand-deep"
-                      : "px-3 py-1.5 font-headline text-base font-normal text-[#1e1c11]/70 transition-all hover:text-brand-deep"
-                  }
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </div>
-
-          <a
-            href={cta.href}
-            target={cta.external ? "_blank" : undefined}
-            rel={cta.external ? "noreferrer" : undefined}
-            className="hidden bg-primary-container px-5 py-2.5 text-sm font-semibold !text-white transition-all hover:-translate-y-0.5 hover:bg-primary active:scale-95 md:inline-flex md:px-8 md:text-base"
-          >
-            {cta.label}
-          </a>
-
-          <button
-            type="button"
-            onClick={() => setMobileOpen((prev) => !prev)}
-            aria-label="Toggle menu"
-            suppressHydrationWarning
-            className="inline-flex h-10 w-10 items-center justify-center border border-outline-variant/35 bg-white text-primary md:hidden"
-          >
-            {mounted && mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+        <div className="hidden items-center lg:flex">
+          <NavbarLink
+            item={cta}
+            className="inline-flex items-center justify-center border border-white/70 px-[18px] py-[10px] text-[19px] font-medium text-white transition-colors duration-200 hover:border-[#9fe8ff] hover:bg-white/10"
+          />
         </div>
 
-        {mounted && mobileOpen ? (
-          <div className="border-t border-outline-variant/20 bg-surface-container-lowest md:hidden">
-            <div className={`${layoutContainer} space-y-2 py-4`}>
-              {nav.map((item) => {
-                const isLayanan = item.label === "Layanan";
-                const isActive = isLayanan
-                  ? isLayananActive
-                  : isNavItemActive(item.href, pathname);
-
-                if (isLayanan) {
-                  return (
-                    <div key={item.label}>
-                      <button
-                        type="button"
-                        onClick={() => setMobileLayananOpen((prev) => !prev)}
-                        className={`flex w-full items-center justify-between px-3 py-2 font-semibold ${
-                          isActive
-                            ? "bg-surface-container text-primary"
-                            : "text-on-surface-variant"
-                        }`}
-                      >
-                        {item.label}
-                        <ChevronDown
-                          size={15}
-                          className={`transition-transform duration-200 ${mobileLayananOpen ? "rotate-180" : ""}`}
-                        />
-                      </button>
-                      {mobileLayananOpen && (
-                        <div className="ml-4 mt-1 space-y-1 border-l-2 border-brand-deep/20 pl-3">
-                          {layananDropdown.map((sub) => (
-                            <Link
-                              key={sub.label}
-                              href={sub.href}
-                              onClick={() => {
-                                setMobileLayananOpen(false);
-                                setMobileOpen(false);
-                              }}
-                              className="block px-3 py-2 text-sm text-on-surface-variant transition-colors hover:bg-brand-deep hover:!text-white"
-                            >
-                              {sub.label}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  );
-                }
-
-                return (
-                  <Link
-                    key={`mobile-${item.label}`}
-                    href={item.href}
-                    className={`block px-3 py-2 font-semibold ${isActive ? "bg-surface-container text-primary" : "text-on-surface-variant"}`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-
-              <a
-                href={cta.href}
-                target={cta.external ? "_blank" : undefined}
-                rel={cta.external ? "noreferrer" : undefined}
-                className="mt-3 inline-flex w-full items-center justify-center bg-primary-container px-5 py-3 text-sm font-semibold !text-white"
-              >
-                {cta.label}
-              </a>
-            </div>
-          </div>
-        ) : null}
-      </nav>
-      <CampaignStickyUrgencyBar campaign={stickyCampaign} />
-    </>
+        <MobileNavMenu nav={nav} cta={cta} className="ml-auto" />
+      </div>
+    </header>
   );
 }

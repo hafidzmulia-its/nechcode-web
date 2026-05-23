@@ -3,50 +3,76 @@
 import { Reveal } from "@/components/shared/reveal";
 import { servicesContent } from "@/content/services";
 
-const ITEM_ICONS = ["favorite", "school", "storefront"] as const;
+const PROGRAM_LAYOUT = [
+  {
+    key: "Penawaran Khusus UMKM",
+    title: "Special Offer for MSMEs",
+    className: "lg:col-start-1 lg:row-start-1",
+  },
+  {
+    key: "Diskon Akademisi",
+    title: "Academic Discount",
+    className: "lg:col-start-2 lg:row-start-1 lg:translate-y-[4.25rem]",
+  },
+  {
+    key: "Bayar Seikhlasnya",
+    title: "Pay As Much As You Can",
+    className: "lg:col-start-1 lg:row-start-2 lg:col-span-2 lg:mx-auto lg:mt-8 lg:w-[48.5%]",
+  },
+] as const;
 
 export function ServiceSpecialProgram() {
   const { specialPrograms } = servicesContent;
+  const items = PROGRAM_LAYOUT.map((layout) => {
+    const match = specialPrograms.items.find((item) => item.title === layout.key);
+
+    return match
+      ? {
+          title: layout.title,
+          body: match.body,
+          className: layout.className,
+        }
+      : null;
+  }).filter((item): item is NonNullable<typeof item> => item !== null);
 
   return (
-    <section className="w-full bg-surface pb-20 pt-16 md:pb-24 md:pt-24">
-      <div className="mx-auto w-full max-w-[1240px] px-6 md:px-8 lg:px-10 xl:px-12">
+    <section className="w-full bg-[#FFFFFF] py-20 md:py-24 lg:py-28">
+      <div className="mx-auto w-full max-w-[1320px] px-6 md:px-8 lg:px-10 xl:px-12">
         <Reveal once y={18}>
-          <div className="rounded-[2rem] bg-brand-accent-soft p-8 md:p-12 lg:p-14">
-            <h2
-              className="font-headline text-3xl font-bold leading-[1.18] text-white md:text-4xl lg:whitespace-nowrap"
-              style={{ wordSpacing: "0.14em" }}
-            >
-              Program Khusus untuk tahap awal!
-            </h2>
-            <p className="mt-5 max-w-[34rem] text-base leading-relaxed text-white/85 md:text-lg">
-              Kami membuka program ini agar Anda dapat memulai transformasi
-              digital bersama kami!
+          <div className="mx-auto max-w-[64rem] text-center">
+            <p className="font-body text-[clamp(1.15rem,1.3vw,1.45rem)] font-normal uppercase tracking-[0.03em] text-[#151515]">
+              Special Program
             </p>
-
-            <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
-              {specialPrograms.items.map((item, index) => (
-                <Reveal key={item.title} once y={14} delay={index * 0.06}>
-                  <article className="h-full rounded-[1.25rem] bg-surface p-6 md:p-7">
-                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-accent-soft">
-                      <span className="material-symbols-outlined text-lg text-white">
-                        {ITEM_ICONS[index] ?? "star"}
-                      </span>
-                    </div>
-                    <h3 className="mb-3 font-headline text-xl font-bold text-[#1e1c11]">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-[#1e1c11]/75">
-                      {item.body}
-                    </p>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
-
-            <p className="mt-8 text-sm text-white/75">{specialPrograms.note}</p>
+            <h2 className="mx-auto mt-7 max-w-full font-sans text-[32px] font-normal uppercase leading-[1.18] tracking-[-0.02em] text-[#0F0F0F]">
+              <span className="block whitespace-nowrap">THIS SPECIAL PROGRAM IS FOR</span>
+              <span className="block whitespace-nowrap">THOSE OF YOU WHO WANT TO START</span>
+            </h2>
           </div>
         </Reveal>
+
+        <div className="mx-auto mt-16 grid max-w-[1080px] grid-cols-1 gap-7 md:mt-20 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-8">
+          {items.map((item, index) => (
+            <Reveal
+              key={item.title}
+              once
+              y={18}
+              delay={index * 0.08}
+              className={item.className}
+            >
+              <article className="border-[3px] border-[#2F6FA8] bg-white px-9 py-9 md:px-10 md:py-10">
+                <h3 className="font-sans text-[clamp(2rem,2.6vw,2.5rem)] font-normal leading-[1.15] tracking-[-0.03em] text-[#4B8FCC]">
+                  {item.title}
+                </h3>
+
+                <div className="mt-5 h-px w-[13rem] bg-[#5A5A5A]" />
+
+                <p className="mt-8 max-w-[28ch] font-body text-[clamp(1.08rem,1.2vw,1.22rem)] leading-[1.6] text-[#202020] md:max-w-[30ch]">
+                  {item.body}
+                </p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

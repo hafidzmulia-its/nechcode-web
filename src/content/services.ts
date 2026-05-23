@@ -56,20 +56,19 @@ const pillars: ServicePillar[] = [
     label: "Web",
     navbarTitle: "Website & Landing Pages",
     navbarBody:
-      "Untuk company profile, lead generation, katalog, dan website bisnis yang lebih kredibel, cepat, dan siap dipakai.",
+      "For company profiles, lead generation, catalogs and business websites that are more credible, fast and ready to use.",
     navbarPriceCue: "Mulai dari Rp1.200.000",
     navbarCtaLabel: "Lihat Paket Website",
     selectorLabel: "Web",
     sectionTitle: "Web Packages",
     sectionBody:
       "Paket website untuk tim yang ingin mulai cepat dengan fondasi yang rapi, lalu tumbuh bertahap sesuai kebutuhan operasional.",
-    microcopy:
-      "Harga dapat disesuaikan dengan kompleksitas, konten, integrasi, dan kebutuhan lanjutan.",
+    microcopy: "",
     packages: [
       {
         name: "Basic Web",
         description:
-          "Untuk personal brand, UMKM, atau bisnis yang butuh website sederhana tapi tetap rapi, kredibel, dan siap online.",
+          "For personal brands, MSMEs, or businesses that need a simple but neat, credible and online-ready website.",
         priceCue: "Rp 1.200.000",
         subnote: "Satu kali bayar, termasuk domain dan hosting 1 tahun.",
         featureRows: [
@@ -97,7 +96,7 @@ const pillars: ServicePillar[] = [
       {
         name: "Pro Web",
         description:
-          "Untuk bisnis yang butuh website multi halaman dengan katalog, lead capture, dan integrasi komunikasi yang lebih lengkap.",
+          "For businesses that need a multi-page website with a catalog, lead capture and more complete communication integration.",
         priceCue: "Rp 2.800.000",
         badge: "Paling Populer",
         featureRows: [
@@ -125,7 +124,7 @@ const pillars: ServicePillar[] = [
       {
         name: "Advanced Web",
         description:
-          "Untuk kebutuhan website yang lebih kompleks, sistem admin, integrasi database, dan fitur custom yang mendukung operasional.",
+          "For more complex website needs, admin systems, database integration, and custom features that support operations.",
         priceCue: "Rp 4.500.000",
         featureRows: [
           { label: "One page/landing page", included: true },
@@ -156,26 +155,25 @@ const pillars: ServicePillar[] = [
     label: "Mobile Apps",
     navbarTitle: "Mobile Apps",
     navbarBody:
-      "Untuk pengalaman mobile-first, operasional lapangan, atau produk digital yang perlu hadir langsung di perangkat pengguna.",
+      "For mobile-first experiences, field operations, or digital products that need to be present directly on users devices.",
     navbarPriceCue: "Scope via konsultasi",
     navbarCtaLabel: "Lihat Opsi Mobile App",
     selectorLabel: "Mobile Apps",
     sectionTitle: "Mobile Apps dengan estimasi berbasis scope",
     sectionBody:
       "Layanan mobile app cocok untuk tim yang membutuhkan pengalaman mobile-first, aplikasi operasional, atau produk digital yang dipakai langsung oleh pengguna. Karena kebutuhan mobile cenderung lebih spesifik, estimasi terbaik dimulai dari konsultasi scope.",
-    microcopy:
-      "Estimasi mobile app disusun berdasarkan flow, integrasi, jumlah role, dan target rilis.",
+    microcopy: "",
     packages: [
       {
         name: "MVP Mobile App",
         description:
-          "Untuk validasi ide, prototype fungsional, atau aplikasi awal dengan alur inti yang sudah jelas.",
-        priceCue: "Konsultasi Scope",
+          "To validate ideas, functional prototypes, or initial applications with a clear core flow.",
+        priceCue: "",
         isCustom: true,
         features: [
-          "Flow inti siap diuji ke pengguna",
-          "Arsitektur awal untuk iterasi cepat",
-          "Timeline ringkas berbasis prioritas fitur",
+          "The core flow is ready to be tested on users",
+          "Initial architecture for fast iteration",
+          "A compact timeline based on feature priorities",
         ],
         cta: {
           label: "Diskusikan Scope MVP",
@@ -190,13 +188,13 @@ const pillars: ServicePillar[] = [
       {
         name: "Operational Mobile App",
         description:
-          "Untuk kebutuhan internal atau operasional lapangan dengan autentikasi, role, dashboard, dan alur kerja yang lebih matang.",
-        priceCue: "Konsultasi Scope",
+          "For internal or field operational needs with more mature authentication, roles, dashboards and workflows.",
+        priceCue: "",
         isCustom: true,
         features: [
-          "Auth, role, dan dashboard operasional",
-          "Sinkronisasi data lapangan",
-          "Scope berdasarkan SOP tim",
+          "Auth, roles, and operational dashboards",
+          "Field data synchronization",
+          "Scope based on team SOP",
         ],
         cta: {
           label: "Diskusikan Scope Operasional",
@@ -211,13 +209,13 @@ const pillars: ServicePillar[] = [
       {
         name: "Integrated Mobile Product",
         description:
-          "Untuk aplikasi yang terhubung ke backend, pembayaran, API eksternal, notifikasi, atau sistem yang sudah berjalan.",
-        priceCue: "Konsultasi Scope",
+          "For apps that connect to backends, payments, external APIs, notifications, or already running systems.",
+        priceCue: "",
         isCustom: true,
         features: [
-          "Integrasi backend dan API eksternal",
-          "Notifikasi dan lifecycle pengguna",
-          "Perencanaan rilis bertahap",
+          "Backend integration and external APIs",
+          "Notifications and user lifecycle",
+          "Phased release planning",
         ],
         cta: {
           label: "Diskusikan Scope Terintegrasi",
@@ -236,25 +234,24 @@ const pillars: ServicePillar[] = [
     label: "AI Automation",
     navbarTitle: "AI Automation & Chatbot",
     navbarBody:
-      "Untuk FAQ, lead capture, follow-up otomatis, knowledge routing, dan workflow AI yang lebih konsisten.",
+      "For FAQs, lead capture, automatic follow-up, knowledge routing, and more consistent AI workflows.",
     navbarPriceCue: "Mulai dari Rp1.200.000",
     navbarCtaLabel: "Lihat Paket AI",
     selectorLabel: "AI Automation",
     sectionTitle: "AI Automation & Chatbot",
     sectionBody:
       "Opsi layanan AI untuk tim yang ingin mempercepat respons, merapikan knowledge flow, dan mengurangi pekerjaan berulang lewat automasi yang terukur.",
-    microcopy:
-      "Fitur di luar kebutuhan dasar akan disesuaikan melalui konsultasi dan pemetaan workflow.",
+    microcopy: "",
     packages: [
       {
         name: "Basic Chatbot",
         description:
-          "Untuk FAQ otomatis, alur percakapan sederhana, dan integrasi awal ke website.",
-        priceCue: "Spesial Rp1.200.000",
+          "For automated FAQs, simple conversation flows, and early integration into websites.",
+        priceCue: "Rp1.200.000",
         features: [
-          "FAQ automation untuk pertanyaan berulang",
-          "Flow percakapan dasar",
-          "Integrasi awal ke website",
+          "FAQ automation for recurring questions",
+          "Basic conversation flow",
+          "Initial integration into the website",
         ],
         cta: {
           label: "Pilih Basic",
@@ -269,14 +266,14 @@ const pillars: ServicePillar[] = [
       {
         name: "Pro Chatbot",
         description:
-          "Untuk lead capture, follow-up otomatis, integrasi Google Sheets/CRM, dan alur komunikasi yang lebih siap dipakai tim.",
-        priceCue: "Spesial Rp3.500.000",
+          "For lead capture, automated follow-up, Google Sheets/CRM integration, and more team-ready communication flows.",
+        priceCue: "Rp3.500.000",
         badge: "Paling Populer",
         features: [
-          "Lead capture dan follow-up otomatis",
-          "Integrasi Google Sheets atau CRM",
-          "Routing percakapan yang lebih terstruktur",
-          "Siap dipakai tim sales/ops",
+          "Lead Capture and Automatic Follow-Up",
+          "Google Sheets or CRM integration",
+          "More structured conversation routing",
+          "Ready to be used by the sales/ops team",
         ],
         cta: {
           label: "Pilih Pro",
@@ -291,13 +288,13 @@ const pillars: ServicePillar[] = [
       {
         name: "Custom AI Solution",
         description:
-          "Untuk workflow AI, automation lintas tools, routing pengetahuan, integrasi API, dan proses yang tidak bisa diselesaikan dengan template umum.",
+          "For AI workflows, cross-tool automation, knowledge routing, API integration, and processes that cannot be completed with common templates.",
         priceCue: "Mulai dari konsultasi",
         isCustom: true,
         features: [
-          "Workflow AI lintas tools",
-          "Knowledge routing sesuai konteks tim",
-          "Integrasi API dan automasi proses custom",
+          "Cross-tool AI workflow",
+          "Knowledge routing according to team context",
+          "API integration and custom process automation",
         ],
         cta: {
           label: "Konsultasi via WhatsApp",
@@ -316,31 +313,31 @@ const pillars: ServicePillar[] = [
     label: "Predictive Data",
     navbarTitle: "Predictive Data",
     navbarBody:
-      "Analisis dan prediksi data menggunakan Machine Learning untuk mengubah dataset Anda menjadi insight dan prediksi yang bermanfaat bagi bisnis maupun penelitian.",
+      "Data analysis and prediction using Machine Learning to turn your datasets into insights and predictions that are useful for business and research.",
     navbarPriceCue: "Mulai dari Rp1.500.000",
     navbarCtaLabel: "Lihat Paket Data",
     selectorLabel: "Predictive Data",
-    sectionTitle: "Predictive Data — Analisis & Prediksi berbasis Machine Learning",
+    sectionTitle:
+      "Predictive Data — Analisis & Prediksi berbasis Machine Learning",
     sectionBody:
       "Kami membantu bisnis, UMKM, dan peneliti mengubah data historis menjadi model prediksi yang actionable. Cukup siapkan data dalam format CSV, Excel, atau dataset numerik — kami yang kerjakan analisisnya.",
-    microcopy:
-      "Harga bervariasi tergantung kompleksitas dataset, jumlah variabel, dan kedalaman analisis yang dibutuhkan.",
+    microcopy: "",
     packages: [
       {
         name: "Basic Prediction",
         description:
-          "Solusi prediksi data sederhana untuk memahami tren dari dataset Anda. Cocok untuk UMKM, mahasiswa, dan bisnis yang baru mulai analisis data.",
+          "A simple data prediction solution to understand trends from your dataset. Suitable for MSMEs, students, and businesses that are just starting to analyze data.",
         priceCue: "Rp 1.500.000",
         subnote: "Estimasi pengerjaan 4–6 hari kerja.",
         features: [
-          "Analisis dataset",
-          "Membuat model prediksi",
-          "Identifikasi pola data",
-          "Visualisasi hasil prediksi",
-          "Laporan analisis (PDF)",
-          "Grafik tren dan prediksi",
-          "Model prediksi (.pkl)",
-          "Konsultasi interpretasi",
+          "Dataset analysis",
+          "Create a prediction model",
+          "Identify data patterns",
+          "Visualization of prediction results",
+          "Analysis report (PDF)",
+          "Trend charts and predictions",
+          "Prediction model (.pkl)",
+          "Interpretation consultation",
         ],
         cta: {
           label: "Mulai Analisis Data",
@@ -355,19 +352,19 @@ const pillars: ServicePillar[] = [
       {
         name: "Pro Prediction",
         description:
-          "Analisis data lebih mendalam untuk menghasilkan prediksi yang lebih akurat. Sudah termasuk semua fitur Basic Prediction. Cocok untuk bisnis berbasis data, penelitian akademik, dan analisis data kompleks.",
+          "Deeper data analysis to produce more accurate predictions. Includes all Basic Prediction features. Suitable for data-driven business, academic research, and complex data analysis.",
         priceCue: "Rp 4.000.000",
         subnote: "Estimasi pengerjaan 1–2 minggu.",
         badge: "Paling Populer",
         features: [
-          "Semua fitur Basic Prediction",
-          "Analisis hubungan antar variabel",
-          "Pengujian beberapa model ML",
-          "Evaluasi performa model",
-          "Prediksi lebih akurat",
-          "Analisis faktor yang memengaruhi hasil",
-          "Optimasi model Machine Learning",
-          "Laporan analisis (PDF) + visualisasi data",
+          "All Basic Prediction features",
+          "Analysis of relationships between variables",
+          "Testing multiple ML models",
+          "Evaluate model performance",
+          "More accurate predictions",
+          "Analyze the factors that influence the results",
+          "Machine Learning model optimization",
+          "Analysis report (PDF) + data visualization",
         ],
         cta: {
           label: "Mulai Analisis",
@@ -382,14 +379,14 @@ const pillars: ServicePillar[] = [
       {
         name: "Custom Prediction",
         description:
-          "Jika kebutuhan Anda tidak termasuk paket Basic atau Pro, kami dapat menyesuaikan solusi analisis data sepenuhnya dengan konteks bisnis atau penelitian Anda.",
+          "If your needs do not fall within the Basic or Pro plans, we can completely customize a data analysis solution to your business or research context.",
         priceCue: "Mulai dari konsultasi",
         isCustom: true,
         features: [
-          "Dataset lebih kompleks",
-          "Kebutuhan analisis khusus",
-          "Integrasi ke sistem bisnis",
-          "Scope dan harga menyesuaikan kebutuhan proyek",
+          "The dataset is more complex",
+          "Special analysis needs",
+          "Integration into business systems",
+          "Scope and price adjust to project needs",
         ],
         cta: {
           label: "Konsultasi Data Anda",
@@ -420,7 +417,8 @@ const pillars: ServicePillar[] = [
 
 export const servicesContent = {
   hero: {
-    title: "Layanan digital yang bisa dimulai dari paket, lalu tumbuh sesuai kebutuhan",
+    title:
+      "Layanan digital yang bisa dimulai dari paket, lalu tumbuh sesuai kebutuhan",
     body: "NechCode membantu bisnis, UMKM, organisasi, dan institusi membangun website, mobile app, automasi AI, dan solusi Predictive Data yang relevan dengan tahap pertumbuhan mereka - mulai dari kebutuhan dasar yang harus cepat jalan sampai solusi custom yang lebih kompleks.",
   },
   pricingIntro: {
@@ -472,15 +470,15 @@ export const servicesContent = {
     items: [
       {
         title: "Bayar Seikhlasnya",
-        body: "Program terbatas untuk bisnis, organisasi, dan personal brand tertentu yang ingin memulai website, aplikasi, atau AI chatbot dengan skema pembayaran fleksibel.",
+        body: "The program is limited to certain businesses, organizations and personal brands who want to start a website, application or AI chatbot with a flexible payment scheme.",
       },
       {
         title: "Diskon Akademisi",
-        body: "Potongan khusus untuk mahasiswa, pelajar, guru, dosen, dan kebutuhan edukasi tertentu.",
+        body: "Special discounts for students, teachers, lecturers and certain educational needs.",
       },
       {
         title: "Penawaran Khusus UMKM",
-        body: "Opsi yang disesuaikan untuk landing page produk, katalog online, e-commerce sederhana, dan optimasi awal.",
+        body: "Customized options for product landing pages, online catalogs, simple e-commerce, and initial optimization.",
       },
     ],
   },
@@ -488,12 +486,14 @@ export const servicesContent = {
     heading: "Pertanyaan seputar layanan dan pricing",
     items: [
       {
-        question: "Bagaimana cara memilih antara Web, Mobile Apps, atau AI Automation?",
+        question:
+          "Bagaimana cara memilih antara Web, Mobile Apps, atau AI Automation?",
         answer:
           "Mulai dari kebutuhan utama tim Anda saat ini. Jika fokusnya kredibilitas dan lead, mulai dari Web. Jika operasional atau produk utama ada di perangkat pengguna, pilih Mobile Apps. Jika bottleneck ada di respons dan proses berulang, mulai dari AI Automation.",
       },
       {
-        question: "Apakah bisa mulai dari paket lalu ditingkatkan ke custom scope?",
+        question:
+          "Apakah bisa mulai dari paket lalu ditingkatkan ke custom scope?",
         answer:
           "Bisa. Banyak klien memulai dari paket entry-level untuk validasi cepat, lalu kami scale secara bertahap berdasarkan data penggunaan dan prioritas bisnis.",
       },
@@ -518,9 +518,16 @@ export const servicesContent = {
 };
 
 export function getServicePillarById(id: ServicePillarId) {
-  return servicesContent.pillars.find((pillar) => pillar.id === id) ?? servicesContent.pillars[0];
+  return (
+    servicesContent.pillars.find((pillar) => pillar.id === id) ??
+    servicesContent.pillars[0]
+  );
 }
 
-export function isValidPillarId(value: string | null): value is ServicePillarId {
-  return value === "web" || value === "mobile" || value === "ai" || value === "data";
+export function isValidPillarId(
+  value: string | null,
+): value is ServicePillarId {
+  return (
+    value === "web" || value === "mobile" || value === "ai" || value === "data"
+  );
 }

@@ -1,8 +1,6 @@
-import { MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { SocialIcon } from "@/components/shared/social-icon";
 import { layoutContainer } from "@/config/layout";
 import { siteConfig } from "@/config/site";
 import type { HomeContent } from "@/content/home";
@@ -12,65 +10,120 @@ type SiteFooterProps = {
   footer: HomeContent["footer"];
 };
 
-const footerLinks = [
-  siteConfig.socials.instagram,
-  siteConfig.socials.tiktok,
-  siteConfig.socials.linkedin,
-  {
-    platform: "WhatsApp",
-    label: "WhatsApp",
-    href: `https://wa.me/${siteConfig.whatsappNumber}`,
-  },
-];
+const socialLinks = [
+  { ...siteConfig.socials.instagram, iconSrc: "/img/instagram_icon.png" },
+  { ...siteConfig.socials.tiktok, iconSrc: "/img/tiktok_icon.png" },
+  { ...siteConfig.socials.linkedin, iconSrc: "/img/linkedln_icon.png" },
+] as const;
+
+const aboutLinks = [
+  { label: "About NechCode", href: "/about" },
+  { label: "Our Vision", href: "/about#vision" },
+  { label: "Our Principles", href: "/#principles" },
+  { label: "Our Team", href: "/about#team" },
+] as const;
+
+const serviceLinks = [
+  { label: "Website & Landing Pages", href: "/services/web" },
+  { label: "Mobile Applications", href: "/services/mobile" },
+  { label: "AI Automation & Chatbot", href: "/services/ai" },
+  { label: "Predictive Data", href: "/services/predictive-data" },
+] as const;
 
 export function SiteFooter({ brand, footer }: SiteFooterProps) {
+  void footer;
+
   return (
-    <footer className="w-full bg-[#2E3036]">
-      <div className={`${layoutContainer} py-10 md:py-12 lg:py-14`}>
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-          <div className="flex-1">
-            <div className="flex flex-col gap-6 md:gap-8 lg:flex-row lg:items-start lg:gap-10">
-              <Link href="/" aria-label={brand.name} className="inline-flex shrink-0">
-                <Image
-                  src="/logonav.png"
-                  alt={brand.name}
-                  width={320}
-                  height={88}
-                  priority
-                  className="h-auto w-[210px] md:w-[260px] lg:w-[280px]"
-                />
-              </Link>
+    <footer className="w-full bg-black text-white">
+      <div className={`${layoutContainer} py-16 md:py-20 lg:py-24`}>
+        <div className="grid grid-cols-1 gap-14 lg:grid-cols-[minmax(0,1.2fr)_minmax(240px,0.42fr)_minmax(280px,0.5fr)] lg:gap-12">
+          <div>
+            <Link
+              href="/"
+              aria-label={brand.name}
+              className="inline-flex shrink-0"
+            >
+              <Image
+                src="/logonav.png"
+                alt={brand.name}
+                width={320}
+                height={88}
+                priority
+                className="h-auto w-[210px] md:w-[250px] lg:w-[300px]"
+              />
+            </Link>
 
-              <p className="max-w-[34rem] text-[1.05rem] leading-[1.5] text-white/95 md:text-[1.15rem]">
-                {footer.note}
-              </p>
+            <div className="mt-10 flex items-center gap-5">
+              {socialLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={item.label}
+                  className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-white text-[#2B67A1] transition-transform hover:-translate-y-0.5"
+                >
+                  <Image
+                    src={item.iconSrc}
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 object-contain"
+                  />
+                </a>
+              ))}
             </div>
-
-            <p className="mt-8 text-sm leading-relaxed text-white/50 md:mt-10 md:text-[1.02rem]">
-              © 2026 {brand.name}. Solusi digital praktis untuk bisnis, UMKM,
-              organisasi, dan institusi di Indonesia.
-            </p>
           </div>
 
-          <div className="flex items-center gap-4 lg:gap-6">
-            {footerLinks.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={item.label}
-                className="flex h-11 w-11 items-center justify-center bg-[#F4F1EA] text-[#2E3036] transition-transform hover:-translate-y-0.5 md:h-12 md:w-12"
-              >
-                {item.platform === "WhatsApp" ? (
-                  <MessageCircle size={18} strokeWidth={2.2} aria-hidden="true" />
-                ) : (
-                  <SocialIcon platform={item.platform} />
-                )}
-              </a>
-            ))}
+          <div>
+            <h3 className="font-body text-[clamp(1.5rem,1.8vw,2rem)] font-semibold text-white">
+              About us
+            </h3>
+            <nav className="mt-8 flex flex-col gap-5">
+              {aboutLinks.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="font-body text-[clamp(1.2rem,1.25vw,1.45rem)] font-normal text-white/66 transition hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          <div>
+            <h3 className="font-body text-[clamp(1.5rem,1.8vw,2rem)] font-semibold text-white">
+              Services
+            </h3>
+            <nav className="mt-8 flex flex-col gap-5">
+              {serviceLinks.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="font-body text-[clamp(1.2rem,1.25vw,1.45rem)] font-normal text-white/66 transition hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
           </div>
         </div>
+
+        <div className="mt-14 md:mt-16">
+          <Image
+            src="/img/asset_line.png"
+            alt=""
+            width={1600}
+            height={2}
+            sizes="100vw"
+            className="block h-auto w-full opacity-20"
+          />
+        </div>
+
+        <p className="mt-12 text-center font-body text-[clamp(1.2rem,1.2vw,1.5rem)] font-normal text-white/92">
+          © 2026 {brand.name} I All Rights Reserved
+        </p>
       </div>
     </footer>
   );
