@@ -37,7 +37,7 @@ const teamMembers = [
 
 const aboutNavItems: LinkItem[] = [
   { label: "About Us", href: "#about-story" },
-  { label: "Services", href: "/services" },
+  { label: "Services", href: "#services" },
   { label: "Contact", href: "#consult" },
 ];
 
@@ -117,10 +117,16 @@ function AboutHero({ brand }: { brand: HomeContent["brand"] }) {
         </Link>
 
         <nav className="hidden flex-wrap items-center gap-8 text-[21px] font-medium uppercase tracking-normal text-white lg:flex lg:gap-[60px]">
-          <a href="#about-story" className="transition-colors hover:text-[#9fe8ff]">
+          <a
+            href="#about-story"
+            className="transition-colors hover:text-[#9fe8ff]"
+          >
             About Us
           </a>
-          <Link href="/services" className="transition-colors hover:text-[#9fe8ff]">
+          <Link
+            href="#services"
+            className="transition-colors hover:text-[#9fe8ff]"
+          >
             Services
           </Link>
           <a href="#consult" className="transition-colors hover:text-[#9fe8ff]">
@@ -135,7 +141,11 @@ function AboutHero({ brand }: { brand: HomeContent["brand"] }) {
           Get Your Service
         </Link>
 
-        <MobileNavMenu nav={aboutNavItems} cta={aboutNavCta} className="justify-self-end lg:hidden" />
+        <MobileNavMenu
+          nav={aboutNavItems}
+          cta={aboutNavCta}
+          className="justify-self-end lg:hidden"
+        />
       </header>
 
       <div className="relative z-10 flex min-h-[calc(100vh-160px)] flex-col px-6 pb-16 md:px-[15.2vw]">
@@ -221,9 +231,8 @@ function StorySection() {
             <div className="h-px flex-1 bg-white/80" />
           </div>
           <p className="mx-auto mt-8 max-w-[46ch] font-sans text-[clamp(1.6rem,2.1vw,2rem)] font-normal uppercase leading-[1.55] tracking-[0.035em]">
-            Empowering Businesses and Organizations Throughout Indonesia
-            Through Accessible, Reliable and Impactful Digital Technology
-            Solutions
+            Empowering Businesses and Organizations Throughout Indonesia Through
+            Accessible, Reliable and Impactful Digital Technology Solutions
           </p>
         </div>
       </section>
