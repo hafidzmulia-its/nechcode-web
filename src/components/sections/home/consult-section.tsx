@@ -70,13 +70,13 @@ export function ConsultSection() {
                 className="max-w-full font-sans text-[44px] font-normal uppercase leading-[1.18] tracking-[-0.02em] text-transparent"
                 style={{
                   backgroundImage:
-                    "linear-gradient(90deg, #FFFFFF 0%, #78C5F1 100%)",
+                    "linear-gradient(90deg, #FFFFFF 0%, #78C5F1 60%, #78C5F1 100%)",
                   WebkitBackgroundClip: "text",
                   backgroundClip: "text",
                 }}
               >
-                <span className="block whitespace-nowrap">CONSULT YOUR PROJECT WITH</span>
-                <span className="block whitespace-nowrap">CLEAR DIRECTION</span>
+                <span className="block whitespace-nowrap">CONSULT YOUR PROJECT</span>
+                <span className="block whitespace-nowrap">WITH CLEAR DIRECTION</span>
               </h2>
 
               <p className="mt-8 max-w-[30ch] font-body text-[20px] font-light leading-[1.55] text-white">
