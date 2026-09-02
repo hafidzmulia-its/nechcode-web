@@ -35,7 +35,7 @@ const teamMembers = [
   {
     name: "Natalya Divanda",
     role: "CSO",
-    image: "/img/reina.PNG",
+    image: "/img/natalya.jpeg",
   },
 ];
 
@@ -248,9 +248,15 @@ function TeamSection() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 flex flex-wrap justify-center gap-7">
           {teamMembers.map((member, index) => (
-            <Reveal key={member.name} once y={18} delay={index * 0.05}>
+            <Reveal
+              key={member.name}
+              once
+              y={18}
+              delay={index * 0.05}
+              className="w-full sm:w-[calc((100%-1.75rem)/2)] lg:w-[calc((100%-5.25rem)/4)]"
+            >
               <article className="relative aspect-[0.78/1] overflow-hidden bg-[#08131A]">
                 <Image
                   src={member.image}
