@@ -147,10 +147,10 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
           <div className={`${layoutContainer} py-20`}>
             <Reveal once y={18} className="max-w-4xl">
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-secondary">Portfolio</p>
-              <h1 className="font-headline text-5xl leading-tight text-primary md:text-7xl">
+              <h1 className="font-headline text-[clamp(2.4rem,11vw,4.5rem)] leading-tight text-primary">
                 Karya Terpilih dengan Outcome yang <span className="serif-italic">Terukur</span>
               </h1>
-              <p className="mt-6 max-w-2xl text-lg text-on-surface-variant">
+              <p className="mt-6 max-w-2xl text-base leading-relaxed text-on-surface-variant md:text-lg">
                 Rangkaian proyek website, sistem internal, workflow AI, dan integrasi custom yang dirancang untuk menyelesaikan masalah operasional nyata dengan scope jelas.
               </p>
             </Reveal>
@@ -161,7 +161,7 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
           <section className="w-full bg-gradient-to-b from-surface-container-low/55 to-surface py-8 md:py-10">
             <div className={layoutContainer}>
               <Reveal y={18}>
-                <article className="grid grid-cols-1 gap-7 overflow-hidden rounded-[2rem] border border-outline-variant/20 bg-surface-container-lowest p-7 shadow-[0_16px_36px_rgba(24,34,45,0.09)] md:grid-cols-[1.2fr_1fr]">
+                <article className="grid grid-cols-1 gap-6 overflow-hidden rounded-[1.5rem] border border-outline-variant/20 bg-surface-container-lowest p-5 shadow-[0_16px_36px_rgba(24,34,45,0.09)] md:grid-cols-[1.2fr_1fr] md:gap-7 md:rounded-[2rem] md:p-7">
                   <div className="relative min-h-[280px] overflow-hidden rounded-2xl bg-surface-container-low">
                     <Image
                       src={featured.imageUrl}
@@ -174,11 +174,11 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
                   <div className="flex flex-col justify-between">
                     <div>
                       <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary">Karya Unggulan</p>
-                      <h2 className="mb-3 font-headline text-4xl text-primary">{featured.title}</h2>
-                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-on-surface-variant/75">
+                      <h2 className="mb-3 font-headline text-3xl leading-tight text-primary md:text-4xl">{featured.title}</h2>
+                      <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-on-surface-variant/75 sm:text-xs">
                         Konteks: {featured.clientContext} • Tipe Proyek: {featured.projectType}
                       </p>
-                      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-on-surface-variant/75">{featured.scopeLabel}</p>
+                      <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-on-surface-variant/75 sm:text-xs">{featured.scopeLabel}</p>
                       <p className="mb-5 text-sm leading-relaxed text-on-surface-variant">{featured.description}</p>
                       <div className="mb-5 flex flex-wrap gap-2">
                         {featured.tags.map((tag) => (
@@ -188,7 +188,7 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
                         ))}
                       </div>
                     </div>
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-3">
                       <span className="rounded-full border border-outline-variant/25 bg-surface px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
                         {featured.mvpCategory}
                       </span>
@@ -206,12 +206,12 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
 
         <section className="w-full bg-surface py-10 md:py-14">
           <div className={layoutContainer}>
-            <div className="mb-8 flex flex-wrap gap-2">
+            <div className="mb-8 flex gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:overflow-visible">
               {filters.map((filter) => (
                 <button
                   key={filter}
                   onClick={() => setActiveFilter(filter)}
-                  className={`rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider transition ${
+                  className={`shrink-0 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider transition ${
                     activeFilter === filter
                       ? "bg-[linear-gradient(135deg,var(--primary-container),var(--primary),var(--secondary))] text-white shadow-[0_8px_18px_rgba(29,90,141,0.24)]"
                       : "border border-primary/20 bg-surface-container-lowest text-primary hover:border-primary/35 hover:bg-[linear-gradient(120deg,rgba(29,90,141,0.07),rgba(88,230,255,0.16))]"
@@ -249,7 +249,7 @@ export function PortfolioPage({ content, items }: PortfolioPageProps) {
                           </span>
                         ))}
                       </div>
-                      <div className="flex items-center justify-between">
+                      <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                         <span className="text-xs font-bold uppercase tracking-wider text-secondary">{item.mvpCategory}</span>
                         <span className="text-xs font-semibold text-on-surface-variant">Status: {item.status}</span>
                       </div>

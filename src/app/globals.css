@@ -66,7 +66,7 @@ img {
 @keyframes bg-drop {
   from {
     opacity: 0;
-    transform: translateY(-10000px) scale(1.08);
+    transform: translateY(-120vh) scale(1.08);
   }
 
   to {
@@ -78,7 +78,7 @@ img {
 @keyframes navbar-in {
   from {
     opacity: 0;
-    transform: translateX(10000px);
+    transform: translateX(120%);
   }
 
   to {
@@ -90,7 +90,7 @@ img {
 @keyframes blur-left-in {
   from {
     opacity: 0;
-    transform: translateX(-10000px);
+    transform: translateX(-120%);
   }
 
   to {
@@ -102,7 +102,7 @@ img {
 @keyframes blur-right-in {
   from {
     opacity: 0;
-    transform: translateX(10000px);
+    transform: translateX(120%);
   }
 
   to {
@@ -114,7 +114,7 @@ img {
 @keyframes hero-copy-in {
   from {
     opacity: 0;
-    transform: translateY(-10000px);
+    transform: translateY(-120vh);
   }
 
   to {
@@ -137,22 +137,27 @@ img {
 
 .animate-bg-drop {
   animation: bg-drop 3000ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
 }
 
 .animate-navbar-in {
   animation: navbar-in 3000ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
 }
 
 .animate-blur-left-in {
   animation: blur-left-in 3000ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
 }
 
 .animate-blur-right-in {
   animation: blur-right-in 3000ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
 }
 
 .animate-hero-copy-in {
   animation: hero-copy-in 3000ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: opacity, transform;
 }
 
 .animate-service-asset-rise {

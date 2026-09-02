@@ -67,7 +67,7 @@ export function ConsultSection() {
           <Reveal y={18} duration={0.42} once={false}>
             <div className="max-w-[41rem] pt-2">
               <h2
-                className="max-w-full font-sans text-[44px] font-normal uppercase leading-[1.18] tracking-[-0.02em] text-transparent"
+                className="max-w-full font-sans text-[clamp(2rem,9.5vw,2.75rem)] font-normal uppercase leading-[1.18] tracking-[-0.02em] text-transparent"
                 style={{
                   backgroundImage:
                     "linear-gradient(90deg, #FFFFFF 0%, #78C5F1 60%, #78C5F1 100%)",
@@ -75,8 +75,8 @@ export function ConsultSection() {
                   backgroundClip: "text",
                 }}
               >
-                <span className="block whitespace-nowrap">CONSULT YOUR PROJECT</span>
-                <span className="block whitespace-nowrap">WITH CLEAR DIRECTION</span>
+                <span className="block">CONSULT YOUR PROJECT</span>
+                <span className="block">WITH CLEAR DIRECTION</span>
               </h2>
 
               <p className="mt-8 max-w-[30ch] font-body text-[20px] font-light leading-[1.55] text-white">
@@ -95,7 +95,7 @@ export function ConsultSection() {
                     href={whatsappLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex min-h-[3.6rem] w-full items-center justify-center rounded-[10px] bg-white px-6 py-3 text-center font-body text-[clamp(1rem,1.05vw,1.2rem)] font-normal !text-[#1C1C1C] visited:!text-[#1C1C1C] hover:!text-[#1C1C1C] transition hover:opacity-92"
+                    className="inline-flex min-h-[3.6rem] w-full items-center justify-center rounded-[10px] bg-white px-4 py-3 text-center font-body text-[clamp(0.92rem,4vw,1.2rem)] font-normal !text-[#1C1C1C] transition visited:!text-[#1C1C1C] hover:!text-[#1C1C1C] hover:opacity-92 sm:px-6"
                   >
                     Consultation via WhatsApp ({siteConfig.whatsappDisplayName})
                   </a>
@@ -104,7 +104,7 @@ export function ConsultSection() {
                     href={briefMailtoLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex min-h-[3.6rem] w-full items-center justify-center rounded-[10px] border border-[rgba(255,255,255,0.9)] bg-transparent px-6 py-3 text-center font-body text-[clamp(1rem,1.05vw,1.2rem)] font-normal !text-white visited:!text-white hover:!text-white transition hover:bg-white/8"
+                    className="inline-flex min-h-[3.6rem] w-full items-center justify-center rounded-[10px] border border-[rgba(255,255,255,0.9)] bg-transparent px-4 py-3 text-center font-body text-[clamp(0.92rem,4vw,1.2rem)] font-normal !text-white transition visited:!text-white hover:!text-white hover:bg-white/8 sm:px-6"
                   >
                     <span className="!text-white">Send Brief via Email</span>
                     <span
@@ -128,7 +128,7 @@ export function ConsultSection() {
           <Reveal y={18} delay={0.06} duration={0.42} once={false}>
             <form
               onSubmit={(event) => event.preventDefault()}
-              className="border border-[rgba(255,255,255,0.72)] bg-[rgba(8,23,34,0.3)] px-7 py-8 backdrop-blur-[1px] sm:px-11 sm:py-10"
+              className="border border-[rgba(255,255,255,0.72)] bg-[rgba(8,23,34,0.3)] px-5 py-7 backdrop-blur-[1px] sm:px-11 sm:py-10"
             >
               <h3 className="max-w-[18ch] font-sans text-[clamp(1.8rem,2.5vw,2.7rem)] font-normal uppercase leading-[1.38] text-white">
                 WE LISTEN TO EVERYTHING: START BY EXPLAINING YOUR NEEDS TO US
@@ -189,7 +189,7 @@ export function ConsultSection() {
                 href={briefWhatsappLink}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-8 inline-flex min-h-[3.8rem] items-center justify-center rounded-[10px] bg-white px-8 py-3 font-body text-[clamp(1rem,1.05vw,1.18rem)] font-normal !text-[#1C1C1C] visited:!text-[#1C1C1C] hover:!text-[#1C1C1C] transition hover:opacity-92"
+                className="mt-8 inline-flex min-h-[3.8rem] w-full items-center justify-center rounded-[10px] bg-white px-5 py-3 text-center font-body text-[clamp(0.92rem,4vw,1.18rem)] font-normal !text-[#1C1C1C] transition visited:!text-[#1C1C1C] hover:!text-[#1C1C1C] hover:opacity-92 sm:w-auto sm:px-8"
               >
                 <span className="!text-[#1C1C1C]">Send Brief via Whatsapp</span>
                 <span aria-hidden="true" className="ml-4 text-[1.8rem] text-[#2B7BC1]">

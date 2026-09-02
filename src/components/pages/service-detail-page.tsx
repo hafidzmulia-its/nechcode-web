@@ -3,10 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import { SiteFooter } from "@/components/sections/home/site-footer";
-import { MobileNavMenu } from "@/components/shared/mobile-nav-menu";
 import {
   ContactServices,
   ServicePortfolio,
@@ -47,17 +46,6 @@ const serviceLinks: Array<{
   { id: "data", label: "PREDICTIVE DATA", href: "/services/predictive-data" },
 ];
 
-const serviceHeaderNav = [
-  { label: "About Us", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Contact", href: "#consult" },
-];
-
-const serviceHeaderCta = {
-  label: "Get Your Service",
-  href: "#consult",
-};
-
 export function ServiceDetailPage({
   content,
   serviceId,
@@ -66,7 +54,7 @@ export function ServiceDetailPage({
   heroLabel,
   pricingOptions,
 }: ServiceDetailPageProps) {
-  const [introStarted, setIntroStarted] = useState(false);
+  const introStarted = true;
 
   const pillar = getServicePillarById(serviceId);
   const copy = servicePageCopy[serviceId];
@@ -81,16 +69,6 @@ export function ServiceDetailPage({
     serviceLinks[(currentServiceIndex + 1) % serviceLinks.length];
   const portfolioId = `${serviceId}-portfolio`;
 
-  useEffect(() => {
-    const introTimer = window.setTimeout(() => {
-      setIntroStarted(true);
-    }, 800);
-
-    return () => {
-      window.clearTimeout(introTimer);
-    };
-  }, []);
-
   function handleScrollNext() {
     const portfolioSection = document.getElementById(portfolioId);
     const fallbackSection = document.getElementById("special-program");
@@ -100,14 +78,20 @@ export function ServiceDetailPage({
   }
 
   return (
-    <div className="bg-[#030608] text-white selection:bg-[#8fdcff] selection:text-[#07131d]">
+    <div className="overflow-x-hidden bg-[#030608] text-white selection:bg-[#8fdcff] selection:text-[#07131d]">
       <section
         id={`${serviceId}-hero`}
         className="relative isolate min-h-screen overflow-hidden bg-[#020202]"
       >
-        <IntroOverlay introStarted={introStarted} />
-
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <Image
+            src="/img/bg_home.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center opacity-35"
+          />
           <Image
             src="/img/bg_home.png"
             alt=""
@@ -145,7 +129,7 @@ export function ServiceDetailPage({
 
         <ServiceHeroHeader introStarted={introStarted} />
 
-        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-118px)] w-full max-w-[1540px] flex-col px-5 pb-0 pt-2 sm:px-8 lg:px-14">
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-96px)] w-full max-w-[1540px] flex-col px-4 pb-0 pt-2 sm:px-8 lg:min-h-[calc(100vh-118px)] lg:px-14">
           <ServiceSelector
             currentServiceIndex={currentServiceIndex}
             previousService={previousService}
@@ -156,9 +140,9 @@ export function ServiceDetailPage({
           <div className="relative flex flex-1 items-end justify-center overflow-hidden pb-0">
             <HeroTitle label={heroLabel} introStarted={introStarted} />
 
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex justify-center px-4 sm:px-8">
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex justify-center px-2 sm:px-8">
               <div
-                className={`relative h-[50vw] w-full max-w-[980px] min-h-[260px] sm:h-[46vw] md:h-[42vw] lg:h-[36vw] lg:max-w-[1080px] xl:h-[34vw] ${
+                className={`relative h-[58vw] w-full max-w-[980px] min-h-[220px] sm:h-[46vw] sm:min-h-[260px] md:h-[42vw] lg:h-[36vw] lg:max-w-[1080px] xl:h-[34vw] ${
                   introStarted ? "animate-service-asset-rise" : "opacity-0"
                 }`}
               >
@@ -168,7 +152,11 @@ export function ServiceDetailPage({
                   fill
                   priority
                   sizes="(max-width: 640px) 92vw, (max-width: 1024px) 80vw, 1080px"
-                  className="object-contain object-bottom"
+                  className={`object-contain object-bottom ${
+                    serviceId === "data"
+                      ? "mix-blend-screen brightness-110 contrast-110"
+                      : ""
+                  }`}
                 />
               </div>
             </div>
@@ -176,7 +164,7 @@ export function ServiceDetailPage({
             <button
               type="button"
               onClick={handleScrollNext}
-              className={`absolute bottom-14 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2 bg-[linear-gradient(180deg,rgba(99,122,153,0.08)_0%,rgba(81,112,157,0.34)_100%)] px-8 py-4 text-sm font-medium uppercase tracking-[0.04em] text-white transition hover:text-[#8fdcff] md:bottom-20 md:px-12 ${
+              className={`absolute bottom-8 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2 bg-[linear-gradient(180deg,rgba(99,122,153,0.08)_0%,rgba(81,112,157,0.34)_100%)] px-6 py-3 text-xs font-medium uppercase tracking-[0.04em] text-white transition hover:text-[#8fdcff] md:bottom-20 md:px-12 md:py-4 md:text-sm ${
                 introStarted ? "animate-hero-copy-in" : "opacity-0"
               }`}
               aria-label="Scroll to service details"
@@ -209,34 +197,10 @@ export function ServiceDetailPage({
   );
 }
 
-function IntroOverlay({ introStarted }: { introStarted: boolean }) {
-  return (
-    <div
-      className={`absolute inset-0 z-30 flex items-center justify-center bg-[#020202] transition-opacity duration-700 ${
-        introStarted ? "pointer-events-none opacity-0" : "opacity-100"
-      }`}
-    >
-      <div className="flex items-center gap-4">
-        <Image
-          src="/logo-aseli.png"
-          alt=""
-          width={64}
-          height={64}
-          priority
-          className="h-16 w-16 object-contain"
-        />
-        <span className="text-[34px] font-bold tracking-tight text-[#1782c4]">
-          NechCode
-        </span>
-      </div>
-    </div>
-  );
-}
-
 function ServiceHeroHeader({ introStarted }: { introStarted: boolean }) {
   return (
     <header
-      className={`relative z-10 flex items-center justify-between gap-6 px-6 py-6 md:px-10 md:py-8 lg:px-[70px] lg:py-[50px] ${
+      className={`relative z-10 flex items-center justify-between gap-6 px-5 py-5 md:px-10 md:py-8 lg:px-[70px] lg:py-[50px] ${
         introStarted ? "animate-navbar-in" : "opacity-0"
       }`}
     >
@@ -260,12 +224,6 @@ function ServiceHeroHeader({ introStarted }: { introStarted: boolean }) {
       >
         Get Your Service
       </Link>
-
-      <MobileNavMenu
-        nav={serviceHeaderNav}
-        cta={serviceHeaderCta}
-        className="ml-auto lg:hidden"
-      />
     </header>
   );
 }
@@ -281,16 +239,30 @@ function ServiceSelector({
   nextService: (typeof serviceLinks)[number];
   introStarted: boolean;
 }) {
+  const activeLinkRef = useRef<HTMLAnchorElement | null>(null);
+
+  useEffect(() => {
+    if (!introStarted) {
+      return;
+    }
+
+    activeLinkRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }, [currentServiceIndex, introStarted]);
+
   return (
     <div
-      className={`mx-auto grid w-full max-w-[1120px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 pb-8 pt-2 text-center text-[12px] font-medium uppercase tracking-[0.04em] text-white/92 sm:gap-4 sm:text-[14px] md:text-[17px] lg:gap-8 lg:text-[19px] ${
+      className={`mx-auto grid w-full max-w-[1120px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 pb-5 pt-1 text-center text-[11px] font-medium uppercase tracking-[0.04em] text-white/92 sm:gap-4 sm:pb-8 sm:pt-2 sm:text-[14px] md:text-[17px] lg:gap-8 lg:text-[19px] ${
         introStarted ? "animate-hero-copy-in" : "opacity-0"
       }`}
     >
       <Link
         href={previousService.href}
         aria-label={`Go to ${previousService.label}`}
-        className="group shrink-0 p-1 text-white transition duration-300 hover:text-[#8fdcff]"
+        className="group relative z-30 flex h-11 w-11 shrink-0 touch-manipulation items-center justify-center text-white transition duration-300 hover:text-[#8fdcff] sm:h-12 sm:w-12"
       >
         <ChevronLeft
           className="h-6 w-6 transition duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(168,236,255,0.55)] sm:h-8 sm:w-8"
@@ -298,17 +270,22 @@ function ServiceSelector({
         />
       </Link>
 
-      <div className="min-w-0 overflow-x-auto">
-        <div className="flex min-w-max items-center justify-center gap-4 px-1 sm:gap-5 lg:gap-8">
+      <div className="relative z-10 min-w-0 overflow-x-auto">
+        <div className="flex min-w-max items-center justify-start gap-4 px-1 sm:gap-5 lg:justify-center lg:gap-8">
           {serviceLinks.map((item, index) => {
             const isActive = index === currentServiceIndex;
 
             return (
               <Link
                 key={item.href}
+                ref={isActive ? activeLinkRef : undefined}
                 href={item.href}
                 className={`group relative shrink-0 whitespace-nowrap pb-3 transition duration-300 ${
                   isActive ? "text-white" : "text-white/88 hover:text-[#a8ecff]"
+                } ${
+                  item.id === "data"
+                    ? "text-[10px] sm:text-[13px] md:text-[16px] lg:text-[17px]"
+                    : ""
                 }`}
               >
                 {item.label}
@@ -328,7 +305,7 @@ function ServiceSelector({
       <Link
         href={nextService.href}
         aria-label={`Go to ${nextService.label}`}
-        className="group shrink-0 p-1 text-white transition duration-300 hover:text-[#8fdcff]"
+        className="group relative z-30 flex h-11 w-11 shrink-0 touch-manipulation items-center justify-center text-white transition duration-300 hover:text-[#8fdcff] sm:h-12 sm:w-12"
       >
         <ChevronRight
           className="h-6 w-6 transition duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(168,236,255,0.55)] sm:h-8 sm:w-8"
@@ -346,25 +323,33 @@ function HeroTitle({
   label: ServiceDetailPageProps["heroLabel"];
   introStarted: boolean;
 }) {
+  const hasLongLeftLabel = label.left.length > 8;
+
   return (
     <div
-      className={`relative z-20 mb-[28vh] w-full max-w-[1300px] px-2 sm:mb-[25vh] lg:mb-[22vh] ${
+      className={`relative z-20 mb-[34vh] w-full max-w-[1300px] px-2 sm:mb-[25vh] lg:mb-[22vh] ${
         introStarted ? "animate-hero-copy-in" : "opacity-0"
       }`}
     >
-      <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-[0.92fr_1.08fr] lg:gap-4">
-        <div className="text-center lg:text-left">
-          <p className="text-[clamp(4.5rem,10.4vw,8.2rem)] font-light uppercase leading-[0.9] tracking-[0.01em] text-[#a8ecff] [text-shadow:0_5px_10px_rgba(0,0,0,0.35)]">
+      <div className="grid grid-cols-1 items-start gap-3 lg:grid-cols-[0.92fr_1.08fr] lg:gap-4">
+        <div className="min-w-0 text-center lg:text-left">
+          <p
+            className={`font-light uppercase leading-[0.9] tracking-[0.01em] text-[#a8ecff] [text-shadow:0_5px_10px_rgba(0,0,0,0.35)] ${
+              hasLongLeftLabel
+                ? "text-[clamp(2.9rem,11vw,6.2rem)]"
+                : "text-[clamp(3.2rem,16vw,8.2rem)]"
+            }`}
+          >
             {label.left}
           </p>
         </div>
 
-        <div className="pt-2 text-center lg:pt-24 lg:text-right">
-          <p className="text-[clamp(4rem,9vw,7rem)] font-light uppercase leading-[0.9] tracking-[0.01em] text-[#a8ecff] [text-shadow:0_5px_10px_rgba(0,0,0,0.35)]">
+        <div className="min-w-0 pt-2 text-center lg:pt-24 lg:text-right">
+          <p className="text-[clamp(2.9rem,14vw,7rem)] font-light uppercase leading-[0.9] tracking-[0.01em] text-[#a8ecff] [text-shadow:0_5px_10px_rgba(0,0,0,0.35)]">
             {label.rightTop}
           </p>
           {label.rightBottom ? (
-            <p className="mt-3 text-[clamp(3.9rem,8vw,6.4rem)] font-light uppercase leading-[0.88] tracking-[0.01em] text-[#a8ecff] [text-shadow:0_5px_10px_rgba(0,0,0,0.35)]">
+            <p className="mt-3 text-[clamp(2.7rem,13vw,6.4rem)] font-light uppercase leading-[0.88] tracking-[0.01em] text-[#a8ecff] [text-shadow:0_5px_10px_rgba(0,0,0,0.35)]">
               {label.rightBottom}
             </p>
           ) : null}

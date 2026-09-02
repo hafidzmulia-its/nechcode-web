@@ -4,20 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { MobileNavMenu } from "@/components/shared/mobile-nav-menu";
-import type { LinkItem } from "@/content/home";
-
-const heroNavItems: LinkItem[] = [
-  { label: "About Us", href: "#about" },
-  { label: "Services", href: "/services" },
-  { label: "Contact", href: "#consult" },
-];
-
-const heroNavCta: LinkItem = {
-  label: "Get Your Service",
-  href: "#consult",
-};
-
 export function HeroSection() {
   const [introStarted, setIntroStarted] = useState(false);
 
@@ -134,24 +120,22 @@ export function HeroSection() {
 
         <Link
           href="#consult"
-          className="hidden justify-self-end border border-white/70 px-[18px] py-[10px] text-[19px] font-medium !text-white visited:!text-white hover:!text-white transition-colors duration-200 hover:border-[#9fe8ff] hover:bg-white/10 lg:inline-flex"
+          className="hidden justify-self-end border border-white/70 px-[18px] py-[10px] text-[19px] font-medium !text-white transition-colors duration-200 visited:!text-white hover:border-[#9fe8ff] hover:bg-white/10 hover:!text-white lg:inline-flex"
         >
           Get Your Service
         </Link>
-
-        <MobileNavMenu nav={heroNavItems} cta={heroNavCta} className="justify-self-end lg:hidden" />
       </header>
 
       <div
-        className={`relative z-10 mx-auto flex min-h-[calc(100vh-140px)] max-w-[1040px] flex-col items-center px-8 pb-[52px] pt-[82px] text-center ${
+        className={`relative z-10 mx-auto flex min-h-[calc(100vh-108px)] max-w-[1040px] flex-col items-center px-6 pb-10 pt-12 text-center sm:px-8 lg:min-h-[calc(100vh-140px)] lg:pb-[52px] lg:pt-[82px] ${
           introStarted ? "animate-hero-copy-in" : "opacity-0"
         }`}
       >
         <div className="flex flex-1 flex-col items-center justify-center">
-          <h1 className="max-w-[860px] text-[58px] font-light uppercase leading-[1.2] tracking-[0.085em] text-[#a8ecff]">
+          <h1 className="max-w-[860px] text-[clamp(2.5rem,2.5vw,3.625rem)] font-light uppercase leading-[1.14] tracking-[0.04em] text-[#a8ecff] sm:tracking-[0.065em] lg:leading-[1.2] lg:tracking-[0.085em]">
             Turn Your Ideas Into Digital Solutions
           </h1>
-          <p className="mt-[26px] max-w-[620px] text-[24px] leading-[1.28] text-white">
+          <p className="mt-6 max-w-[620px] text-[clamp(1.05rem,0.5vw,1.5rem)] leading-[1.35] text-white">
             Crafting Digital Excellence for a Future Beyond Imagination.
           </p>
         </div>

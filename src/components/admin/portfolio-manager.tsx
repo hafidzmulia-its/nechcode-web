@@ -665,7 +665,7 @@ export function PortfolioManager() {
           <h1 className="font-headline text-4xl text-primary md:text-5xl">Portfolio Manager</h1>
           <p className="mt-2 text-on-surface-variant">Kelola konten karya untuk homepage secara dinamis.</p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <Link
             href="/admin"
             className="rounded-xl border border-outline-variant/45 px-4 py-2 text-sm font-semibold hover:bg-surface-container-low"
@@ -711,8 +711,8 @@ export function PortfolioManager() {
                   <div className="pointer-events-none absolute inset-x-5 -top-px h-0.5 rounded-full bg-secondary" />
                 ) : null}
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-                  <h3 className="font-headline text-2xl text-primary">{item.title}</h3>
-                  <div className="flex items-center gap-2">
+                  <h3 className="min-w-0 break-words font-headline text-2xl text-primary">{item.title}</h3>
+                  <div className="flex flex-wrap items-center gap-2">
                     <button
                       onClick={() => startEdit(item)}
                       className="rounded-lg border border-outline-variant/40 px-3 py-1.5 text-xs font-semibold hover:bg-surface-container-low"
@@ -814,7 +814,7 @@ export function PortfolioManager() {
               <option value={CUSTOM_CATEGORY_VALUE}>Tambah Kategori</option>
             </select>
             {categorySelection === CUSTOM_CATEGORY_VALUE ? (
-              <div className="flex gap-2">
+              <div className="flex flex-col gap-2 sm:flex-row">
                 <input
                   value={customCategory}
                   onChange={(event) => setCustomCategory(event.target.value)}
@@ -828,7 +828,7 @@ export function PortfolioManager() {
                     setCustomCategory("");
                     setCategorySelection("");
                   }}
-                  className="rounded-xl border border-outline-variant/45 px-4 text-sm font-semibold hover:bg-surface-container-low"
+                  className="rounded-xl border border-outline-variant/45 px-4 py-3 text-sm font-semibold hover:bg-surface-container-low sm:py-0"
                 >
                   Tambah
                 </button>
@@ -874,7 +874,7 @@ export function PortfolioManager() {
               <option value={CUSTOM_TYPE_VALUE}>Tambah Type</option>
             </select>
             {typeSelection === CUSTOM_TYPE_VALUE ? (
-              <div className="flex gap-2">
+              <div className="flex flex-col gap-2 sm:flex-row">
                 <input
                   value={customType}
                   onChange={(event) => setCustomType(event.target.value)}
@@ -888,7 +888,7 @@ export function PortfolioManager() {
                     setCustomType("");
                     setTypeSelection("");
                   }}
-                  className="rounded-xl border border-outline-variant/45 px-4 text-sm font-semibold hover:bg-surface-container-low"
+                  className="rounded-xl border border-outline-variant/45 px-4 py-3 text-sm font-semibold hover:bg-surface-container-low sm:py-0"
                 >
                   Tambah
                 </button>
@@ -941,7 +941,7 @@ export function PortfolioManager() {
               />
             </label>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <input
                 type="number"
                 value={form.order}

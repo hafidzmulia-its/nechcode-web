@@ -383,7 +383,7 @@ export function FaqManager() {
           <h1 className="font-headline text-4xl text-primary md:text-5xl">FAQ Manager</h1>
           <p className="mt-2 text-on-surface-variant">Kelola FAQ homepage secara dinamis.</p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <Link
             href="/admin"
             className="rounded-xl border border-outline-variant/45 px-4 py-2 text-sm font-semibold hover:bg-surface-container-low"
@@ -429,8 +429,8 @@ export function FaqManager() {
                   <div className="pointer-events-none absolute inset-x-5 -top-px h-0.5 rounded-full bg-secondary" />
                 ) : null}
                 <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-                  <h3 className="font-headline text-2xl text-primary">{item.question}</h3>
-                  <div className="flex items-center gap-2">
+                  <h3 className="min-w-0 break-words font-headline text-2xl text-primary">{item.question}</h3>
+                  <div className="flex flex-wrap items-center gap-2">
                     <button
                       onClick={() => setForm({ ...item })}
                       className="rounded-lg border border-outline-variant/40 px-3 py-1.5 text-xs font-semibold hover:bg-surface-container-low"
@@ -496,7 +496,7 @@ export function FaqManager() {
               required
             />
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <input
                 type="number"
                 value={form.order}

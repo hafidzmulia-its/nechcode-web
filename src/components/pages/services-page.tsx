@@ -69,13 +69,13 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
     <div className="selection:bg-secondary-container selection:text-on-secondary-container">
       <TopNavbar brand={content.brand} nav={content.nav} cta={content.headerCta} />
 
-      <main className="pb-36 md:pb-20">
+      <main className="overflow-hidden pb-36 md:pb-20">
         <section className="relative w-full overflow-hidden bg-surface">
           <div className="pointer-events-none absolute -right-24 top-4 h-[420px] w-[420px] rounded-full bg-primary/10 blur-[120px]" />
-          <div className={`${layoutContainer} py-20`}>
+          <div className={`${layoutContainer} py-14 md:py-20`}>
             <Reveal once y={18} className="max-w-4xl">
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-secondary">Services</p>
-              <h1 className="font-headline text-5xl leading-tight text-primary md:text-7xl">
+              <h1 className="font-headline text-[clamp(2.45rem,11vw,4.5rem)] leading-tight text-primary md:text-7xl">
                 Layanan digital yang bisa dimulai dari paket, lalu tumbuh sesuai kebutuhan
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-on-surface-variant md:text-2xl">
@@ -160,8 +160,8 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
             </Reveal>
 
             <Reveal y={14} delay={0.08} className="mt-8">
-              <div id="pricing-packages" className="rounded-[2rem] border border-outline-variant/20 bg-surface-container-low p-7 shadow-[0_12px_28px_rgba(34,46,58,0.07)] md:p-10">
-                <h3 className="font-headline text-3xl text-primary md:text-4xl">{activePillar.sectionTitle}</h3>
+              <div id="pricing-packages" className="rounded-[1.5rem] border border-outline-variant/20 bg-surface-container-low p-5 shadow-[0_12px_28px_rgba(34,46,58,0.07)] md:rounded-[2rem] md:p-10">
+                <h3 className="font-headline text-[clamp(1.8rem,8vw,2.5rem)] text-primary md:text-4xl">{activePillar.sectionTitle}</h3>
                 <p className="mt-4 max-w-4xl text-on-surface-variant">{activePillar.sectionBody}</p>
 
                 <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 md:items-stretch">
@@ -180,7 +180,7 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
                         }`}
                       >
                         {pkg.badge ? (
-                          <span className={`absolute right-4 top-4 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] ${isFeatured ? "bg-secondary text-on-secondary" : "bg-surface-container text-secondary"}`}>
+                          <span className={`absolute right-4 top-4 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] ${isFeatured ? "bg-secondary text-on-secondary" : "bg-surface-container text-secondary"}`}>
                             {pkg.badge}
                           </span>
                         ) : null}
@@ -256,12 +256,12 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
               <p className="mt-2 max-w-3xl text-sm text-on-surface-variant md:text-base">
                 Kirim konteks bisnis dan target Anda. Kami bantu rekomendasikan jalur paling masuk akal untuk mulai minggu ini.
               </p>
-              <div className="mt-4 flex flex-wrap items-center gap-3">
+              <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <a
                   href={servicesContent.megaMenu.consultCta.href}
                   target={servicesContent.megaMenu.consultCta.external ? "_blank" : undefined}
                   rel={servicesContent.megaMenu.consultCta.external ? "noreferrer" : undefined}
-                  className="inline-flex rounded-xl bg-primary px-5 py-2.5 text-sm font-bold !text-white transition hover:opacity-90"
+                  className="inline-flex justify-center rounded-xl bg-primary px-5 py-2.5 text-center text-sm font-bold !text-white transition hover:opacity-90"
                 >
                   Konsultasi via WhatsApp
                 </a>
@@ -269,7 +269,7 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
                   href={content.headerCta.href}
                   target={content.headerCta.external ? "_blank" : undefined}
                   rel={content.headerCta.external ? "noreferrer" : undefined}
-                  className="inline-flex rounded-xl border border-outline-variant/25 bg-surface px-5 py-2.5 text-sm font-bold text-primary transition hover:bg-surface-container-high"
+                  className="inline-flex justify-center rounded-xl border border-outline-variant/25 bg-surface px-5 py-2.5 text-center text-sm font-bold text-primary transition hover:bg-surface-container-high"
                 >
                   Diskusikan Scope Sekarang
                 </a>
@@ -281,8 +281,8 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
         <section id="ways" className="w-full bg-surface py-14 md:py-20">
           <div className={layoutContainer}>
             <Reveal y={16}>
-              <div className="rounded-[2rem] border border-outline-variant/20 bg-surface-container-low p-8 md:p-10">
-                <h3 className="font-headline text-4xl text-primary">Cara Kerja Kami</h3>
+              <div className="rounded-[1.5rem] border border-outline-variant/20 bg-surface-container-low p-5 md:rounded-[2rem] md:p-10">
+                <h3 className="font-headline text-[clamp(1.9rem,8vw,2.5rem)] text-primary">Cara Kerja Kami</h3>
                 <p className="mt-4 max-w-3xl text-on-surface-variant">{servicesContent.waysToWork.description}</p>
 
                 <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -300,9 +300,9 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
             </Reveal>
 
             <Reveal y={16} delay={0.06} className="mt-8">
-              <div id="programs" className="relative overflow-hidden rounded-[2rem] border border-[#7E4B00]/35 bg-tertiary p-8 text-white md:p-10">
+              <div id="programs" className="relative overflow-hidden rounded-[1.5rem] border border-[#7E4B00]/35 bg-tertiary p-5 text-white md:rounded-[2rem] md:p-10">
                 <div className="pointer-events-none absolute inset-0 opacity-[0.12] [background-image:radial-gradient(circle,#fff_1px,transparent_1px)] [background-size:26px_26px]" />
-                <h3 className="relative font-headline text-4xl text-white">{servicesContent.specialPrograms.title}</h3>
+                <h3 className="relative font-headline text-[clamp(1.9rem,8vw,2.5rem)] text-white">{servicesContent.specialPrograms.title}</h3>
                 <p className="relative mt-4 max-w-3xl text-white/80">{servicesContent.specialPrograms.body}</p>
                 <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
                   {servicesContent.specialPrograms.items.map((item) => (
@@ -317,8 +317,8 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
             </Reveal>
 
             <Reveal y={16} delay={0.08} className="mt-8">
-              <div id="faq-services" className="rounded-[2rem] border border-outline-variant/20 bg-surface-container-low p-8 md:p-10">
-                <h3 className="mb-6 font-headline text-4xl text-primary">{servicesContent.faq.heading}</h3>
+              <div id="faq-services" className="rounded-[1.5rem] border border-outline-variant/20 bg-surface-container-low p-5 md:rounded-[2rem] md:p-10">
+                <h3 className="mb-6 font-headline text-[clamp(1.9rem,8vw,2.5rem)] text-primary">{servicesContent.faq.heading}</h3>
                 <Accordion type="single" collapsible className="space-y-3">
                   {servicesContent.faq.items.map((item, index) => (
                     <AccordionItem key={item.question} value={`service-faq-${index}`}>

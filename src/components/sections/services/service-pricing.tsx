@@ -51,7 +51,7 @@ export function ServicePricing({
           <h2
             className={`mx-auto mt-7 font-sans font-normal uppercase leading-[1.2] text-[#101010] ${
               hasExplicitTitleLines
-                ? "max-w-full text-[clamp(1.2rem,2.4vw,2rem)] tracking-[-0.02em]"
+                ? "max-w-full text-[clamp(1.05rem,5vw,2rem)] tracking-[-0.02em]"
                 : hasLongTitle
                   ? "max-w-[24ch] text-[clamp(1.25rem,2.5vw,2rem)] tracking-[-0.03em]"
                   : "max-w-[22ch] text-[clamp(2.45rem,4.8vw,4.7rem)] tracking-[-0.04em]"
@@ -59,7 +59,7 @@ export function ServicePricing({
           >
             {hasExplicitTitleLines
               ? titleLines.map((line) => (
-                  <span key={line} className="block whitespace-nowrap">
+                  <span key={line} className="block">
                     {line}
                   </span>
                 ))
@@ -110,29 +110,29 @@ function PredictiveAddOns({ items }: { items: AddOnItem[] }) {
   return (
     <section className="bg-[#FFFFFF] pt-16 md:pt-20">
       <div className="mx-auto max-w-[1360px] text-center">
-        <p className="font-body text-[22.4px] font-normal uppercase tracking-[0.03em] text-[#151515]">
+        <p className="font-body text-[clamp(1.05rem,1.25vw,1.25rem)] font-normal uppercase tracking-[0.03em] text-[#151515]">
           Add On Service
         </p>
-        <h3 className="mx-auto mt-7 max-w-[28ch] font-sans text-[clamp(2.3rem,4.5vw,4.45rem)] font-normal uppercase leading-[1.22] tracking-[-0.04em] text-[#101010]">
+        <h3 className="mx-auto mt-6 max-w-[30ch] font-sans text-[clamp(1.65rem,5.8vw,3.35rem)] font-normal uppercase leading-[1.2] tracking-[-0.025em] text-[#101010] md:tracking-[-0.035em]">
           ADDITIONAL FEATURES TO IMPROVE THE QUALITY OF YOUR DATA ANALYSIS
         </h3>
 
-        <div className="mt-16 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-6">
+        <div className="mt-12 grid grid-cols-1 gap-5 md:mt-14 md:grid-cols-2 xl:grid-cols-6">
           {orderedItems.map((item, index) => {
             const displayNumber = index < 3 ? index * 2 + 1 : (index - 2) * 2;
 
             return (
               <article
                 key={item.name}
-                className={`flex min-h-[7.25rem] items-center bg-[linear-gradient(105deg,#1D5A8D_0%,#061019_72%,#010509_100%)] px-8 text-left xl:col-span-2 ${
+                className={`flex min-h-[7.25rem] items-center bg-[linear-gradient(105deg,#1D5A8D_0%,#061019_72%,#010509_100%)] px-5 py-5 text-left sm:px-8 xl:col-span-2 ${
                   index === 3 ? "xl:col-start-2" : ""
                 }`}
               >
-                <span className="mr-8 shrink-0 font-sans text-[clamp(3.2rem,4.2vw,4.8rem)] font-light leading-none text-[#A8ECFF]">
+                <span className="mr-5 shrink-0 font-sans text-[clamp(2.25rem,9vw,3.9rem)] font-light leading-none text-[#A8ECFF] sm:mr-7">
                   {String(displayNumber).padStart(2, "0")}
                 </span>
                 <div>
-                  <h4 className="font-sans text-[clamp(1.5rem,2.2vw,2.45rem)] font-normal leading-[1.1] tracking-[-0.03em] text-white">
+                  <h4 className="font-sans text-[clamp(1.18rem,4.8vw,2rem)] font-normal leading-[1.12] tracking-[-0.018em] text-white md:tracking-[-0.028em]">
                     {formatAddOnName(item.name)}
                   </h4>
                   <p className="mt-3 font-body text-[clamp(1rem,1.2vw,1.25rem)] uppercase tracking-[0.04em] text-white/92">
@@ -177,8 +177,8 @@ function PricingCard({
         backgroundImage: "linear-gradient(90deg, #1D5A8D 0%, #78C5F1 100%)",
       };
   const articleClass = compactLayout
-    ? "relative flex flex-col overflow-hidden rounded-[3rem] px-8 py-8 shadow-[0_18px_44px_rgba(25,39,52,0.08)] transition-transform duration-500 ease-out hover:-translate-y-1 md:px-10 md:py-10"
-    : "relative flex min-h-[53rem] flex-col overflow-hidden rounded-[3rem] px-8 py-8 shadow-[0_18px_44px_rgba(25,39,52,0.08)] transition-transform duration-500 ease-out hover:-translate-y-1 md:px-10 md:py-10";
+    ? "relative flex flex-col overflow-hidden rounded-[2rem] px-6 py-7 shadow-[0_18px_44px_rgba(25,39,52,0.08)] transition-transform duration-500 ease-out hover:-translate-y-1 md:rounded-[3rem] md:px-10 md:py-10"
+    : "relative flex flex-col overflow-hidden rounded-[2rem] px-6 py-7 shadow-[0_18px_44px_rgba(25,39,52,0.08)] transition-transform duration-500 ease-out hover:-translate-y-1 md:min-h-[53rem] md:rounded-[3rem] md:px-10 md:py-10";
   const contentClass = compactLayout
     ? `relative z-10 flex flex-col ${textColor}`
     : `relative z-10 flex h-full flex-col ${textColor}`;
@@ -254,11 +254,11 @@ function PricingCard({
           Choose This package
         </a>
 
-      {ctaSubnote ? (
-        <p className={`mt-3 text-center text-xs ${isFeatured ? "text-white/58" : "text-[#8B8B8B]"}`}>
-          {ctaSubnote}
-        </p>
-      ) : null}
+        {ctaSubnote ? (
+          <p className={`mt-3 text-center text-xs ${isFeatured ? "text-white/58" : "text-[#8B8B8B]"}`}>
+            {ctaSubnote}
+          </p>
+        ) : null}
       </div>
     </article>
   );

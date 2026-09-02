@@ -33,14 +33,14 @@ export function ServicePortfolio({
       <div className={layoutContainer}>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(260px,0.35fr)_minmax(0,1fr)] lg:items-start lg:gap-10 xl:gap-14">
           <Reveal once y={16}>
-            <div className="max-w-[28rem]">
+            <div className="max-w-[28rem] lg:max-w-full">
               <p className="font-body text-[clamp(1.05rem,1.3vw,1.35rem)] font-normal text-[#161616]">
                 {eyebrow}
               </p>
               <h2 className="mt-6 max-w-[26ch] font-sans text-[32px] font-normal uppercase leading-[1.12] tracking-[-0.02em] text-[#121212]">
                 {title}
               </h2>
-              <p className="mt-6 max-w-[28ch] font-body text-[1.02rem] leading-[1.7] text-[#454545]">
+              <p className="mt-6 max-w-[34ch] font-body text-[1.02rem] leading-[1.7] text-[#454545] lg:max-w-[28ch]">
                 {body}
               </p>
             </div>
@@ -122,7 +122,7 @@ export function ServicePortfolio({
                   target="_blank"
                   onMouseEnter={() => setActiveIndex(index)}
                   onFocus={() => setActiveIndex(index)}
-                  className="group relative block min-h-[24rem] overflow-hidden border border-[#E6E6E6] bg-white shadow-[0_10px_24px_rgba(14,31,46,0.08)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(14,31,46,0.14)]"
+                  className="group relative block min-h-[18.5rem] overflow-hidden border border-[#E6E6E6] bg-white shadow-[0_10px_24px_rgba(14,31,46,0.08)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(14,31,46,0.14)] sm:min-h-[24rem]"
                 >
                   <div className="absolute inset-0">
                     <Image
@@ -135,8 +135,8 @@ export function ServicePortfolio({
                   </div>
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.08)_0%,rgba(0,0,0,0.02)_38%,rgba(0,0,0,0.84)_100%)]" />
 
-                  <div className="absolute inset-x-0 bottom-0 z-10 p-6 text-white">
-                    <p className="font-sans text-[2rem] font-semibold uppercase leading-[0.95] tracking-[-0.04em]">
+                  <div className="absolute inset-x-0 bottom-0 z-10 p-5 text-white sm:p-6">
+                    <p className="font-sans text-[clamp(1.45rem,8vw,2rem)] font-semibold uppercase leading-[1] tracking-[-0.03em] sm:tracking-[-0.04em]">
                       {item.title}
                     </p>
                     <p className="mt-2 font-body text-[0.92rem] uppercase tracking-[0.06em] text-[#A8ECFF]">

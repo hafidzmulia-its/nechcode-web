@@ -43,9 +43,9 @@ export function ServiceSpecialProgram() {
             <p className="font-body text-[clamp(1.15rem,1.3vw,1.45rem)] font-normal uppercase tracking-[0.03em] text-[#151515]">
               Special Program
             </p>
-            <h2 className="mx-auto mt-7 max-w-full font-sans text-[32px] font-normal uppercase leading-[1.18] tracking-[-0.02em] text-[#0F0F0F]">
-              <span className="block whitespace-nowrap">THIS SPECIAL PROGRAM IS FOR</span>
-              <span className="block whitespace-nowrap">THOSE OF YOU WHO WANT TO START</span>
+            <h2 className="mx-auto mt-7 max-w-[24rem] font-sans text-[clamp(1.65rem,7vw,2rem)] font-normal uppercase leading-[1.18] tracking-[-0.02em] text-[#0F0F0F] sm:max-w-full">
+              <span className="block">THIS SPECIAL PROGRAM IS FOR</span>
+              <span className="block">THOSE OF YOU WHO WANT TO START</span>
             </h2>
           </div>
         </Reveal>
@@ -59,7 +59,7 @@ export function ServiceSpecialProgram() {
               delay={index * 0.08}
               className={item.className}
             >
-              <article className="border-[3px] border-[#2F6FA8] bg-white px-9 py-9 md:px-10 md:py-10">
+              <article className="border-[3px] border-[#2F6FA8] bg-white px-6 py-7 md:px-10 md:py-10">
                 <h3 className="font-sans text-[clamp(2rem,2.6vw,2.5rem)] font-normal leading-[1.15] tracking-[-0.03em] text-[#4B8FCC]">
                   {item.title}
                 </h3>

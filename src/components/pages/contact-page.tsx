@@ -67,17 +67,17 @@ export function ContactPage({ content }: ContactPageProps) {
       />
 
       <main className="bg-[#FFFFFF] pb-20">
-        <section className="w-full bg-[#FFFFFF]">
+        <section className="w-full bg-[#FFFFFF] pt-12 md:pt-0">
           <div className={layoutContainer}>
             <Reveal once y={18} className="max-w-4xl">
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-secondary">
                 Contact
               </p>
-              <h1 className="font-headline text-5xl leading-tight text-primary md:text-7xl">
+              <h1 className="font-headline text-[clamp(2.4rem,11vw,4.5rem)] leading-tight text-primary">
                 Konsultasi Proyek dengan{" "}
                 <span className="serif-italic">Arah yang Jelas</span>
               </h1>
-              <p className="mt-6 max-w-2xl text-lg text-on-surface-variant">
+              <p className="mt-6 max-w-2xl text-base leading-relaxed text-on-surface-variant md:text-lg">
                 Ceritakan konteks bisnis, target timeline, dan prioritas Anda.
                 Kami akan bantu memetakan opsi solusi paling realistis untuk
                 tahap awal sampai implementasi.
@@ -91,7 +91,7 @@ export function ContactPage({ content }: ContactPageProps) {
             className={`${layoutContainer} grid grid-cols-1 gap-6 md:grid-cols-2`}
           >
             <Reveal y={16}>
-              <div className="rounded-[1.8rem] border border-outline-variant/20 bg-surface-container-lowest p-7 shadow-[0_10px_24px_rgba(24,34,45,0.06)]">
+              <div className="rounded-[1.5rem] border border-outline-variant/20 bg-surface-container-lowest p-5 shadow-[0_10px_24px_rgba(24,34,45,0.06)] md:rounded-[1.8rem] md:p-7">
                 <h2 className="mb-4 font-headline text-3xl text-primary">
                   Direct Channel
                 </h2>
@@ -153,7 +153,7 @@ export function ContactPage({ content }: ContactPageProps) {
             <Reveal y={16} delay={0.06}>
               <form
                 onSubmit={(event) => event.preventDefault()}
-                className="rounded-[1.8rem] border border-outline-variant/20 bg-surface-container-lowest p-7 shadow-[0_10px_24px_rgba(24,34,45,0.06)]"
+                className="rounded-[1.5rem] border border-outline-variant/20 bg-surface-container-lowest p-5 shadow-[0_10px_24px_rgba(24,34,45,0.06)] md:rounded-[1.8rem] md:p-7"
               >
                 <h2 className="mb-4 font-headline text-3xl text-primary">
                   Brief Form
@@ -201,7 +201,7 @@ export function ContactPage({ content }: ContactPageProps) {
                         projectType: event.target.value,
                       }))
                     }
-                    className="w-full rounded-xl border border-outline-variant/35 bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-primary/30"
+                    className="w-full rounded-xl border border-outline-variant/35 bg-white px-4 py-3 text-sm outline-none placeholder:text-[0.82rem] focus:ring-2 focus:ring-primary/30 sm:placeholder:text-sm"
                   />
                   <textarea
                     placeholder="Jelaskan kebutuhan Anda secara singkat"

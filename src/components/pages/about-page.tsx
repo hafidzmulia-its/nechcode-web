@@ -4,9 +4,8 @@ import Link from "next/link";
 import { ConsultSection } from "@/components/sections/home/consult-section";
 import { PrincipleSection } from "@/components/sections/home/principle-section";
 import { SiteFooter } from "@/components/sections/home/site-footer";
-import { MobileNavMenu } from "@/components/shared/mobile-nav-menu";
 import { Reveal } from "@/components/shared/reveal";
-import type { HomeContent, LinkItem } from "@/content/home";
+import type { HomeContent } from "@/content/home";
 
 type AboutPageProps = {
   content: HomeContent;
@@ -21,7 +20,7 @@ const teamMembers = [
   {
     name: "Fajar Adie",
     role: "CTO",
-    image: "/img/meow.png",
+    image: "/img/dios.jpeg",
   },
   {
     name: "Rizqi Fauzan",
@@ -33,18 +32,12 @@ const teamMembers = [
     role: "CMO",
     image: "/img/reina.PNG",
   },
+  {
+    name: "Natalya Divanda",
+    role: "CSO",
+    image: "/img/reina.PNG",
+  },
 ];
-
-const aboutNavItems: LinkItem[] = [
-  { label: "About Us", href: "#about-story" },
-  { label: "Services", href: "#services" },
-  { label: "Contact", href: "#consult" },
-];
-
-const aboutNavCta: LinkItem = {
-  label: "Get Your Service",
-  href: "#consult",
-};
 
 export function AboutPage({ content }: AboutPageProps) {
   return (
@@ -140,17 +133,11 @@ function AboutHero({ brand }: { brand: HomeContent["brand"] }) {
         >
           Get Your Service
         </Link>
-
-        <MobileNavMenu
-          nav={aboutNavItems}
-          cta={aboutNavCta}
-          className="justify-self-end lg:hidden"
-        />
       </header>
 
-      <div className="relative z-10 flex min-h-[calc(100vh-160px)] flex-col px-6 pb-16 md:px-[15.2vw]">
+      <div className="relative z-10 flex min-h-[calc(100vh-128px)] flex-col px-6 pb-12 md:px-[15.2vw] lg:min-h-[calc(100vh-160px)] lg:pb-16">
         <div className="flex flex-1 items-center">
-          <h1 className="font-sans text-[clamp(3.25rem,6vw,5.4rem)] font-light uppercase leading-[1.18] tracking-[0.085em] text-[#a8ecff]">
+          <h1 className="font-sans text-[clamp(2.65rem,12vw,5.4rem)] font-light uppercase leading-[1.1] tracking-[0.04em] text-[#a8ecff] sm:tracking-[0.065em] lg:leading-[1.18] lg:tracking-[0.085em]">
             Hi!
             <br />
             We Are NechCode
@@ -177,7 +164,7 @@ function StorySection() {
           <p className="font-body text-[18px] font-normal text-[#101010]">
             About NechCode
           </p>
-          <h2 className="mx-auto mt-6 max-w-[48ch] font-sans text-[clamp(1.85rem,2.45vw,2.4rem)] font-normal uppercase leading-[1.42] tracking-[0.03em] text-black">
+          <h2 className="mx-auto mt-6 max-w-[48ch] font-sans text-[clamp(1.85rem,2vw,2.4rem)] font-normal uppercase leading-[1.42] tracking-[0.03em] text-black">
             Good Technology Isn&apos;t The Most Complicated,
             <br />
             But The Most Useful For Your Team
@@ -230,7 +217,7 @@ function StorySection() {
             <p className="font-body text-[24px] font-normal">Our Vision</p>
             <div className="h-px flex-1 bg-white/80" />
           </div>
-          <p className="mx-auto mt-8 max-w-[46ch] font-sans text-[clamp(1.6rem,2.1vw,2rem)] font-normal uppercase leading-[1.55] tracking-[0.035em]">
+          <p className="mx-auto mt-8 max-w-[46ch] font-sans text-[clamp(1.6rem,1.5vw,2rem)] font-normal uppercase leading-[1.55] tracking-[0.035em]">
             Empowering Businesses and Organizations Throughout Indonesia Through
             Accessible, Reliable and Impactful Digital Technology Solutions
           </p>

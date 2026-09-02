@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { layoutContainer } from "@/config/layout";
-import { MobileNavMenu } from "@/components/shared/mobile-nav-menu";
 import type { HomeContent, LinkItem } from "@/content/home";
 
 type TopNavbarProps = {
@@ -56,12 +55,12 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full bg-transparent ${
+      className={`sticky top-0 z-50 w-full bg-[#05131D]/95 shadow-[0_8px_28px_rgba(0,0,0,0.18)] backdrop-blur-xl ${
         introStarted ? "animate-navbar-in" : "opacity-0"
       }`}
     >
       <div
-        className={`${layoutContainer} flex min-h-[96px] items-center justify-between gap-4 py-5`}
+        className={`${layoutContainer} flex min-h-[72px] items-center justify-between gap-4 py-4 lg:min-h-[96px] lg:py-5`}
       >
         <Link
           href="/"
@@ -94,11 +93,9 @@ export function TopNavbar({ brand, nav, cta }: TopNavbarProps) {
         <div className="hidden items-center lg:flex">
           <NavbarLink
             item={cta}
-            className="inline-flex items-center justify-center border border-white/70 px-[18px] py-[10px] text-[19px] font-medium text-white transition-colors duration-200 hover:border-[#9fe8ff] hover:bg-white/10"
+            className="inline-flex items-center justify-center border border-white/70 px-[18px] py-[10px] text-[19px] font-medium !text-white transition-colors duration-200 visited:!text-white hover:border-[#9fe8ff] hover:bg-white/10 hover:!text-white"
           />
         </div>
-
-        <MobileNavMenu nav={nav} cta={cta} className="ml-auto" />
       </div>
     </header>
   );

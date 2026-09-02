@@ -110,7 +110,7 @@ export function AboutSection({ about }: AboutSectionProps) {
 
                 <div className="flex flex-col items-center justify-center py-6 text-center md:py-0">
                   <p className="text-[clamp(3rem,4.8vw,4.1rem)] font-light leading-none text-white">
-                    100%
+                    85%
                   </p>
                   <p className="mt-6 text-[clamp(1.1rem,1.35vw,1.4rem)] font-light text-white/55">
                     Client Satisfaction
