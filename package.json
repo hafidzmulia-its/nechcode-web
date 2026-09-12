@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
+    "start": "rm -rf .next && npm run next dev --webpack ",
     "dev:turbo": "next dev --turbopack",
     "build": "next build",
     "start": "next start",

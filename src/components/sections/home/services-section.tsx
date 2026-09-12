@@ -6,18 +6,12 @@ import Link from "next/link";
 
 import { Reveal } from "@/components/shared/reveal";
 import { servicesContent } from "@/content/services";
-import type { HomeContent } from "@/content/home";
-
-type ServicesSectionProps = {
-  services: HomeContent["services"];
-};
 
 function getServiceHref(id: string) {
   return id === "data" ? "/services/predictive-data" : `/services/${id}`;
 }
 
-export function ServicesSection({ services }: ServicesSectionProps) {
-  void services;
+export function ServicesSection() {
   const [openId, setOpenId] = useState<string | null>(null);
   const [previewId, setPreviewId] = useState<string | null>(null);
 

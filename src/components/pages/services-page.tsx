@@ -193,18 +193,16 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
                         <p className={`mt-4 font-headline text-3xl ${isFeatured ? "text-white" : "text-primary"}`}>{pkg.priceCue}</p>
                         {pkg.subnote ? <p className={`mt-2 text-xs ${isFeatured ? "text-white/80" : "text-on-surface-variant"}`}>{pkg.subnote}</p> : null}
 
-                        {pkg.features?.length ? (
-                          <ul className="mt-5 space-y-2.5">
-                            {pkg.features.map((feature) => (
-                              <li key={feature} className="flex items-start gap-2.5">
-                                <span className={`material-symbols-outlined text-base ${isFeatured ? "text-secondary-container" : "text-secondary"}`}>
-                                  check_circle
-                                </span>
-                                <span className={`text-sm ${isFeatured ? "text-white/90" : "text-on-surface-variant"}`}>{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        ) : null}
+                        <ul className="mt-5 space-y-2.5">
+                          {pkg.features.map((feature) => (
+                            <li key={feature} className="flex items-start gap-2.5">
+                              <span className={`material-symbols-outlined text-base ${isFeatured ? "text-secondary-container" : "text-secondary"}`}>
+                                check_circle
+                              </span>
+                              <span className={`text-sm ${isFeatured ? "text-white/90" : "text-on-surface-variant"}`}>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
 
                         <a
                           href={pkg.cta.href}
@@ -218,8 +216,6 @@ export function ServicesPage({ content, initialPillar }: ServicesPageProps) {
                     );
                   })}
                 </div>
-
-                <p className="mt-6 text-sm text-on-surface-variant">{activePillar.microcopy}</p>
 
                 {activePillar.addOns && (
                   <div className="mt-8 rounded-[1.35rem] border border-secondary/30 bg-[#e9f6f9] p-6 md:p-8">

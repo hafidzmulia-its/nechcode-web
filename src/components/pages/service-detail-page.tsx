@@ -18,6 +18,7 @@ import {
   getServicePillarById,
   type ServicePillarId,
 } from "@/content/services";
+import { smoothScrollToElement } from "@/lib/smooth-scroll";
 
 type ServiceDetailPageProps = {
   content: HomeContent;
@@ -28,10 +29,6 @@ type ServiceDetailPageProps = {
     left: string;
     rightTop: string;
     rightBottom?: string;
-  };
-  pricingOptions?: {
-    showOptionLabel?: boolean;
-    ctaSubnote?: string;
   };
 };
 
@@ -52,7 +49,6 @@ export function ServiceDetailPage({
   heroImage,
   heroImageAlt,
   heroLabel,
-  pricingOptions,
 }: ServiceDetailPageProps) {
   const introStarted = true;
 
@@ -74,7 +70,7 @@ export function ServiceDetailPage({
     const fallbackSection = document.getElementById("special-program");
     const targetSection = portfolioSection ?? fallbackSection;
 
-    targetSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (targetSection) smoothScrollToElement(targetSection);
   }
 
   return (
@@ -183,12 +179,7 @@ export function ServiceDetailPage({
           <ServicePortfolio {...copy.portfolio} />
         </div>
         <ServiceSpecialProgram />
-        <ServicePricing
-          title={copy.pricing.title}
-          pillar={pillar}
-          showOptionLabel={pricingOptions?.showOptionLabel}
-          ctaSubnote={pricingOptions?.ctaSubnote}
-        />
+        <ServicePricing title={copy.pricing.title} pillar={pillar} />
         <ContactServices />
       </main>
 

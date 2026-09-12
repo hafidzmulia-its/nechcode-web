@@ -23,10 +23,10 @@ export function Reveal({
   className,
   style,
   delay = 0,
-  duration = 0.45,
-  y = 28,
+  duration = 0.65,
+  y = 18,
   x = 0,
-  amount = 0.2,
+  amount = 0.12,
   once = true,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -51,8 +51,15 @@ export function Reveal({
       });
     };
 
-    // No IO support → stay visible.
-    if (typeof IntersectionObserver === "undefined") {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    // No observer support or reduced motion → stay visible.
+    if (
+      prefersReducedMotion ||
+      typeof IntersectionObserver === "undefined"
+    ) {
       updatePhase("visible");
       return () => {
         if (frameId !== null) {
@@ -69,7 +76,13 @@ export function Reveal({
 
     if (isAlreadyInView) {
       updatePhase("visible");
-      if (once) return;
+      if (once) {
+        return () => {
+          if (frameId !== null) {
+            window.cancelAnimationFrame(frameId);
+          }
+        };
+      }
     } else {
       updatePhase("hidden");
     }
@@ -85,7 +98,7 @@ export function Reveal({
           }
         }
       },
-      { threshold: amount },
+      { rootMargin: "0px 0px -8% 0px", threshold: amount },
     );
 
     observer.observe(node);
@@ -113,7 +126,7 @@ export function Reveal({
     transition:
       phase === "initial"
         ? style?.transition
-        : `opacity ${duration}s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s, transform ${duration}s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`,
+        : `opacity ${duration}s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s, transform ${duration}s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
     willChange: phase === "visible" ? "auto" : "opacity, transform",
   };
 

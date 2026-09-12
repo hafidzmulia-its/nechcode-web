@@ -13,7 +13,6 @@ type ServicePortfolioProps = {
   title: string;
   body: string;
   items: ShowcaseItem[];
-  maxColumns?: 2 | 3;
 };
 
 export function ServicePortfolio({

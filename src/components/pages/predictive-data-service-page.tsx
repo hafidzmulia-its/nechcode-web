@@ -18,9 +18,6 @@ export function PredictiveDataServicePage({
         left: "PREDICTIVE",
         rightTop: "DATA",
       }}
-      pricingOptions={{
-        showOptionLabel: true,
-      }}
     />
   );
 }

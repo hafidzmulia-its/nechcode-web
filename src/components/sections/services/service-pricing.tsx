@@ -8,24 +8,10 @@ import type { AddOnItem, ServicePackage, ServicePillar } from "@/content/service
 type ServicePricingProps = {
   title: string;
   pillar: ServicePillar;
-  showOptionLabel?: boolean;
-  ctaSubnote?: string;
 };
 
-function formatAddOnName(name: string) {
-  const map: Record<string, string> = {
-    "Data preprocessing": "Data Pre-Processing",
-    "Feature engineering": "Feature Engineering",
-    "Hyperparameter tuning": "Hyperparameter Tuning",
-    "Advanced model evaluation": "Advanced Model Evaluation",
-    "Deployment model ke API": "Model Deployment to API",
-  };
-
-  return map[name] ?? name;
-}
-
 function formatAddOnPrice(price: string) {
-  const firstPriceMatch = price.match(/Rp\s*[\d.]+/i);
+  const firstPriceMatch = price.match(/(?:IDR|Rp)\s*[\d.,]+/i);
   const firstPrice = firstPriceMatch?.[0] ?? price;
 
   return firstPrice.replace(/Rp\s*/i, "IDR ").toUpperCase();
@@ -34,7 +20,6 @@ function formatAddOnPrice(price: string) {
 export function ServicePricing({
   title,
   pillar,
-  ctaSubnote,
 }: ServicePricingProps) {
   const titleLines = title.split("\n");
   const hasExplicitTitleLines = titleLines.length > 1;
@@ -77,19 +62,14 @@ export function ServicePricing({
               <PricingCard
                 pkg={pkg}
                 isFeatured={index === 1}
-                ctaSubnote={ctaSubnote}
                 compactLayout={isMobilePillar}
               />
             </Reveal>
           ))}
         </div>
 
-        <Reveal once y={10} delay={0.12} className="mt-8">
-          <p className="text-center text-sm text-[#767676]">{pillar.microcopy}</p>
-        </Reveal>
-
         {pillar.addOns ? (
-          <Reveal once y={14} delay={0.16} className="mt-10">
+          <Reveal once y={14} delay={0.12} className="mt-10">
             <PredictiveAddOns items={pillar.addOns.items} />
           </Reveal>
         ) : null}
@@ -133,7 +113,7 @@ function PredictiveAddOns({ items }: { items: AddOnItem[] }) {
                 </span>
                 <div>
                   <h4 className="font-sans text-[clamp(1.18rem,4.8vw,2rem)] font-normal leading-[1.12] tracking-[-0.018em] text-white md:tracking-[-0.028em]">
-                    {formatAddOnName(item.name)}
+                    {item.name}
                   </h4>
                   <p className="mt-3 font-body text-[clamp(1rem,1.2vw,1.25rem)] uppercase tracking-[0.04em] text-white/92">
                     START FROM {formatAddOnPrice(item.price)}
@@ -151,15 +131,12 @@ function PredictiveAddOns({ items }: { items: AddOnItem[] }) {
 function PricingCard({
   pkg,
   isFeatured,
-  ctaSubnote,
   compactLayout = false,
 }: {
   pkg: ServicePackage;
   isFeatured: boolean;
-  ctaSubnote?: string;
   compactLayout?: boolean;
 }) {
-  const includedFeatures = getIncludedFeatures(pkg);
   const textColor = isFeatured ? "text-white" : "text-[#0D0D0D]";
   const bodyColor = isFeatured ? "text-white/72" : "text-[#8B8B8B]";
   const dividerColor = isFeatured ? "bg-white/92" : "bg-[#292929]";
@@ -226,8 +203,27 @@ function PricingCard({
           {pkg.description}
         </p>
 
+        {pkg.requirements ? (
+          <div
+            className={`mt-6 border-l-2 px-4 py-1 ${
+              isFeatured ? "border-[#A8ECFF]" : "border-[#2A6DA8]"
+            }`}
+          >
+            <p
+              className={`font-body text-xs font-semibold uppercase tracking-[0.14em] ${
+                isFeatured ? "text-[#A8ECFF]" : "text-[#2A6DA8]"
+              }`}
+            >
+              Requirements
+            </p>
+            <p className={`mt-2 font-body text-[0.98rem] leading-[1.5] ${bodyColor}`}>
+              {pkg.requirements}
+            </p>
+          </div>
+        ) : null}
+
         <ul className={featureListClass}>
-          {includedFeatures.map((feature) => (
+          {pkg.features.map((feature) => (
             <li key={feature} className="flex items-start gap-4">
               <div className="relative mt-1 h-5 w-5 shrink-0">
                 <Image
@@ -239,7 +235,7 @@ function PricingCard({
                 />
               </div>
               <span className={`font-body text-[1.04rem] leading-[1.35] ${textColor}`}>
-                {translateFeatureLabel(feature)}
+                {feature}
               </span>
             </li>
           ))}
@@ -253,12 +249,6 @@ function PricingCard({
         >
           Choose This package
         </a>
-
-        {ctaSubnote ? (
-          <p className={`mt-3 text-center text-xs ${isFeatured ? "text-white/58" : "text-[#8B8B8B]"}`}>
-            {ctaSubnote}
-          </p>
-        ) : null}
       </div>
     </article>
   );
@@ -267,31 +257,4 @@ function PricingCard({
 function formatPriceDisplay(priceCue: string) {
   const normalized = priceCue.replace(/Rp\s*/gi, "IDR ");
   return normalized.toUpperCase();
-}
-
-function getIncludedFeatures(pkg: ServicePackage) {
-  if (pkg.featureRows?.length) {
-    return pkg.featureRows
-      .filter((row) => row.included)
-      .map((row) => row.label);
-  }
-
-  return pkg.features ?? [];
-}
-
-function translateFeatureLabel(label: string) {
-  const map: Record<string, string> = {
-    "Contact form integration": "Contact from integration",
-    "Lead Capture & CTA terstruktur": "Lead Capture & Structured CTA",
-    "Optimasi performa dasar": "Base performance optimization",
-    "Struktur SEO on-page": "SEO on-page structured",
-    "Fitur custom operasional": "Operational custom features",
-    "Integrasi API & database": "API Integration & Database",
-    "Role & panel admin lanjutan": "Advanced admin roles & panels",
-    "Dukungan 7 hari setelah rilis": "7 days of support after release",
-    "Dukungan 30 hari setelah rilis": "30 days of support after release",
-    "Hingga 5 halaman utama": "Up to 5 main pages",
-  };
-
-  return map[label] ?? label;
 }

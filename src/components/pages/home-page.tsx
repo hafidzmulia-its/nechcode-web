@@ -62,7 +62,7 @@ export function HomePage({ content }: HomePageProps) {
       <main className="relative pt-0">
         <AboutSection about={content.about} />
         <PrincipleSection services={content.services} />
-        <ServicesSection services={content.services} />
+        <ServicesSection />
         <ConsultSection />
       </main>
 

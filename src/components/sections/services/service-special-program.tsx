@@ -5,17 +5,17 @@ import { servicesContent } from "@/content/services";
 
 const PROGRAM_LAYOUT = [
   {
-    key: "Penawaran Khusus UMKM",
+    key: "Special Offer for MSMEs",
     title: "Special Offer for MSMEs",
     className: "lg:col-start-1 lg:row-start-1",
   },
   {
-    key: "Diskon Akademisi",
+    key: "Academic Discount",
     title: "Academic Discount",
     className: "lg:col-start-2 lg:row-start-1 lg:translate-y-[4.25rem]",
   },
   {
-    key: "Bayar Seikhlasnya",
+    key: "Pay What You Can",
     title: "Pay As Much As You Can",
     className: "lg:col-start-1 lg:row-start-2 lg:col-span-2 lg:mx-auto lg:mt-8 lg:w-[48.5%]",
   },

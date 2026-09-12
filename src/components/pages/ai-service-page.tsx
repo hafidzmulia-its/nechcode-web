@@ -17,9 +17,6 @@ export function AiServicePage({ content }: AiServicePageProps) {
         rightTop: "AUTOMATION",
         rightBottom: "CHATBOT",
       }}
-      pricingOptions={{
-        showOptionLabel: true,
-      }}
     />
   );
 }

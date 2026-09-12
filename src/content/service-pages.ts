@@ -25,8 +25,6 @@ export type ServicePageCopy = {
     title: string;
     body: string;
     items: ShowcaseItem[];
-    /** Jumlah kolom grid di breakpoint lg. Default 3. */
-    maxColumns?: 2 | 3;
   };
   pricing: {
     title: string;
@@ -50,7 +48,6 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
       eyebrow: "Our Portfolio",
       title: "These are some of the products we have worked on",
       body: "",
-      maxColumns: 2,
       items: [
         {
           title: "Decision Tree Model",
@@ -108,7 +105,6 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
       eyebrow: "Our Portfolio",
       title: "These are some of the products we have worked on",
       body: "",
-      maxColumns: 3,
       items: [
         {
           title: "Nestbloom",
@@ -156,7 +152,6 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
       eyebrow: "Our Portfolio",
       title: "These are some of the products we have worked on",
       body: "",
-      maxColumns: 2,
       items: [
         {
           title: "Financial Tracker App",
@@ -198,7 +193,6 @@ export const servicePageCopy: Record<ServicePillarId, ServicePageCopy> = {
       eyebrow: "Our Portfolio",
       title: "These are some of the products we have worked on",
       body: "",
-      maxColumns: 2,
       items: [
         {
           title: "Thyva",
