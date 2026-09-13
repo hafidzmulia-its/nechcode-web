@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 import { SiteFooter } from "@/components/sections/home/site-footer";
 import {
@@ -74,12 +74,12 @@ export function ServiceDetailPage({
   }
 
   return (
-    <div className="overflow-x-hidden bg-[#030608] text-white selection:bg-[#8fdcff] selection:text-[#07131d]">
+    <div className="w-full overflow-x-clip bg-[#030608] text-white selection:bg-[#8fdcff] selection:text-[#07131d]">
       <section
         id={`${serviceId}-hero`}
         className="relative isolate min-h-screen overflow-hidden bg-[#020202]"
       >
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="pointer-events-none absolute -inset-px overflow-hidden">
           <Image
             src="/img/bg_home.png"
             alt=""
@@ -105,7 +105,7 @@ export function ServiceDetailPage({
             height={1004}
             priority
             className={`pointer-events-none absolute -left-36 top-[-18%] z-[3] h-[178%] w-auto max-w-none [filter:brightness(1.55)_saturate(1)] ${
-              introStarted ? "animate-blur-left-in" : "opacity-0"
+              introStarted ? "animate-background-down-in" : "opacity-0"
             }`}
           />
           <Image
@@ -115,13 +115,13 @@ export function ServiceDetailPage({
             height={1004}
             priority
             className={`pointer-events-none absolute -right-48 top-[-20%] z-[3] h-[182%] w-auto max-w-none [filter:brightness(1.45)_saturate(1)] ${
-              introStarted ? "animate-blur-right-in" : "opacity-0"
+              introStarted ? "animate-background-down-in" : "opacity-0"
             }`}
           />
         </div>
 
-        <div className="absolute inset-0 z-[2] bg-[radial-gradient(circle_at_50%_34%,rgba(15,33,46,0)_0%,rgba(3,9,13,0.12)_36%,rgba(2,4,6,0.86)_80%),linear-gradient(90deg,rgba(6,25,36,0.34)_0%,rgba(0,0,0,0.08)_42%,rgba(40,21,64,0.22)_100%)]" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-[3] h-28 bg-[linear-gradient(180deg,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0)_100%)]" />
+        <div className="absolute -inset-px z-[2] bg-[radial-gradient(circle_at_50%_34%,rgba(15,33,46,0)_0%,rgba(3,9,13,0.12)_36%,rgba(2,4,6,0.86)_80%),linear-gradient(90deg,rgba(6,25,36,0.34)_0%,rgba(0,0,0,0.08)_42%,rgba(40,21,64,0.22)_100%)]" />
+        <div className="pointer-events-none absolute inset-x-[-1px] top-0 z-[3] h-28 bg-[linear-gradient(180deg,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0)_100%)]" />
 
         <ServiceHeroHeader introStarted={introStarted} />
 
@@ -230,18 +230,23 @@ function ServiceSelector({
   nextService: (typeof serviceLinks)[number];
   introStarted: boolean;
 }) {
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
   const activeLinkRef = useRef<HTMLAnchorElement | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!introStarted) {
       return;
     }
 
-    activeLinkRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "center",
-    });
+    const scroller = scrollerRef.current;
+    const activeLink = activeLinkRef.current;
+
+    if (!scroller || !activeLink) return;
+
+    const centeredScrollLeft =
+      activeLink.offsetLeft - (scroller.clientWidth - activeLink.clientWidth) / 2;
+
+    scroller.scrollLeft = Math.max(0, centeredScrollLeft);
   }, [currentServiceIndex, introStarted]);
 
   return (
@@ -261,7 +266,10 @@ function ServiceSelector({
         />
       </Link>
 
-      <div className="relative z-10 min-w-0 overflow-x-auto">
+      <div
+        ref={scrollerRef}
+        className="relative z-10 min-w-0 overflow-x-auto overflow-y-hidden overscroll-x-contain"
+      >
         <div className="flex min-w-max items-center justify-start gap-4 px-1 sm:gap-5 lg:justify-center lg:gap-8">
           {serviceLinks.map((item, index) => {
             const isActive = index === currentServiceIndex;

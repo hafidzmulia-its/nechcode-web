@@ -4,8 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+const INTRO_START_DELAY_MS = 800;
+const INTRO_FADE_DURATION_MS = 700;
+const INTRO_COMPLETION_BUFFER_MS = 100;
+
 export function HeroSection() {
   const [introStarted, setIntroStarted] = useState(false);
+  const [introComplete, setIntroComplete] = useState(false);
 
   const navLinkClass =
     "text-white transition-colors duration-200 hover:!text-[#1782c4] focus-visible:!text-[#1782c4] active:!text-[#1782c4]";
@@ -13,12 +18,27 @@ export function HeroSection() {
   useEffect(() => {
     const introTimer = window.setTimeout(() => {
       setIntroStarted(true);
-    }, 800);
+    }, INTRO_START_DELAY_MS);
+    const completionFallbackTimer = window.setTimeout(() => {
+      setIntroComplete(true);
+    }, INTRO_START_DELAY_MS + INTRO_FADE_DURATION_MS + INTRO_COMPLETION_BUFFER_MS);
 
     return () => {
       window.clearTimeout(introTimer);
+      window.clearTimeout(completionFallbackTimer);
     };
   }, []);
+
+  useEffect(() => {
+    if (introComplete) return;
+
+    const root = document.documentElement;
+    root.classList.add("intro-scroll-locked");
+
+    return () => {
+      root.classList.remove("intro-scroll-locked");
+    };
+  }, [introComplete]);
 
   function handleScrollNext() {
     const mainSection = document.querySelector("main");
@@ -31,6 +51,15 @@ export function HeroSection() {
         className={`absolute inset-0 z-30 flex items-center justify-center bg-[#020202] transition-opacity duration-700 ${
           introStarted ? "pointer-events-none opacity-0" : "opacity-100"
         }`}
+        onTransitionEnd={(event) => {
+          if (
+            introStarted &&
+            event.currentTarget === event.target &&
+            event.propertyName === "opacity"
+          ) {
+            setIntroComplete(true);
+          }
+        }}
       >
         <div className="flex items-center gap-4">
           <Image
@@ -65,7 +94,7 @@ export function HeroSection() {
           height={1004}
           priority
           className={`pointer-events-none absolute -left-36 top-[-18%] z-[3] h-[178%] w-auto max-w-none [filter:brightness(1.55)_saturate(1)] ${
-            introStarted ? "animate-blur-left-in" : "opacity-0"
+            introStarted ? "animate-background-down-in" : "opacity-0"
           }`}
         />
         <Image
@@ -75,7 +104,7 @@ export function HeroSection() {
           height={1004}
           priority
           className={`pointer-events-none absolute -right-48 top-[-20%] z-[3] h-[182%] w-auto max-w-none [filter:brightness(1.45)_saturate(1)] ${
-            introStarted ? "animate-blur-right-in" : "opacity-0"
+            introStarted ? "animate-background-down-in" : "opacity-0"
           }`}
         />
       </div>
